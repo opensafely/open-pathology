@@ -5,8 +5,9 @@ __pycache__
 .python-version
 /output/*
 metadata/*
-venv/
+.venv/
 .DS_Store
 .Rhistory
 .Rproj.user/
 .devcontainer/ehrql-main/
+.coverage
