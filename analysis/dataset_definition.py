@@ -1,6 +1,7 @@
 from ehrql import create_dataset
 from ehrql.tables.tpp import patients, practice_registrations
 
+
 dataset = create_dataset()
 
 index_date = "2020-03-31"
