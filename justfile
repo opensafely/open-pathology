@@ -65,6 +65,9 @@ devenv: requirements-dev prodenv (_install 'dev') && install-pre-commit
 run *args: devenv
     echo "Not implemented"
 
+streamlit *args="hello": devenv
+    {{ BIN_DIR }}/streamlit {{ args }}
+
 # Run tests
 test *args: devenv
     {{ BIN_DIR }}/coverage run --module pytest {{ args }}
