@@ -65,8 +65,8 @@ devenv: requirements-dev prodenv (_install 'dev') && install-pre-commit
 run *args: devenv
     echo "Not implemented"
 
-streamlit *args="hello": devenv
-    {{ BIN_DIR }}/streamlit {{ args }}
+streamlit arg="sro_key_measures.py": devenv
+    {{ BIN_DIR }}/streamlit run app/{{ arg }}
 
 # Run tests
 test *args: devenv
