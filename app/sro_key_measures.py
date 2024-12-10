@@ -1,8 +1,17 @@
+from urllib.parse import urljoin
+
 import altair as alt
 import pandas as pd
 import streamlit as st
-from config import MEASURES
-from utils import get_codelist_url, get_counts, get_csv_url
+from config import BASE_URLS, MEASURES
+
+
+def get_codelist_url(measure_name: str):
+    return urljoin(BASE_URLS["codelists"], MEASURES[measure_name]["codelist_url"])
+
+
+def get_csv_url(measure_name: str, tag: str):
+    return urljoin(BASE_URLS["published_data"], MEASURES[measure_name]["csv_urls"][tag])
 
 
 def get_decile_data(measure_name):
@@ -71,7 +80,10 @@ if __name__ == "__main__":
     measure = MEASURES[measure_name]
 
     codelist_url = get_codelist_url(measure_name)
-    counts = get_counts(measure_name)
+    counts = pd.read_csv(get_csv_url(measure_name, "counts"), index_col=0).to_dict()[
+        "count"
+    ]
+
     df_decile = get_decile_data(measure_name)
     df_top_5 = pd.read_csv(get_csv_url(measure_name, "top_5_code"), index_col=0)
 
