@@ -41,36 +41,32 @@ def get_decile_chart(df):
                 ),
                 legend={
                     "values": ["1st-9th, 91st-99th percentile", "decile", "median"],
-                    "labelLimit": 200,
+                    "labelLimit": 200,  # Prevents the labels from being truncated
                 },
             ),
         )
     )
 
 
-# This is a bit ugly but there's probably little marginal benefit in refactoring it for now
 def get_median_change_from_april_to_april(df, start, end):
     template = "Change in median from April {start} ({val_start:.2f}) - April {end} ({val_end:.2f}): **{percentage_change:.2f}%**"
-    df = df[df["percentile"] == 50].copy()  # Median
+    val_start, val_end = (
+        df[
+            (df["date"].dt.year.isin([start, end]))
+            & (df["date"].dt.month == 4)
+            & (df["percentile"] == 50)
+        ]
+        .sort_values("date")
+        .loc[:, "value"]
+    )
 
-    df["date"] = pd.to_datetime(df["date"])
-    df["month"] = df["date"].dt.month
-    df["year"] = df["date"].dt.year
-
-    df = df[df["month"] == 4].copy()  # April
-    df = df[df["year"].isin([start, end])].copy()
-    df.sort_values("year", inplace=True)
-    val_start = df.iloc[0]["value"]
-    val_end = df.iloc[1]["value"]
-
-    text = template.format(
+    return template.format(
         start=start,
         end=end,
         val_start=val_start,
         val_end=val_end,
         percentage_change=((val_end - val_start) / val_start) * 100,
     )
-    return text
 
 
 if __name__ == "__main__":
@@ -80,9 +76,11 @@ if __name__ == "__main__":
     measure = MEASURES[measure_name]
 
     codelist_url = get_codelist_url(measure_name)
-    counts = pd.read_csv(get_csv_url(measure_name, "counts"), index_col=0).to_dict()[
-        "count"
-    ]
+    counts = (
+        pd.read_csv(get_csv_url(measure_name, "counts"), index_col=0)
+        .to_dict()
+        .get("count")
+    )
 
     df_decile = get_decile_data(measure_name)
     df_top_5 = pd.read_csv(get_csv_url(measure_name, "top_5_code"), index_col=0)
