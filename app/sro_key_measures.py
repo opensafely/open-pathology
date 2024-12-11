@@ -15,14 +15,11 @@ def get_csv_url(measure_name: str, tag: str):
 
 
 def get_decile_data(measure_name):
-    def get_label(percentile):
-        if percentile == 50:
-            return "Median"
-        return "Decile" if percentile % 10 == 0 else "Percentile"
-
-    chart_data = pd.read_csv(get_csv_url(measure_name, "deciles"), parse_dates=["date"])
-    chart_data["label"] = chart_data["percentile"].apply(get_label)
-    return chart_data
+    df = pd.read_csv(get_csv_url(measure_name, "deciles"), parse_dates=["date"])
+    df.loc[:, "label"] = "1st-9th, 91st-99th percentile"
+    df.loc[df["percentile"] % 10 == 0, "label"] = "decile"
+    df.loc[df["percentile"] == 50, "label"] = "median"
+    return df
 
 
 def get_decile_chart(df):
@@ -36,11 +33,10 @@ def get_decile_chart(df):
             strokeDash=alt.StrokeDash(
                 "label",
                 scale=alt.Scale(
-                    domain=["Percentile", "Decile", "Median"],
+                    domain=["1st-9th, 91st-99th percentile", "decile", "median"],
                     range=[[1, 1], [5, 5], [0, 0]],
                 ),
                 legend={
-                    "values": ["1st-9th, 91st-99th percentile", "decile", "median"],
                     "labelLimit": 200,  # Prevents the labels from being truncated
                 },
             ),
