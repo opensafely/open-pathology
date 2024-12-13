@@ -23,6 +23,7 @@ def get_decile_data(measure_name):
 
 
 def get_decile_chart(df):
+    select_legend = alt.selection_point(fields=["label"], bind="legend")
     return (
         alt.Chart(df, title="Rate per 1000 registered patients")
         .mark_line()
@@ -40,7 +41,11 @@ def get_decile_chart(df):
                     "labelLimit": 200,  # Prevents the labels from being truncated
                 },
             ),
+            opacity=alt.when(select_legend)
+            .then(alt.value(1))
+            .otherwise(alt.value(0.1)),
         )
+        .add_params(select_legend)
     )
 
 
