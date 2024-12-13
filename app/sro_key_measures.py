@@ -26,7 +26,7 @@ def get_decile_chart(df):
     select_legend = alt.selection_point(fields=["label"], bind="legend")
     return (
         alt.Chart(df, title="Rate per 1000 registered patients")
-        .mark_line()
+        .mark_line(point=alt.OverlayMarkDef(shape="diamond", size=15))
         .encode(
             x=alt.X("date:T", axis=alt.Axis(format="%b %Y", labelAngle=-90)),
             y=alt.Y("value", title="rate per 1000"),
