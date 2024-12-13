@@ -71,7 +71,12 @@ def get_median_change_from_april_to_april(df, start, end):
 
 
 if __name__ == "__main__":
-    measure_name = "alt"
+    available_measures = tuple(MEASURES.keys())
+    measure_name = st.selectbox(
+        label="Select measure",
+        options=available_measures,
+        placeholder=available_measures[0],
+    )
 
     # Variables
     measure = MEASURES[measure_name]
@@ -87,7 +92,7 @@ if __name__ == "__main__":
     df_top_5 = pd.read_csv(get_csv_url(measure_name, "top_5_code"), index_col=0)
 
     # Layout
-    st.markdown(measure["title"])
+    st.markdown(f"# {measure_name}")
     st.markdown(
         f"The codes used for this measure are available in this [codelist]({codelist_url})."
     )

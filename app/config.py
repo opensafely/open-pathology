@@ -1,7 +1,6 @@
 # .py file for now but deliberately made easy to convert to .json if needed
 MEASURES = {
-    "alt": {
-        "title": "# Liver Function Testing - Alanine Transferaminase (ALT)",
+    "Liver Function Testing - Alanine Transferaminase (ALT)": {
         "caveats": """**In a small number of places, an ALT test may NOT be included within a liver function test.**
                     We use codes which represent results reported to GPs so tests requested but not yet reported are not included.
                     Only tests results returned to GPs are included,
@@ -16,7 +15,22 @@ MEASURES = {
             "deciles": "01GGZ12739P6B7Z00QAJBTBKK3/",
             "top_5_code": "01GGWFEGKSB1ANPP4X5V2FM3FR/",
         },
-    }
+    },
+    "Glycated Haemoglobin A1c Level (HbA1c)": {
+        "caveats": """We use codes which represent results reported to GPs so tests requested but not yet reported are not included.
+                    Only test results returned to GPs are included,
+                    which will usually exclude tests requested while a person is in hospital and other settings like a private clinic.""",
+        "classification": "recovery",
+        "codelist_url": "opensafely/glycated-haemoglobin-hba1c-tests/3e5b1269/",
+        "explanation": """HbA1c is a long term indicator of diabetes control.
+                        NICE guidelines recommend that individuals with diabetes have their HbA1c measured at least twice a year.
+                        Poor diabetic control can place individuals living with diabetes at an increased risk of the complications of diabetes.""",
+        "csv_urls": {
+            "counts": "01GGZ12749JZ938746AV8XCPZ3/",
+            "deciles": "01GGZ1273K1QJM5EQ7238X7P3S/",
+            "top_5_code": "01GGWFEGMVQ62NGNM403MK32Z7/",
+        },
+    },
 }
 
 BASE_URLS = {
