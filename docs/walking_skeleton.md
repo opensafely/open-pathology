@@ -9,6 +9,9 @@ flowchart TD
     inspect_locally --> update_locally
     inspect_locally --> push_to_gh[Push to GitHub]
     end
+    subgraph OpenCodelists
+    create_codelist[Create/update codelist] --> create_branch
+    end
     subgraph GitHub
     push_to_gh --> run_ci[Code is run in CI]
     run_ci -->|CI failure| update_locally
