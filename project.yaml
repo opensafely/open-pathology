@@ -11,3 +11,12 @@ actions:
     outputs:
       highly_sensitive:
         measures: output/alt_tests/measures.arrow
+  generate_processed_data:
+    run: python:latest analysis/processing.py
+    needs:
+      [generate_measures]
+    outputs:
+      moderately_sensitive:
+        decile_table: output/decile_tabl*.csv
+        code_table: output/code_tabl*.csv
+        charts: output/deciles_chart*.png
