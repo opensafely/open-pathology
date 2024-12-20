@@ -5,6 +5,35 @@ from ehrql.codes import codelist_from_csv
 from ehrql.tables.core import patients, clinical_events, practice_registrations
 from ehrql.tables.tpp import addresses
 
+
+def calculate_num_intervals(start_date):
+    """
+    Calculate the number of intervals between the start date and the start of the latest full month
+    Args:
+        start_date: the start date of the study period
+    Returns:
+        num_intervals (int): the number of intervals between the start date and the start of the latest full month
+    """
+    now = datetime.now()
+    start_of_latest_full_month = datetime(now.year, now.month, 1)
+
+    num_intervals = (
+        start_of_latest_full_month.year - datetime.strptime(start_date, "%Y-%m-%d").year
+    ) * 12 + (
+        start_of_latest_full_month.month
+        - datetime.strptime(start_date, "%Y-%m-%d").month
+    )
+
+    return num_intervals
+
+
+measures = Measures()
+measures.configure_disclosure_control(enabled=False)
+measures.configure_dummy_data(population_size=15000, legacy=True)
+
+start_date = "2024-01-01"
+num_intervals = calculate_num_intervals(start_date)
+
 codelists = {
     "asthma": codelist_from_csv(
         "codelists/opensafely-asthma-annual-review-qof.csv", column="code"
@@ -52,8 +81,7 @@ codelists = {
     ),
 }
 
-#measures = create_measures()
-dataset = Dataset()
+# Defining eligible populations
 age = patients.age_on(date=INTERVAL.start_date)
 age_18_to_120 = (age >= 18) & (age < 120)
 
@@ -69,7 +97,7 @@ has_died = date_of_death.is_not_null()
 
 died_before_interval_start = has_died & date_of_death.is_before(INTERVAL.start_date)
 
-
+# Defining measures
 key_measures = [
     "asthma",
     "copd",
@@ -87,6 +115,7 @@ key_measures = [
 measures_variables = {}
 
 for m in key_measures:
+    # Loop over each medication and
     if m == "medication_review":
         measures_variables[m] = clinical_events.where(
             clinical_events.snomedct_code.is_in(
@@ -99,7 +128,7 @@ for m in key_measures:
         )
     else:
         measures_variables[m] = clinical_events.where(
-            clinical_events.snomedct_code.is_in(codelists[m])
+            (clinical_events.snomedct_code.is_in(codelists[m]))
         ).where(
             clinical_events.date.is_on_or_between(
                 INTERVAL.start_date, INTERVAL.end_date
@@ -121,37 +150,9 @@ denominator = (
     & sex.is_in(["male", "female"])
 )
 
-measures = Measures()
-measures.configure_disclosure_control(enabled=False)
 measures.define_defaults(
     denominator=denominator,
 )
-
-
-def calculate_num_intervals(start_date):
-    """
-    Calculate the number of intervals between the start date and the start of the latest full month
-    Args:
-        start_date: the start date of the study period
-    Returns:
-        num_intervals (int): the number of intervals between the start date and the start of the latest full month
-    """
-    now = datetime.now()
-    start_of_latest_full_month = datetime(now.year, now.month, 1)
-
-    num_intervals = (
-        start_of_latest_full_month.year - datetime.strptime(start_date, "%Y-%m-%d").year
-    ) * 12 + (
-        start_of_latest_full_month.month
-        - datetime.strptime(start_date, "%Y-%m-%d").month
-    )
-
-    return num_intervals
-
-
-start_date = "2024-01-01"
-num_intervals = calculate_num_intervals(start_date)
-
 
 for m in key_measures:
     measures.define_measure(
