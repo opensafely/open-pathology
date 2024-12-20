@@ -12,6 +12,6 @@ actions:
       [generate_measures]
     outputs:
       moderately_sensitive:
-        decile_table: output/decile_tabl*.csv
+        decile_table: output/deciles_table_counts_per_week_per_practice.csv
         code_table: output/code_tabl*.csv
         charts: output/deciles_chart*.png
