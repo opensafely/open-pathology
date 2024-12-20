@@ -2,7 +2,16 @@ version: "4.0"
 
 actions:
   generate_measures:
-    run: ehrql:v1 generate-measures analysis/dataset_definition.py --output output/dataset.csv.gz
+    run: ehrql:v1 generate-measures analysis/dataset_definition.py --output output/measures.csv.gz
     outputs:
       highly_sensitive:
-        dataset: output/dataset.csv.gz
+        dataset: output/measures.csv.gz
+  generate_processed_data:
+    run: python:latest analysis/processing.py
+    needs:
+      [generate_measures]
+    outputs:
+      moderately_sensitive:
+        decile_table: output/decile_tabl*.csv
+        code_table: output/code_tabl*.csv
+        charts: output/deciles_chart*.png
