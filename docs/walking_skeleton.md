@@ -1,5 +1,7 @@
 # Walking Skeleton
 
+## Workflow
+
 ```mermaid
 flowchart TD
     subgraph Local Development
