@@ -34,9 +34,9 @@ flowchart TD
     job_request_completed --> inspect_l4[Inspect outputs/logs]
     inspect_l4 -->|Job request failure: System error| submit_job_request
     inspect_l4 -->|Job request failure: Code error| update_locally
-    inspect_l4 -->|Job request success| request_release[Request release of outputs to OS Jobs]
-    request_release -->|"(Time passes)"| reviewed_r1[Request reviewed by R1]
-    request_release -->|"(Time passes)"| reviewed_r2[Request reviewed by R2]
+    inspect_l4 -->|Job request success| submit_release_request[Submit release request]
+    submit_release_request -->|"(Time passes)"| reviewed_r1[Request reviewed by R1]
+    submit_release_request -->|"(Time passes)"| reviewed_r2[Request reviewed by R2]
     reviewed_r1 -->|"(Time passes)"| reviewed_r1_r2[Request reviewed by R1 and R2]
     reviewed_r2 -->|"(Time passes)"| reviewed_r1_r2
     reviewed_r1_r2 -->|"(Time passes)"| receive_response[Receive response to request]
