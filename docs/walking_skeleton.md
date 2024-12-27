@@ -44,15 +44,15 @@ flowchart TD
     receive_response -->|Request denied| update_locally
     end
     subgraph OS Jobs
-    outputs_released --> request_publication[Request publication of outputs to web]
-    request_publication -->|"(Time passes)"| reviewed_r3[Request reviewed by Output Publisher]
+    outputs_released --> submit_publish_request[Submit publish request]
+    submit_publish_request -->|"(Time passes)"| reviewed_r3[Request reviewed by Output Publisher]
     reviewed_r3 --> receive_publication_response[Recieve response to request]
     receive_publication_response -->|Request denied| end_2[Decide what to do next!]
     receive_publication_response -->|Request approved| outputs_published[Outputs are published to web]
     end
     outputs_published -->|Update dashboard| update_locally
     note_1@{shape: notch-rect, label: "Informal communication"}
-    note_1 -.- request_publication
+    note_1 -.- submit_publish_request
     note_2@{shape: notch-rect, label: "Informal communication"}
     note_2 -.- receive_publication_response
 ```
