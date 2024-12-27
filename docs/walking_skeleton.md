@@ -24,10 +24,10 @@ flowchart TD
     create_pr -->|No code review| merge_pr
     end
     subgraph Streamlit Community Cloud
-    merge_pr -->|PR was dashboard-related| end_1[Dashboard is updated]
+    merge_pr -->|PR modified dashboard code| end_1[Dashboard is updated]
     end
     subgraph OS Jobs
-    merge_pr -->|PR was data-related| submit_job_request[Submit job request]
+    merge_pr -->|PR modified study code| submit_job_request[Submit job request]
     submit_job_request -->|"(Time passes)"| job_request_completed[Job request is completed]
     end
     subgraph Airlock
