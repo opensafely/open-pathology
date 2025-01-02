@@ -1,8 +1,13 @@
 version: "4.0"
 
 actions:
-  generate_dataset:
-    run: ehrql:v1 generate-dataset analysis/dataset_definition.py --output output/dataset.csv.gz
+  generate_measures_alt_tests:
+    run: >
+      ehrql:v1 generate-measures
+        analysis/measure_definition.py
+        --output output/alt_tests/measures.arrow
+        --
+        --codelist codelists/opensafely-alanine-aminotransferase-alt-tests.csv
     outputs:
       highly_sensitive:
-        dataset: output/dataset.csv.gz
+        measures: output/alt_tests/measures.arrow
