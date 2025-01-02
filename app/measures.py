@@ -13,6 +13,7 @@ MEDIAN = "Median"
 
 @dataclasses.dataclass
 class Measure:
+    shorthand: str
     name: str
     explanation: str
     caveats: str
@@ -24,7 +25,7 @@ class Measure:
     deciles_table: pandas.DataFrame
 
     def __repr__(self):
-        return f"Measure(name='{self.name}')"
+        return f"Measure(shorthand='{self.shorthand}', name='{self.name}')"
 
     def change_in_median(self, from_year, to_year, month):
         # Pandas wants these to be strings
@@ -90,19 +91,21 @@ class Measure:
 class OSJobsRepository:
     def __init__(self):
         path = pathlib.Path(__file__).parent.joinpath("measures.yaml")
-        self._records = {r["name"]: r for r in yaml.load(path.read_text(), yaml.Loader)}
+        self._records = {
+            r["shorthand"]: r for r in yaml.load(path.read_text(), yaml.Loader)
+        }
         self._measures = {}  # the repository
 
-    def get(self, name):
-        """Get the measure with the given name from the repository."""
-        if name not in self._measures:
-            self._measures[name] = self._construct(name)
-        return self._measures[name]
+    def get(self, shorthand):
+        """Get the measure with the given shorthand from the repository."""
+        if shorthand not in self._measures:
+            self._measures[shorthand] = self._construct(shorthand)
+        return self._measures[shorthand]
 
-    def _construct(self, name):
-        """Construct the measure with the given name from information stored on the
+    def _construct(self, shorthand):
+        """Construct the measure with the given shorthand from information stored on the
         local file system and on OS Jobs."""
-        record = self._records[name]
+        record = self._records[shorthand]
 
         # The following helpers don't need access to instance attributes, so we define
         # them as functions rather than as methods. Doing so makes them easier to mock.
@@ -111,7 +114,8 @@ class OSJobsRepository:
         deciles_table = _get_deciles_table(record["deciles_table_url"])
 
         return Measure(
-            name,
+            shorthand,
+            record["name"],
             record["explanation"],
             record["caveats"],
             record["classification"],
@@ -123,8 +127,12 @@ class OSJobsRepository:
         )
 
     def list(self):
-        """List the names of all the measures in the repository."""
+        """List the shorthands of all the measures in the repository."""
         return sorted(self._records.keys())
+
+    def get_names_dict(self):
+        """Returns a dictionary mapping measure shorthands to measure names."""
+        return {key: record["name"] for key, record in self._records.items()}
 
 
 def _get_counts(counts_table_url):
