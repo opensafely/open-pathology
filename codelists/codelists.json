@@ -1,3 +1,10 @@
 {
-  "files": {}
+  "files": {
+    "opensafely-alanine-aminotransferase-alt-tests.csv": {
+      "id": "opensafely/alanine-aminotransferase-alt-tests/2298df3e",
+      "url": "https://www.opencodelists.org/codelist/opensafely/alanine-aminotransferase-alt-tests/2298df3e/",
+      "downloaded_at": "2025-01-02 16:40:55.314645Z",
+      "sha": "0d231653e5ece343f6945309d21fc40c7f685ff2"
+    }
+  }
 }
