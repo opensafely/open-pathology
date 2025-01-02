@@ -11,3 +11,16 @@ actions:
     outputs:
       highly_sensitive:
         measures: output/alt_tests/measures.arrow
+  generate_processed_data_alt_tests:
+    run: >
+      python:latest 
+        analysis/write_processed_csv_files.py
+        --output-dir output/alt_tests
+        --codelist codelists/opensafely-alanine-aminotransferase-alt-tests.csv
+    needs:
+      [generate_measures_alt_tests]
+    outputs:
+      moderately_sensitive:
+        decile_table: output/alt_tests/deciles_table_counts_per_week_per_practice.csv
+        code_table: output/alt_tests/top_5_code_table.csv
+        event_counts_table: output/alt_tests/event_counts.csv
