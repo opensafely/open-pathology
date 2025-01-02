@@ -6,21 +6,17 @@ and deploy dashboards to the Streamlit [Community Cloud][].
 In Community Cloud, a dashboard is known as an *app*
 and an app corresponds to a Python file in a GitHub repository.
 
-We will create apps in a shared account on Community Cloud,
-the credentials for which are stored in [Bitwarden][];
-the item name is "Streamlit Community Cloud".
+We will create apps in our individual accounts,
+which are known as *source control accounts*.
+An alternative approach would be to create apps in a shared account,
+which is known as a *linked account*,
+and to link the shared account to our individual accounts.
+However, this approach is not well supported by Community Cloud.
 
-Only members of the tech group have access to Bitwarden.
-Consequently, whilst anyone in the OpenPathology team *could* create an app,
-in practice, only members of the tech group should do so.
-
-In Community Cloud, the shared account is known as a *Linked account*.
-A linked account is different to a *source control account*,
-which is an individual's GitHub account.
-Consequently, to create an app, an individual should:
-
-* login to Community Cloud with the shared account;
-* login to GitHub with their individual account.
+A Google group and a [Bitwarden][] item,
+both called "Streamlit Community Cloud",
+were created for the shared account.
+They have been retained, should they be needed in the future.
 
 [Bitwarden]: https://bennett.wiki/tools-systems/bitwarden/
 [Community Cloud]: https://streamlit.io/cloud
