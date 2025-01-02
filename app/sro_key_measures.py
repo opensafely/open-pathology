@@ -1,6 +1,5 @@
+import measures
 import streamlit
-
-from app import measures
 
 
 def main():

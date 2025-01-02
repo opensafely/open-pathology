@@ -64,7 +64,7 @@ devenv: requirements-dev prodenv (_install 'dev') && install-pre-commit
 
 # Run a Streamlit app
 run *args: devenv
-    PYTHONPATH=. {{ STREAMLIT }} run {{ args }}
+    {{ STREAMLIT }} run {{ args }}
 
 # Run tests
 test *args: devenv
