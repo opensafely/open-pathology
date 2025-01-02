@@ -4,6 +4,7 @@ BIN_DIR := VENV_DIR / "bin"
 PIP := BIN_DIR / "python -m pip"
 PIP_COMPILE := BIN_DIR / "pip-compile"
 RUFF := BIN_DIR / "ruff"
+STREAMLIT := BIN_DIR / "streamlit"
 
 # List available recipes and their arguments
 default:
@@ -61,9 +62,9 @@ prodenv: requirements-prod (_install 'prod')
 # Install dev requirements into the virtual environment
 devenv: requirements-dev prodenv (_install 'dev') && install-pre-commit
 
-# Run a command in the virtual environment
+# Run a Streamlit app
 run *args: devenv
-    echo "Not implemented"
+    PYTHONPATH=. {{ STREAMLIT }} run {{ args }}
 
 # Run tests
 test *args: devenv
