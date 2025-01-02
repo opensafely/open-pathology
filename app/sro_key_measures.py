@@ -4,10 +4,13 @@ import streamlit
 
 def main():
     repository = measures.OSJobsRepository()
+    shorthands = {v: k for k, v in repository.get_names_dict().items()}
 
-    selected_measure_name = streamlit.selectbox("Select a measure:", repository.list())
+    selected_measure_name = streamlit.selectbox(
+        "Select a measure:", sorted(shorthands.keys())
+    )
 
-    measure = repository.get(selected_measure_name)
+    measure = repository.get(shorthands[selected_measure_name])
 
     streamlit.markdown(f"# {measure.name}")
 
