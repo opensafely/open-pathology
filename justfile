@@ -24,7 +24,7 @@ _compile src dst *args: venv
     set -euxo pipefail
 
     test "${FORCE:-}" = "true" -o {{ src }} -nt {{ dst }} || exit 0
-    {{ PIP_COMPILE }} --quiet --generate-hashes --resolver=backtracking --strip-extras --allow-unsafe --output-file={{ dst }} {{ src }} {{ args }}
+    {{ PIP_COMPILE }} --quiet --resolver=backtracking --strip-extras --allow-unsafe --output-file={{ dst }} {{ src }} {{ args }}
 
 # Compile prod requirements
 requirements-prod *args: (_compile 'requirements.prod.in' 'requirements.prod.txt' args)

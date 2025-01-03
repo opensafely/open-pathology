@@ -1,4 +1,5 @@
 coverage
+git+https://github.com/opensafely-core/ehrql.git@v1.27.0
 pre-commit
 pytest
 ruff
