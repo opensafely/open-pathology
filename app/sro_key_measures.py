@@ -1,4 +1,5 @@
 import measures
+import numpy
 import streamlit
 
 
@@ -27,7 +28,20 @@ def main():
     with streamlit.expander("Caveats"):
         streamlit.markdown(measure.caveats)
 
-    streamlit.altair_chart(measure.deciles_chart, use_container_width=True)
+    with streamlit.expander("Single practice scenario"):
+        min_value, max_value = measure.range
+        for quarter in measure.quarters:
+            value = streamlit.slider(
+                quarter.isoformat(),
+                min_value,
+                max_value,
+                value=numpy.random.uniform(min_value, max_value),
+            )
+            measure.update_scenario_table(quarter, value)
+
+    streamlit.altair_chart(
+        measure.deciles_chart + measure.scenario_chart, use_container_width=True
+    )
 
     streamlit.markdown(f"**Most common codes ([codelist]({measure.codelist_url}))**")
 
