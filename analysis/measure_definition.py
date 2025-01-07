@@ -16,13 +16,14 @@ start_date = date(2024, 4, 1)
 
 def num_months(from_, to_):
     """Returns the number of months between the given dates."""
-    return abs(to_.year - from_.year) * 12 + abs(from_.month - to_.month)
+    return abs((to_.year - from_.year) * 12 + to_.month - from_.month)
 
 
 # same year, same month
 assert num_months(date(2025, 1, 1), date(2025, 1, 31)) == 0
 # different year, different month
 assert num_months(date(2024, 1, 1), date(2025, 2, 1)) == 13
+assert num_months(date(2024, 2, 1), date(2025, 1, 1)) == 11
 # to_ before from_
 assert num_months(date(2025, 2, 1), date(2024, 1, 1)) == 13
 
