@@ -54,6 +54,7 @@ last_codelist_event = codelist_events.sort_by(codelist_events.date).last_for_pat
 # Measures
 # --------------------------------------------------------------------------------------
 measures = Measures()
+measures.configure_dummy_data(population_size=15000, legacy=True)
 measures.define_defaults(
     denominator=is_alive & is_adult & is_registered & is_sex_recorded
 )
