@@ -2,8 +2,13 @@ import measures
 import streamlit
 
 
+@streamlit.cache_resource
+def get_repository():
+    return measures.OSJobsRepository()
+
+
 def main():
-    repository = measures.OSJobsRepository()
+    repository = get_repository()
 
     selected_measure_name = streamlit.selectbox("Select a measure:", repository.list())
 

@@ -3,8 +3,11 @@ import pathlib
 
 import altair
 import pandas
+import structlog
 import yaml
 
+
+log = structlog.get_logger(__name__)
 
 PERCENTILE = "Percentile"
 DECILE = "Decile"
@@ -95,6 +98,7 @@ class OSJobsRepository:
 
     def get(self, name):
         """Get the measure with the given name from the repository."""
+        log.info(f'Getting "{name}" from the repository')
         if name not in self._measures:
             self._measures[name] = self._construct(name)
         return self._measures[name]
@@ -102,6 +106,7 @@ class OSJobsRepository:
     def _construct(self, name):
         """Construct the measure with the given name from information stored on the
         local file system and on OS Jobs."""
+        log.info(f'Constructing "{name}"')
         record = self._records[name]
 
         # The following helpers don't need access to instance attributes, so we define
@@ -128,10 +133,12 @@ class OSJobsRepository:
 
 
 def _get_counts(counts_table_url):
+    log.info(f"Getting counts table from {counts_table_url}")
     return pandas.read_csv(counts_table_url, index_col=0).to_dict().get("count")
 
 
 def _get_top_5_codes_table(top_5_codes_table_url):
+    log.info(f"Getting top 5 codes table from {top_5_codes_table_url}")
     top_5_codes_table = pandas.read_csv(
         top_5_codes_table_url, index_col=0, dtype={"Code": str}
     )
@@ -142,6 +149,7 @@ def _get_top_5_codes_table(top_5_codes_table_url):
 
 
 def _get_deciles_table(deciles_table_url):
+    log.info(f"Getting deciles table from {deciles_table_url}")
     deciles_table = pandas.read_csv(deciles_table_url, parse_dates=["date"])
     deciles_table.loc[:, "label"] = PERCENTILE
     deciles_table.loc[deciles_table["percentile"] % 10 == 0, "label"] = DECILE

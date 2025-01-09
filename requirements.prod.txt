@@ -87,6 +87,8 @@ smmap==5.0.1
     # via gitdb
 streamlit==1.41.0
     # via -r requirements.prod.in
+structlog==24.4.0
+    # via -r requirements.prod.in
 tenacity==9.0.0
     # via streamlit
 toml==0.10.2
