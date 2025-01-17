@@ -3,6 +3,11 @@ import numpy
 import streamlit
 
 
+def save_value_if_missing(label, value):
+    if label not in streamlit.session_state:
+        streamlit.session_state[label] = value
+
+
 def main():
     repository = measures.OSJobsRepository()
 
@@ -26,13 +31,15 @@ def main():
     with streamlit.expander("Single practice scenario"):
         min_value, max_value = measure.range
         for quarter in measure.quarters:
-            value = streamlit.slider(
+            key = f"{measure.name}_{quarter.isoformat()}"
+            save_value_if_missing(key, numpy.random.uniform(min_value, max_value))
+            streamlit.slider(
                 quarter.isoformat(),
                 min_value,
                 max_value,
-                value=numpy.random.uniform(min_value, max_value),
+                key=key,
             )
-            measure.update_scenario_table(quarter, value)
+            measure.update_scenario_table(quarter, streamlit.session_state[key])
 
     streamlit.altair_chart(
         measure.deciles_chart + measure.scenario_chart, use_container_width=True
