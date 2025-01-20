@@ -29,7 +29,7 @@ class Measure:
 
     def __post_init__(self):
         idx = pandas.Index(self.quarters, name="date")
-        self.scenario_table = pandas.Series(0, idx, name="value").to_frame()
+        self.scenario_table = pandas.Series(0.0, idx, name="value").to_frame()
 
     def __repr__(self):
         return f"Measure(name='{self.name}')"
