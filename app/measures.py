@@ -28,7 +28,7 @@ class Measure:
     scenario_table: pandas.DataFrame = dataclasses.field(init=False)
 
     def __post_init__(self):
-        idx = pandas.Index(self.quarters, name="date")
+        idx = pandas.Index(self.months, name="date")
         self.scenario_table = pandas.Series(0.0, idx, name="value").to_frame()
 
     def __repr__(self):
@@ -57,15 +57,15 @@ class Measure:
         return self.deciles_table["value"].min(), self.deciles_table["value"].max()
 
     @property
-    def quarters(self):
+    def months(self):
         date = self.deciles_table["date"]
         return [
             d.to_pydatetime().date()
-            for d in pandas.date_range(date.min(), date.max(), freq="QS")
+            for d in pandas.date_range(date.min(), date.max(), freq="MS")
         ]
 
-    def update_scenario_table(self, quarter, value):
-        self.scenario_table.loc[quarter, "value"] = value
+    def update_scenario_table(self, month, value):
+        self.scenario_table.loc[month, "value"] = value
 
     @property
     def scenario_chart(self):

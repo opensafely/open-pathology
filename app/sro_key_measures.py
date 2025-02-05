@@ -35,16 +35,30 @@ def main():
 
     with streamlit.expander("Single practice scenario"):
         min_value, max_value = measure.range
-        for quarter in measure.quarters:
-            key = f"{measure.name}_{quarter.isoformat()}"
+        idx_start = measure.months.index(
+            streamlit.selectbox("Start", options=measure.months[:-1])
+        )
+        idx_end = measure.months.index(
+            streamlit.selectbox(
+                "End",
+                options=measure.months[idx_start + 1 :],
+                index=len(measure.months) - idx_start - 2,
+            )
+        )
+        frequency = streamlit.number_input("Frequency (months)", 1, 12, 3)
+        months = measure.months[idx_start : idx_end + 1 : frequency]
+
+        for month in months:
+            key = f"{measure.name}_{month.isoformat()}"
             save_value_if_missing(key, numpy.random.uniform(min_value, max_value))
             streamlit.slider(
-                quarter.isoformat(),
+                month.isoformat(),
                 min_value,
                 max_value,
                 key=key,
             )
-            measure.update_scenario_table(quarter, streamlit.session_state[key])
+            measure.update_scenario_table(month, streamlit.session_state[key])
+        measure.scenario_table = measure.scenario_table.loc[months]
 
     streamlit.altair_chart(
         measure.deciles_chart + measure.scenario_chart, use_container_width=True
