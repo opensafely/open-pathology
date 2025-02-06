@@ -1,5 +1,6 @@
 import measures
 import numpy
+import single_practice_scenario
 import streamlit
 
 
@@ -48,6 +49,7 @@ def main():
         frequency = streamlit.number_input("Frequency (months)", 1, 12, 3)
         months = measure.months[idx_start : idx_end + 1 : frequency]
 
+        scenario_table = single_practice_scenario.get_blank_scenario_table(months)
         for month in months:
             key = f"{measure.name}_{month.isoformat()}"
             save_value_if_missing(key, numpy.random.uniform(min_value, max_value))
@@ -57,11 +59,11 @@ def main():
                 max_value,
                 key=key,
             )
-            measure.update_scenario_table(month, streamlit.session_state[key])
-        measure.scenario_table = measure.scenario_table.loc[months]
+            scenario_table.loc[month, "value"] = streamlit.session_state[key]
 
     streamlit.altair_chart(
-        measure.deciles_chart + measure.scenario_chart, use_container_width=True
+        measure.deciles_chart + scenario_table.scenario.to_chart(),
+        use_container_width=True,
     )
 
     streamlit.markdown(f"**Most common codes ([codelist]({measure.codelist_url}))**")
