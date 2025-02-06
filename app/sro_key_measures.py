@@ -1,5 +1,4 @@
 import measures
-import numpy
 import single_practice_scenario
 import streamlit
 
@@ -35,7 +34,14 @@ def main():
         streamlit.markdown(measure.caveats)
 
     with streamlit.expander("Single practice scenario"):
-        min_value, max_value = measure.range
+        scenario_table_key = f"{measure.name}_scenario_table"
+        save_value_if_missing(
+            scenario_table_key,
+            single_practice_scenario.get_randomised_scenario_table(
+                measure.months, *measure.range
+            ),
+        )
+
         idx_start = measure.months.index(
             streamlit.selectbox("Start", options=measure.months[:-1])
         )
@@ -49,20 +55,19 @@ def main():
         frequency = streamlit.number_input("Frequency (months)", 1, 12, 3)
         months = measure.months[idx_start : idx_end + 1 : frequency]
 
-        scenario_table = single_practice_scenario.get_blank_scenario_table(months)
-        for month in months:
-            key = f"{measure.name}_{month.isoformat()}"
-            save_value_if_missing(key, numpy.random.uniform(min_value, max_value))
-            streamlit.slider(
-                month.isoformat(),
-                min_value,
-                max_value,
-                key=key,
-            )
-            scenario_table.loc[month, "value"] = streamlit.session_state[key]
+        editable_table = streamlit.data_editor(
+            streamlit.session_state[scenario_table_key].loc[months],
+            use_container_width=True,
+            disabled=("date",),
+            column_config={"value": {"alignment": "left"}},
+        )
+        # Store the user-provided values back in the session state
+        streamlit.session_state[scenario_table_key].loc[months, "value"] = (
+            editable_table.loc[months, "value"]
+        )
 
     streamlit.altair_chart(
-        measure.deciles_chart + scenario_table.scenario.to_chart(),
+        measure.deciles_chart + editable_table.scenario.to_chart(),
         use_container_width=True,
     )
 
