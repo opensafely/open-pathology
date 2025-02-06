@@ -42,6 +42,16 @@ def main():
             ),
         )
 
+        streamlit.write(
+            "Overlay your data on the chart below to see how it compares to the national data. "
+            "Any data you enter will be deleted when you leave this page and is not submitted to OpenPathology."
+        )
+
+        streamlit.write(
+            "Select a date range to populate the table with random values. "
+            "Replace these values with your own data, then click the button to overlay them on the chart."
+        )
+
         idx_start = measure.months.index(
             streamlit.selectbox("Start", options=measure.months[:-1])
         )
@@ -55,21 +65,27 @@ def main():
         frequency = streamlit.number_input("Frequency (months)", 1, 12, 3)
         months = measure.months[idx_start : idx_end + 1 : frequency]
 
-        editable_table = streamlit.data_editor(
-            streamlit.session_state[scenario_table_key].loc[months],
-            use_container_width=True,
-            disabled=(single_practice_scenario.DATE_COL,),
-            column_config={single_practice_scenario.VALUE_COL: {"alignment": "left"}},
-        )
-        # Store the user-provided values back in the session state
-        streamlit.session_state[scenario_table_key].loc[months] = editable_table.loc[
-            months
-        ]
+        with streamlit.form("edit_data"):
+            editable_table = streamlit.data_editor(
+                streamlit.session_state[scenario_table_key].loc[months],
+                use_container_width=True,
+                disabled=(single_practice_scenario.DATE_COL,),
+                column_config={
+                    single_practice_scenario.VALUE_COL: {"alignment": "left"}
+                },
+            )
 
-    streamlit.altair_chart(
-        measure.deciles_chart + editable_table.scenario.to_chart(),
-        use_container_width=True,
-    )
+            submitted = streamlit.form_submit_button("Overlay these values on chart")
+
+        if submitted:
+            streamlit.session_state[scenario_table_key].loc[months] = (
+                editable_table.loc[months]
+            )
+            chart = measure.deciles_chart + editable_table.scenario.to_chart()
+        else:
+            chart = measure.deciles_chart
+
+    streamlit.altair_chart(chart, use_container_width=True)
 
     streamlit.markdown(f"**Most common codes ([codelist]({measure.codelist_url}))**")
 
