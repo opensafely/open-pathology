@@ -58,13 +58,13 @@ def main():
         editable_table = streamlit.data_editor(
             streamlit.session_state[scenario_table_key].loc[months],
             use_container_width=True,
-            disabled=("date",),
-            column_config={"value": {"alignment": "left"}},
+            disabled=(single_practice_scenario.DATE_COL,),
+            column_config={single_practice_scenario.VALUE_COL: {"alignment": "left"}},
         )
         # Store the user-provided values back in the session state
-        streamlit.session_state[scenario_table_key].loc[months, "value"] = (
-            editable_table.loc[months, "value"]
-        )
+        streamlit.session_state[scenario_table_key].loc[months] = editable_table.loc[
+            months
+        ]
 
     streamlit.altair_chart(
         measure.deciles_chart + editable_table.scenario.to_chart(),
