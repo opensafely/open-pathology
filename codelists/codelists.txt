@@ -1,1 +1,4 @@
 opensafely/alanine-aminotransferase-alt-tests/2298df3e
+opensafely/cholesterol-tests/62eb0940/
+opensafely/red-blood-cell-rbc-tests/17bcafa1/
+opensafely/glycated-haemoglobin-hba1c-tests/30cc22d6/
