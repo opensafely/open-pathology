@@ -1,5 +1,29 @@
 {
   "files": {
+    "opensafely-glycated-haemoglobin-hba1c-tests.csv": {
+      "id": "opensafely/glycated-haemoglobin-hba1c-tests/30cc22d6",
+      "url": "https://www.opencodelists.org/codelist/opensafely/glycated-haemoglobin-hba1c-tests/30cc22d6/",
+      "downloaded_at": "2025-02-13 15:16:38.540277Z",
+      "sha": "fb9a968b5644c14c570bf2b8708381600f4bd1f5"
+    },
+    "opensafely-systolic-blood-pressure-qof.csv": {
+      "id": "opensafely/systolic-blood-pressure-qof/659dc936",
+      "url": "https://www.opencodelists.org/codelist/opensafely/systolic-blood-pressure-qof/659dc936/",
+      "downloaded_at": "2025-02-13 15:16:31.690191Z",
+      "sha": "765e754ff0473c8b7815297c4f4949d1562da3e3"
+    },
+    "opensafely-red-blood-cell-rbc-tests.csv": {
+      "id": "opensafely/red-blood-cell-rbc-tests/17bcafa1",
+      "url": "https://www.opencodelists.org/codelist/opensafely/red-blood-cell-rbc-tests/17bcafa1/",
+      "downloaded_at": "2025-02-13 15:16:24.853543Z",
+      "sha": "e111693c2b9ae4e688d859daa73491a978b0795b"
+    },
+    "opensafely-cholesterol-tests.csv": {
+      "id": "opensafely/cholesterol-tests/62eb0940",
+      "url": "https://www.opencodelists.org/codelist/opensafely/cholesterol-tests/62eb0940/",
+      "downloaded_at": "2025-02-13 15:16:10.219692Z",
+      "sha": "e5f9e7e0b44c18830aea207f001d015153a56b8e"
+    },
     "opensafely-alanine-aminotransferase-alt-tests.csv": {
       "id": "opensafely/alanine-aminotransferase-alt-tests/2298df3e",
       "url": "https://www.opencodelists.org/codelist/opensafely/alanine-aminotransferase-alt-tests/2298df3e/",
