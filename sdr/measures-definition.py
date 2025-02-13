@@ -8,20 +8,21 @@ from ehrql.tables.tpp import practice_registrations as registrations
 parser = argparse.ArgumentParser()
 parser.add_argument("--codelist")
 args = parser.parse_args()
+index_date = "2018-01-01"
 
 # Codelists
-# --------------------------------------------------------------------------------------
 codelist = codelist_from_csv(args.codelist, column="code")
 codelist_events = events.where(
     events.snomedct_code.is_in(codelist) & events.date.is_during(INTERVAL)
 )
 
-index_date = "2018-01-01"
-
+# Stratification variables
 region = registrations.for_patient_on(INTERVAL.start_date).practice_nuts1_region_name
 
+# Presence of codelist (denominator)
 codelist_event_count = codelist_events.count_for_patient()
 
+# Non-null test value count
 test_value_count = codelist_events.where(events.numeric_value.is_not_null()).count_for_patient()
 
 

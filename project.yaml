@@ -74,6 +74,7 @@ actions:
     outputs:
       highly_sensitive:
         measures: output/sdr/measures_sbp.csv
+  # Runs test to ensure correctness of measures queries
   generate_test_data:
     run: >
       ehrql:v1 generate-dataset sdr/dataset.py 
