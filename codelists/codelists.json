@@ -6,12 +6,6 @@
       "downloaded_at": "2025-02-13 15:16:38.540277Z",
       "sha": "fb9a968b5644c14c570bf2b8708381600f4bd1f5"
     },
-    "opensafely-systolic-blood-pressure-qof.csv": {
-      "id": "opensafely/systolic-blood-pressure-qof/659dc936",
-      "url": "https://www.opencodelists.org/codelist/opensafely/systolic-blood-pressure-qof/659dc936/",
-      "downloaded_at": "2025-02-13 15:16:31.690191Z",
-      "sha": "765e754ff0473c8b7815297c4f4949d1562da3e3"
-    },
     "opensafely-red-blood-cell-rbc-tests.csv": {
       "id": "opensafely/red-blood-cell-rbc-tests/17bcafa1",
       "url": "https://www.opencodelists.org/codelist/opensafely/red-blood-cell-rbc-tests/17bcafa1/",

@@ -64,16 +64,6 @@ actions:
     outputs:
       moderately_sensitive:
         measures: output/sdr/measures_rbc.csv
-  generate_sdr_measures_sbp:
-    run: >
-      ehrql:v1 generate-measures
-        sdr/measures-definition.py
-        --output output/sdr/measures_sbp.csv
-        --
-        --codelist codelists/opensafely-systolic-blood-pressure-qof.csv
-    outputs:
-      moderately_sensitive:
-        measures: output/sdr/measures_sbp.csv
   # Runs test to ensure correctness of measures queries
   generate_test_data:
     run: >
