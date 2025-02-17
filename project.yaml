@@ -73,5 +73,5 @@ actions:
       --
       --codelist codelists/opensafely-alanine-aminotransferase-alt-tests.csv
     outputs:
-      moderately_sensitive:
+      highly_sensitive:
         dataset: output/sdr/test.csv
