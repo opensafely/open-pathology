@@ -24,69 +24,27 @@ codelist_event_count = codelist_events.count_for_patient()
 
 # Booleans
 has_test_value = ranges.numeric_value.is_not_null()
-has_comparator = ranges.comparator.is_not_null()
+has_equality_comparator = ranges.comparator.is_in(['=','~'])
+has_differential_comparator = (ranges.comparator.is_not_null() & ~has_equality_comparator)
 has_upper_bound = ranges.upper_bound.is_not_null()
 has_lower_bound = ranges.lower_bound.is_not_null()
 
-has_2_bound = has_upper_bound & has_lower_bound
-has_1_bound = (has_upper_bound | has_lower_bound) & ~has_2_bound
-has_0_bound = ~has_upper_bound & ~has_lower_bound
-
+# Generate all combinations of test_value, equality_comparator, differential_comparator, upper_bound, and lower_bound
+# E.g. valT_equalT_diffF_uppT_lowF
 count_measures = dict()
-# Venn diagram
-
-# Value and comparator
-count_measures["valueT_comparator_T_bounds2"] = ranges.where(
-    has_test_value & has_comparator & has_2_bound
-).count_for_patient()
-
-count_measures["valueT_comparatorT_bounds1"] = ranges.where(
-    has_test_value & has_comparator & has_1_bound
-).count_for_patient()
-
-count_measures["valueT_comparatorT_bounds0"] = ranges.where(
-    has_test_value & has_comparator & has_0_bound
-).count_for_patient()
-
-# Value and no comparator
-count_measures["valueT_comparatorF_bounds2"] = ranges.where(
-    has_test_value & ~has_comparator & has_2_bound
-).count_for_patient()
-
-count_measures["valueT_comparatorF_bounds1"] = ranges.where(
-    has_test_value & ~has_comparator & has_1_bound
-).count_for_patient()
-
-count_measures["valueT_comparatorF_bounds0"] = ranges.where(
-    has_test_value & ~has_comparator & has_0_bound
-).count_for_patient()
-
-# No value and comparator
-count_measures["valueF_comparatorT_bounds2"] = ranges.where(
-    ~has_test_value & has_comparator & has_2_bound
-).count_for_patient()
-
-count_measures["valueF_comparatorT_bounds1"] = ranges.where(
-    ~has_test_value & has_comparator & has_1_bound
-).count_for_patient()
-
-count_measures["valueF_comparatorT_bounds0"] = ranges.where(
-    ~has_test_value & has_comparator & has_0_bound
-).count_for_patient()
-
-# No value and no comparator
-count_measures["valueF_comparatorF_bounds2"] = ranges.where(
-    ~has_test_value & ~has_comparator & has_2_bound
-).count_for_patient()
-
-count_measures["valueF_comparatorF_bounds1"] = ranges.where(
-    ~has_test_value & ~has_comparator & has_1_bound
-).count_for_patient()
-
-count_measures["valueF_comparatorF_bounds0"] = ranges.where(
-    ~has_test_value & ~has_comparator & has_0_bound
-).count_for_patient()
-
+for value in [True, False]:
+    # Use zip to exclude equal_compT, diff_compT (since both can't be true)
+    for equal_comp, diff_comp in zip([True, False, False], [False, True, False]):
+            for upper in [True, False]:
+                for lower in [True, False]:
+                    key = f"val{'T' if value else 'F'}_equal{'T' if equal_comp else 'F'}_diff{'T' if diff_comp else 'F'}_upp{'T' if upper else 'F'}_low{'T' if lower else 'F'}"
+                    count_measures[key] = codelist_events.where(
+                        (has_test_value if value else ~has_test_value) &
+                        (has_equality_comparator if equal_comp else ~has_equality_comparator) &
+                        (has_differential_comparator if diff_comp else ~has_differential_comparator) &
+                        (has_upper_bound if upper else ~has_upper_bound) &
+                        (has_lower_bound if lower else ~has_lower_bound)
+                    ).count_for_patient()
 # Measures
 # --------------------------------------------------------------------------------------
 measures = Measures()
