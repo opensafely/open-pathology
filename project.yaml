@@ -32,7 +32,7 @@ actions:
         --
         --codelist codelists/opensafely-alanine-aminotransferase-alt-tests.csv
     outputs:
-      moderately_sensitive:
+      highly_sensitive:
         measures: output/sdr/measures_alt.csv
   generate_sdr_measures_chol:
     run: >
@@ -42,7 +42,7 @@ actions:
         --
         --codelist codelists/opensafely-cholesterol-tests.csv
     outputs:
-      moderately_sensitive:
+      highly_sensitive:
         measures: output/sdr/measures_chol.csv
   generate_sdr_measures_hba1c:
     run: >
@@ -52,7 +52,7 @@ actions:
         --
         --codelist codelists/opensafely-glycated-haemoglobin-hba1c-tests.csv
     outputs:
-      moderately_sensitive:
+      highly_sensitive:
         measures: output/sdr/measures_hba1c.csv
   generate_sdr_measures_rbc:
     run: >
@@ -62,7 +62,7 @@ actions:
         --
         --codelist codelists/opensafely-red-blood-cell-rbc-tests.csv
     outputs:
-      moderately_sensitive:
+      highly_sensitive:
         measures: output/sdr/measures_rbc.csv
   generate_sdr_measures_sbp:
     run: >
@@ -72,7 +72,7 @@ actions:
         --
         --codelist codelists/opensafely-systolic-blood-pressure-qof.csv
     outputs:
-      moderately_sensitive:
+      highly_sensitive:
         measures: output/sdr/measures_sbp.csv
   # Runs test to ensure correctness of measures queries
   generate_test_data:
@@ -83,5 +83,5 @@ actions:
       --
       --codelist codelists/opensafely-alanine-aminotransferase-alt-tests.csv
     outputs:
-      moderately_sensitive:
+      highly_sensitive:
         dataset: output/sdr/test.csv
