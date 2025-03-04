@@ -12,7 +12,7 @@ def get_deciles_table(df_measure_output):
     Get the deciles table for a given measure.
     args:
     df_measure_output: pd.DataFrame
-        The dataframe containing the output from the generate-measures action
+        The dataframe containing the rounded & redacted output from the generate-measures action
     returns:
         The deciles table for the measure as a pd.DataFrame
     """
@@ -46,7 +46,7 @@ def get_event_counts_and_top_5_codes_tables(df_measure_output, codelist_path):
     Get the event counts and top 5 codes tables for a given measure.
     args:
     df_measure_output: pd.DataFrame
-        The dataframe containing the output from the generate-measures action
+        The dataframe containing the rounded & redacted output from the generate-measures action
     codelist_path: string
         The path of the codelist
     returns:
@@ -84,11 +84,10 @@ def get_event_counts_and_top_5_codes_tables(df_measure_output, codelist_path):
         .reset_index()
         .merge(codelist, on="Code")
     )
-    # Use event counts rounded to the nearest 5, and drop the column
-    rounded_counts = 5 * round(df_code_counts.pop("Events") / 5)
-    df_code_counts["Proportion of codes (%)"] = round(
-        100 * rounded_counts / rounded_counts.sum(), 2
-    ).astype(str)
+    # Calculate proportion of codes
+    df_code_counts["Proportion of codes (%)"] = (round(
+        100 * df_code_counts['Events'] / df_code_counts['Events'].sum(), 2)
+        ).astype(str)
 
     if len(df_code_counts) > 1:
         df_code_counts.loc[
@@ -106,7 +105,9 @@ def get_event_counts_and_top_5_codes_tables(df_measure_output, codelist_path):
 
 def main(output_dir, codelist_path):
     """
-    For a given output directory, read in the measures file, write the deciles table, event counts table and top 5 codes table to CSV files.
+    For a given output directory, read in the rounded & redacted measures file, 
+    write the deciles table, event counts table and top 5 codes table to CSV files.
+    These files are SDC-compliant as they are derived from the rounded & redacted measures files.
     args:
     output_dir: pathlike
         The directory of the output
