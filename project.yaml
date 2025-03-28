@@ -1,6 +1,8 @@
-version: "4.0"
+
+version: '4.0'
 
 actions:
+
   generate_measures_alt_tests:
     run: >
       ehrql:v1 generate-measures
@@ -24,3 +26,129 @@ actions:
         decile_table: output/alt_tests/deciles_table_counts_per_week_per_practice.csv
         code_table: output/alt_tests/top_5_code_table.csv
         event_counts_table: output/alt_tests/event_counts.csv
+
+
+  generate_measures_chol_tests:
+    run: >
+      ehrql:v1 generate-measures
+        analysis/measure_definition.py
+        --output output/chol_tests/measures.arrow
+        --
+        --codelist codelists/opensafely-cholesterol-tests.csv
+    outputs:
+      highly_sensitive:
+        measures: output/chol_tests/measures.arrow
+  generate_processed_data_chol_tests:
+    run: >
+      python:latest 
+        analysis/write_processed_csv_files.py
+        --output-dir output/chol_tests
+        --codelist codelists/opensafely-cholesterol-tests.csv
+    needs:
+      [generate_measures_chol_tests]
+    outputs:
+      moderately_sensitive:
+        decile_table: output/chol_tests/deciles_table_counts_per_week_per_practice.csv
+        code_table: output/chol_tests/top_5_code_table.csv
+        event_counts_table: output/chol_tests/event_counts.csv
+
+
+  generate_measures_hba1c_tests:
+    run: >
+      ehrql:v1 generate-measures
+        analysis/measure_definition.py
+        --output output/hba1c_tests/measures.arrow
+        --
+        --codelist codelists/opensafely-glycated-haemoglobin-hba1c-tests.csv
+    outputs:
+      highly_sensitive:
+        measures: output/hba1c_tests/measures.arrow
+  generate_processed_data_hba1c_tests:
+    run: >
+      python:latest 
+        analysis/write_processed_csv_files.py
+        --output-dir output/hba1c_tests
+        --codelist codelists/opensafely-glycated-haemoglobin-hba1c-tests.csv
+    needs:
+      [generate_measures_hba1c_tests]
+    outputs:
+      moderately_sensitive:
+        decile_table: output/hba1c_tests/deciles_table_counts_per_week_per_practice.csv
+        code_table: output/hba1c_tests/top_5_code_table.csv
+        event_counts_table: output/hba1c_tests/event_counts.csv
+
+
+  generate_measures_rbc_tests:
+    run: >
+      ehrql:v1 generate-measures
+        analysis/measure_definition.py
+        --output output/rbc_tests/measures.arrow
+        --
+        --codelist codelists/opensafely-red-blood-cell-rbc-tests.csv
+    outputs:
+      highly_sensitive:
+        measures: output/rbc_tests/measures.arrow
+  generate_processed_data_rbc_tests:
+    run: >
+      python:latest 
+        analysis/write_processed_csv_files.py
+        --output-dir output/rbc_tests
+        --codelist codelists/opensafely-red-blood-cell-rbc-tests.csv
+    needs:
+      [generate_measures_rbc_tests]
+    outputs:
+      moderately_sensitive:
+        decile_table: output/rbc_tests/deciles_table_counts_per_week_per_practice.csv
+        code_table: output/rbc_tests/top_5_code_table.csv
+        event_counts_table: output/rbc_tests/event_counts.csv
+
+
+  generate_measures_sodium_tests:
+    run: >
+      ehrql:v1 generate-measures
+        analysis/measure_definition.py
+        --output output/sodium_tests/measures.arrow
+        --
+        --codelist codelists/opensafely-sodium-tests-numerical-value.csv
+    outputs:
+      highly_sensitive:
+        measures: output/sodium_tests/measures.arrow
+  generate_processed_data_sodium_tests:
+    run: >
+      python:latest 
+        analysis/write_processed_csv_files.py
+        --output-dir output/sodium_tests
+        --codelist codelists/opensafely-sodium-tests-numerical-value.csv
+    needs:
+      [generate_measures_sodium_tests]
+    outputs:
+      moderately_sensitive:
+        decile_table: output/sodium_tests/deciles_table_counts_per_week_per_practice.csv
+        code_table: output/sodium_tests/top_5_code_table.csv
+        event_counts_table: output/sodium_tests/event_counts.csv
+
+
+  generate_measures_systol_tests:
+    run: >
+      ehrql:v1 generate-measures
+        analysis/measure_definition.py
+        --output output/systol_tests/measures.arrow
+        --
+        --codelist codelists/opensafely-systolic-blood-pressure-qof.csv
+    outputs:
+      highly_sensitive:
+        measures: output/systol_tests/measures.arrow
+  generate_processed_data_systol_tests:
+    run: >
+      python:latest 
+        analysis/write_processed_csv_files.py
+        --output-dir output/systol_tests
+        --codelist codelists/opensafely-systolic-blood-pressure-qof.csv
+    needs:
+      [generate_measures_systol_tests]
+    outputs:
+      moderately_sensitive:
+        decile_table: output/systol_tests/deciles_table_counts_per_week_per_practice.csv
+        code_table: output/systol_tests/top_5_code_table.csv
+        event_counts_table: output/systol_tests/event_counts.csv
+

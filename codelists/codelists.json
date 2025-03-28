@@ -1,5 +1,35 @@
 {
   "files": {
+    "opensafely-glycated-haemoglobin-hba1c-tests.csv": {
+      "id": "opensafely/glycated-haemoglobin-hba1c-tests/30cc22d6",
+      "url": "https://www.opencodelists.org/codelist/opensafely/glycated-haemoglobin-hba1c-tests/30cc22d6/",
+      "downloaded_at": "2025-03-28 14:13:50.910625Z",
+      "sha": "fb9a968b5644c14c570bf2b8708381600f4bd1f5"
+    },
+    "opensafely-red-blood-cell-rbc-tests.csv": {
+      "id": "opensafely/red-blood-cell-rbc-tests/17bcafa1",
+      "url": "https://www.opencodelists.org/codelist/opensafely/red-blood-cell-rbc-tests/17bcafa1/",
+      "downloaded_at": "2025-03-28 14:13:10.095557Z",
+      "sha": "e111693c2b9ae4e688d859daa73491a978b0795b"
+    },
+    "opensafely-cholesterol-tests.csv": {
+      "id": "opensafely/cholesterol-tests/62eb0940",
+      "url": "https://www.opencodelists.org/codelist/opensafely/cholesterol-tests/62eb0940/",
+      "downloaded_at": "2025-03-28 14:12:38.214381Z",
+      "sha": "e5f9e7e0b44c18830aea207f001d015153a56b8e"
+    },
+    "opensafely-sodium-tests-numerical-value.csv": {
+      "id": "opensafely/sodium-tests-numerical-value/1f50a646",
+      "url": "https://www.opencodelists.org/codelist/opensafely/sodium-tests-numerical-value/1f50a646/",
+      "downloaded_at": "2025-03-28 14:10:29.396656Z",
+      "sha": "2e22ce0f2ab40b03c5254a4455fe1a988d97d7ce"
+    },
+    "opensafely-systolic-blood-pressure-qof.csv": {
+      "id": "opensafely/systolic-blood-pressure-qof/659dc936",
+      "url": "https://www.opencodelists.org/codelist/opensafely/systolic-blood-pressure-qof/659dc936/",
+      "downloaded_at": "2025-03-28 14:09:26.795958Z",
+      "sha": "765e754ff0473c8b7815297c4f4949d1562da3e3"
+    },
     "opensafely-alanine-aminotransferase-alt-tests.csv": {
       "id": "opensafely/alanine-aminotransferase-alt-tests/2298df3e",
       "url": "https://www.opencodelists.org/codelist/opensafely/alanine-aminotransferase-alt-tests/2298df3e/",
