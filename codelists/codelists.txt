@@ -1,1 +1,6 @@
-opensafely/alanine-aminotransferase-alt-tests/2298df3e
+opensafely/alanine-aminotransferase-alt-tests/11d2e678/
+opensafely/systolic-blood-pressure-qof/659dc936/
+opensafely/sodium-tests-numerical-value/1f50a646/
+opensafely/cholesterol-tests/62eb0940/
+opensafely/red-blood-cell-rbc-tests/17bcafa1/
+opensafely/glycated-haemoglobin-hba1c-tests/30cc22d6/
