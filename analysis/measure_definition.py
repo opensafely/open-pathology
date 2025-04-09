@@ -11,7 +11,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument("--codelist")
 args = parser.parse_args()
 
-start_date = date(2024, 4, 1)
+start_date = date(2018, 4, 1)
 
 
 def num_months(from_, to_):
