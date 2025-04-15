@@ -17,7 +17,7 @@ def main():
     streamlit.markdown(f"# {measure.name}")
 
     streamlit.markdown(
-        "The codes used for this measure"
+        "The codes used for this measure "
         f"are available in [this codelist]({measure.codelist_url})."
     )
 
