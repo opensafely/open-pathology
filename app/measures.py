@@ -25,11 +25,6 @@ class Measure:
     total_events: int
     top_5_codes_table: pandas.DataFrame
     deciles_table: pandas.DataFrame
-    scenario_table: pandas.DataFrame = dataclasses.field(init=False)
-
-    def __post_init__(self):
-        idx = pandas.Index(self.quarters, name="date")
-        self.scenario_table = pandas.Series(0.0, idx, name="value").to_frame()
 
     def __repr__(self):
         return f"Measure(name='{self.name}')"
@@ -57,23 +52,12 @@ class Measure:
         return self.deciles_table["value"].min(), self.deciles_table["value"].max()
 
     @property
-    def quarters(self):
+    def months(self):
         date = self.deciles_table["date"]
         return [
             d.to_pydatetime().date()
-            for d in pandas.date_range(date.min(), date.max(), freq="QS")
+            for d in pandas.date_range(date.min(), date.max(), freq="MS")
         ]
-
-    def update_scenario_table(self, quarter, value):
-        self.scenario_table.loc[quarter, "value"] = value
-
-    @property
-    def scenario_chart(self):
-        return (
-            altair.Chart(self.scenario_table.reset_index())
-            .mark_line(color="red")
-            .encode(x="date", y="value")
-        )
 
     @property
     def deciles_chart(self):

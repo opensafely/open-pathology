@@ -1,5 +1,5 @@
 import measures
-import numpy
+import single_practice_scenario
 import streamlit
 
 
@@ -34,21 +34,58 @@ def main():
         streamlit.markdown(measure.caveats)
 
     with streamlit.expander("Single practice scenario"):
-        min_value, max_value = measure.range
-        for quarter in measure.quarters:
-            key = f"{measure.name}_{quarter.isoformat()}"
-            save_value_if_missing(key, numpy.random.uniform(min_value, max_value))
-            streamlit.slider(
-                quarter.isoformat(),
-                min_value,
-                max_value,
-                key=key,
-            )
-            measure.update_scenario_table(quarter, streamlit.session_state[key])
+        scenario_table_key = f"{measure.name}_scenario_table"
+        save_value_if_missing(
+            scenario_table_key,
+            single_practice_scenario.get_randomised_scenario_table(
+                measure.months, *measure.range
+            ),
+        )
 
-    streamlit.altair_chart(
-        measure.deciles_chart + measure.scenario_chart, use_container_width=True
-    )
+        streamlit.write(
+            "Overlay your data on the chart below to see how it compares to the national data. "
+            "Any data you enter will be deleted when you leave this page and is not submitted to OpenPathology."
+        )
+
+        streamlit.write(
+            "Select a date range to populate the table with random values. "
+            "Replace these values with your own data, then click the button to overlay them on the chart."
+        )
+
+        idx_start = measure.months.index(
+            streamlit.selectbox("Start", options=measure.months[:-1])
+        )
+        idx_end = measure.months.index(
+            streamlit.selectbox(
+                "End",
+                options=measure.months[idx_start + 1 :],
+                index=len(measure.months) - idx_start - 2,
+            )
+        )
+        frequency = streamlit.number_input("Frequency (months)", 1, 12, 3)
+        months = measure.months[idx_start : idx_end + 1 : frequency]
+
+        with streamlit.form("edit_data"):
+            editable_table = streamlit.data_editor(
+                streamlit.session_state[scenario_table_key].loc[months],
+                use_container_width=True,
+                disabled=(single_practice_scenario.DATE_COL,),
+                column_config={
+                    single_practice_scenario.VALUE_COL: {"alignment": "left"}
+                },
+            )
+
+            submitted = streamlit.form_submit_button("Overlay these values on chart")
+
+        if submitted:
+            streamlit.session_state[scenario_table_key].loc[months] = (
+                editable_table.loc[months]
+            )
+            chart = measure.deciles_chart + editable_table.scenario.to_chart()
+        else:
+            chart = measure.deciles_chart
+
+    streamlit.altair_chart(chart, use_container_width=True)
 
     streamlit.markdown(f"**Most common codes ([codelist]({measure.codelist_url}))**")
 
