@@ -21,7 +21,6 @@ class Measure:
     caveats: str
     classification: str
     codelist_url: str
-    unique_patients: int
     total_events: int
     top_5_codes_table: pandas.DataFrame
     deciles_table: pandas.DataFrame
@@ -121,7 +120,6 @@ class OSJobsRepository:
             record["caveats"],
             record["classification"],
             record["codelist_url"],
-            counts["unique_patients"],
             counts["total_events"],
             top_5_codes_table,
             deciles_table,
