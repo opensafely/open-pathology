@@ -13,6 +13,22 @@
   top_5_codes_table_url: https://jobs.opensafely.org/service-restoration-observatory/sro-key-measures-dashboard/published/01GGWFEGM5TB62ZPT4D3T7A56F/
   deciles_table_url: https://jobs.opensafely.org/service-restoration-observatory/sro-key-measures-dashboard/published/01GGZ1273Y8PM2QYPWBDXWT433/
 
+- name: Cholesterol Testing
+  explanation: >
+    A commonly-used blood test used as part of a routine cardiovascular disease 10 year risk assessment
+    and also to identify patients with lipid disorders (e.g. familial hypercholesterolaemia).
+    This helps ensure appropriate treatment,
+    with the aim of reducing long term risks of complications such as stroke or myocardial infarction.
+  caveats: >
+    We use codes which represent results reported to GPs so tests requested but not yet reported are not included.
+    Only tests results returned to GPs are included,
+    which will usually exclude tests requested while a person is in hospital and other settings like a private clinic.
+  classification: recovery
+  codelist_url: https://www.opencodelists.org/codelist/opensafely/cholesterol-tests/0f1b2a4c/
+  counts_table_url: https://jobs.opensafely.org/service-restoration-observatory/sro-key-measures-dashboard/published/01GGZ1274J5CHBHZYTD38Q4X3Z/
+  top_5_codes_table_url: https://jobs.opensafely.org/service-restoration-observatory/sro-key-measures-dashboard/published/01GGWFEGM5TB62ZPT4D3T7A56F/
+  deciles_table_url: https://jobs.opensafely.org/service-restoration-observatory/sro-key-measures-dashboard/published/01GGZ1273Y8PM2QYPWBDXWT433/
+
 - name: Liver Function Testing - Alanine Transferaminase (ALT)
   explanation: >
     An ALT blood test is one of a group of liver function tests (LFTs) which are used to detect problems with the function of the liver.
