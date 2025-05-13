@@ -8,7 +8,7 @@
     Only test results returned to GPs are included,
     which will usually exclude tests requested while a person is in hospital and other settings like a private clinic.
   classification: sustained drop
-  codelist_url: https://www.opencodelists.org/codelist/opensafely/systolic-blood-pressure-qof/3572b5fb/
+  codelist_url: https://www.opencodelists.org/codelist/opensafely/systolic-blood-pressure-qof/659dc936/
   counts_table_url: https://jobs.opensafely.org/service-restoration-observatory/sro-key-measures-dashboard/published/01GGZ1274J5CHBHZYTD38Q4X3Z/
   top_5_codes_table_url: https://jobs.opensafely.org/service-restoration-observatory/sro-key-measures-dashboard/published/01GGWFEGM5TB62ZPT4D3T7A56F/
   deciles_table_url: https://jobs.opensafely.org/service-restoration-observatory/sro-key-measures-dashboard/published/01GGZ1273Y8PM2QYPWBDXWT433/
@@ -24,7 +24,7 @@
     Only tests results returned to GPs are included,
     which will usually exclude tests requested while a person is in hospital and other settings like a private clinic.
   classification: recovery
-  codelist_url: https://www.opencodelists.org/codelist/opensafely/cholesterol-tests/0f1b2a4c/
+  codelist_url: https://www.opencodelists.org/codelist/opensafely/cholesterol-tests/62eb0940/
   counts_table_url: https://jobs.opensafely.org/service-restoration-observatory/sro-key-measures-dashboard/published/01GGZ1274J5CHBHZYTD38Q4X3Z/
   top_5_codes_table_url: https://jobs.opensafely.org/service-restoration-observatory/sro-key-measures-dashboard/published/01GGWFEGM5TB62ZPT4D3T7A56F/
   deciles_table_url: https://jobs.opensafely.org/service-restoration-observatory/sro-key-measures-dashboard/published/01GGZ1273Y8PM2QYPWBDXWT433/
@@ -40,7 +40,7 @@
     Only tests results returned to GPs are included,
     which will usually exclude tests requested while a person is in hospital and other settings like a private clinic.
   classification: recovery
-  codelist_url: https://www.opencodelists.org/codelist/opensafely/alanine-aminotransferase-alt-tests/2298df3e/
+  codelist_url: https://www.opencodelists.org/codelist/opensafely/alanine-aminotransferase-alt-tests/11d2e678/
   counts_table_url: https://jobs.opensafely.org/service-restoration-observatory/sro-key-measures-dashboard/published/01GGZ127420DXX35BM0MMQNW8N/
   top_5_codes_table_url: https://jobs.opensafely.org/service-restoration-observatory/sro-key-measures-dashboard/published/01GGWFEGKSB1ANPP4X5V2FM3FR/
   deciles_table_url: https://jobs.opensafely.org/service-restoration-observatory/sro-key-measures-dashboard/published/01GGZ12739P6B7Z00QAJBTBKK3/
@@ -53,7 +53,7 @@
     Here, we use codes which represent results reported to GPs, so tests requested but not yet reported are not included.
     This will usually exclude tests requested while a person is in hospital and other settings, like a private clinic.
   classification: recovery
-  codelist_url: https://www.opencodelists.org/codelist/opensafely/red-blood-cell-rbc-tests/576a859e/
+  codelist_url: https://www.opencodelists.org/codelist/opensafely/red-blood-cell-rbc-tests/17bcafa1/
   counts_table_url: https://jobs.opensafely.org/service-restoration-observatory/sro-key-measures-dashboard/published/01GGZ1274E1QDEFYVGPFH13GBV/
   top_5_codes_table_url: https://jobs.opensafely.org/service-restoration-observatory/sro-key-measures-dashboard/published/01GGWFEGM2Q5PXN17JG59HZFRQ/
   deciles_table_url: https://jobs.opensafely.org/service-restoration-observatory/sro-key-measures-dashboard/published/01GGZ1273RP68K1YM9TYRA2FBD/
@@ -69,7 +69,7 @@
     Only test results returned to GPs are included,
     which will usually exclude tests requested while a person is in hospital and other settings like a private clinic.
   classification: recovery
-  codelist_url: https://www.opencodelists.org/codelist/opensafely/glycated-haemoglobin-hba1c-tests/3e5b1269/
+  codelist_url: https://www.opencodelists.org/codelist/opensafely/glycated-haemoglobin-hba1c-tests/30cc22d6/
   counts_table_url: https://jobs.opensafely.org/service-restoration-observatory/sro-key-measures-dashboard/published/01GGZ12749JZ938746AV8XCPZ3/
   top_5_codes_table_url: https://jobs.opensafely.org/service-restoration-observatory/sro-key-measures-dashboard/published/01GGWFEGMVQ62NGNM403MK32Z7/
   deciles_table_url: https://jobs.opensafely.org/service-restoration-observatory/sro-key-measures-dashboard/published/01GGZ1273K1QJM5EQ7238X7P3S/
@@ -83,7 +83,7 @@
     Here, we use codes which represent results reported to GPs, so tests requested but not yet reported are not included.
     This will usually exclude tests requested while a person is in hospital and other settings, like a private clinic.
   classification: recovery
-  codelist_url: https://www.opencodelists.org/codelist/opensafely/sodium-tests-numerical-value/32bff605/
+  codelist_url: https://www.opencodelists.org/codelist/opensafely/sodium-tests-numerical-value/1f50a646/
   counts_table_url: https://jobs.opensafely.org/service-restoration-observatory/sro-key-measures-dashboard/published/01GGZ1274G3QAPB7QP12QMH4A6/
   top_5_codes_table_url: https://jobs.opensafely.org/service-restoration-observatory/sro-key-measures-dashboard/published/01GGWFEGMADFDX6MCPE2P9DHM2/
   deciles_table_url: https://jobs.opensafely.org/service-restoration-observatory/sro-key-measures-dashboard/published/01GGZ1273T25NQB2E84Y4X8HH2/
