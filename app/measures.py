@@ -140,6 +140,9 @@ def _get_top_5_codes_table(top_5_codes_table_url):
     top_5_codes_table = pandas.read_csv(
         top_5_codes_table_url, index_col=0, dtype={"Code": str}
     )
+    top_5_codes_table = top_5_codes_table.loc[
+        :, ["Code", "Description", "Events", "Proportion of codes (%)"]
+    ]
     top_5_codes_table.index = pandas.RangeIndex(
         1, len(top_5_codes_table) + 1, name="Rank"
     )

@@ -1,3 +1,34 @@
+- name: Blood Pressure Monitoring
+  explanation: >
+    A commonly-used assessment used to identify patients with hypertension or to ensure optimal treatment for those with known hypertension.
+    This helps ensure appropriate treatment, with the aim of reducing long term risks of complications from hypertension such as stroke,
+    myocardial infarction and kidney disease.
+  caveats: >
+    We use codes which represent results reported to GPs so tests requested but not yet reported are not included.
+    Only test results returned to GPs are included,
+    which will usually exclude tests requested while a person is in hospital and other settings like a private clinic.
+  classification: sustained drop
+  codelist_url: https://www.opencodelists.org/codelist/opensafely/systolic-blood-pressure-qof/659dc936/
+  counts_table_url: https://jobs.opensafely.org/service-restoration-observatory/sro-key-measures-dashboard/published/01GGZ1274J5CHBHZYTD38Q4X3Z/
+  top_5_codes_table_url: https://jobs.opensafely.org/service-restoration-observatory/sro-key-measures-dashboard/published/01GGWFEGM5TB62ZPT4D3T7A56F/
+  deciles_table_url: https://jobs.opensafely.org/service-restoration-observatory/sro-key-measures-dashboard/published/01GGZ1273Y8PM2QYPWBDXWT433/
+
+- name: Cholesterol Testing
+  explanation: >
+    A commonly-used blood test used as part of a routine cardiovascular disease 10 year risk assessment
+    and also to identify patients with lipid disorders (e.g. familial hypercholesterolaemia).
+    This helps ensure appropriate treatment,
+    with the aim of reducing long term risks of complications such as stroke or myocardial infarction.
+  caveats: >
+    We use codes which represent results reported to GPs so tests requested but not yet reported are not included.
+    Only tests results returned to GPs are included,
+    which will usually exclude tests requested while a person is in hospital and other settings like a private clinic.
+  classification: recovery
+  codelist_url: https://www.opencodelists.org/codelist/opensafely/cholesterol-tests/62eb0940/
+  counts_table_url: https://jobs.opensafely.org/service-restoration-observatory/sro-key-measures-dashboard/published/01GGZ1274J5CHBHZYTD38Q4X3Z/
+  top_5_codes_table_url: https://jobs.opensafely.org/service-restoration-observatory/sro-key-measures-dashboard/published/01GGWFEGM5TB62ZPT4D3T7A56F/
+  deciles_table_url: https://jobs.opensafely.org/service-restoration-observatory/sro-key-measures-dashboard/published/01GGZ1273Y8PM2QYPWBDXWT433/
+
 - name: Liver Function Testing - Alanine Transferaminase (ALT)
   explanation: >
     An ALT blood test is one of a group of liver function tests (LFTs) which are used to detect problems with the function of the liver.
@@ -9,10 +40,24 @@
     Only tests results returned to GPs are included,
     which will usually exclude tests requested while a person is in hospital and other settings like a private clinic.
   classification: recovery
-  codelist_url: https://www.opencodelists.org/codelist/opensafely/alanine-aminotransferase-alt-tests/2298df3e/
+  codelist_url: https://www.opencodelists.org/codelist/opensafely/alanine-aminotransferase-alt-tests/11d2e678/
   counts_table_url: https://jobs.opensafely.org/service-restoration-observatory/sro-key-measures-dashboard/published/01GGZ127420DXX35BM0MMQNW8N/
   top_5_codes_table_url: https://jobs.opensafely.org/service-restoration-observatory/sro-key-measures-dashboard/published/01GGWFEGKSB1ANPP4X5V2FM3FR/
   deciles_table_url: https://jobs.opensafely.org/service-restoration-observatory/sro-key-measures-dashboard/published/01GGZ12739P6B7Z00QAJBTBKK3/
+
+- name: Full Blood Count - Red Blood Cell (RBC) Testing
+  explanation: >
+    RBC is completed as part of a group of tests referred to as a full blood count (FBC),
+    used to detect a variety of disorders of the blood, such as anaemia and infection.
+  caveats: >
+    Here, we use codes which represent results reported to GPs, so tests requested but not yet reported are not included.
+    This will usually exclude tests requested while a person is in hospital and other settings, like a private clinic.
+  classification: recovery
+  codelist_url: https://www.opencodelists.org/codelist/opensafely/red-blood-cell-rbc-tests/17bcafa1/
+  counts_table_url: https://jobs.opensafely.org/service-restoration-observatory/sro-key-measures-dashboard/published/01GGZ1274E1QDEFYVGPFH13GBV/
+  top_5_codes_table_url: https://jobs.opensafely.org/service-restoration-observatory/sro-key-measures-dashboard/published/01GGWFEGM2Q5PXN17JG59HZFRQ/
+  deciles_table_url: https://jobs.opensafely.org/service-restoration-observatory/sro-key-measures-dashboard/published/01GGZ1273RP68K1YM9TYRA2FBD/
+
 
 - name: Glycated Haemoglobin A1c Level (HbA1c)
   explanation: >
@@ -24,7 +69,21 @@
     Only test results returned to GPs are included,
     which will usually exclude tests requested while a person is in hospital and other settings like a private clinic.
   classification: recovery
-  codelist_url: https://www.opencodelists.org/codelist/opensafely/glycated-haemoglobin-hba1c-tests/3e5b1269/
+  codelist_url: https://www.opencodelists.org/codelist/opensafely/glycated-haemoglobin-hba1c-tests/30cc22d6/
   counts_table_url: https://jobs.opensafely.org/service-restoration-observatory/sro-key-measures-dashboard/published/01GGZ12749JZ938746AV8XCPZ3/
   top_5_codes_table_url: https://jobs.opensafely.org/service-restoration-observatory/sro-key-measures-dashboard/published/01GGWFEGMVQ62NGNM403MK32Z7/
   deciles_table_url: https://jobs.opensafely.org/service-restoration-observatory/sro-key-measures-dashboard/published/01GGZ1273K1QJM5EQ7238X7P3S/
+
+- name: Renal Function Assessment - Sodium Testing
+  explanation: >
+    Sodium is completed as part of a group of tests referred to as a renal profile,
+    used to detect a variety of disorders of the kidneys.
+    A renal profile is also often used to monitor patients on medications which may affect the kidneys or which rely on the kidneys to remove them from the body.
+  caveats: >
+    Here, we use codes which represent results reported to GPs, so tests requested but not yet reported are not included.
+    This will usually exclude tests requested while a person is in hospital and other settings, like a private clinic.
+  classification: recovery
+  codelist_url: https://www.opencodelists.org/codelist/opensafely/sodium-tests-numerical-value/1f50a646/
+  counts_table_url: https://jobs.opensafely.org/service-restoration-observatory/sro-key-measures-dashboard/published/01GGZ1274G3QAPB7QP12QMH4A6/
+  top_5_codes_table_url: https://jobs.opensafely.org/service-restoration-observatory/sro-key-measures-dashboard/published/01GGWFEGMADFDX6MCPE2P9DHM2/
+  deciles_table_url: https://jobs.opensafely.org/service-restoration-observatory/sro-key-measures-dashboard/published/01GGZ1273T25NQB2E84Y4X8HH2/
