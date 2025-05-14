@@ -33,11 +33,7 @@ def main():
 
     streamlit.dataframe(measure.top_5_codes_table)
 
-    streamlit.markdown(
-        "Total patients: "
-        f"**{measure.unique_patients:,}** "
-        f"({measure.total_events:,} events)"
-    )
+    streamlit.markdown(f"Total events: {measure.total_events:,} events")
 
     for from_year, to_year in [(2019, 2020), (2019, 2021)]:
         from_val, to_val, pct_change = measure.change_in_median(from_year, to_year, 4)
