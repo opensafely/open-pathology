@@ -29,7 +29,7 @@
   top_5_codes_table_url: https://jobs.opensafely.org/service-restoration-observatory/sro-key-measures-dashboard/published/01GGWFEGM5TB62ZPT4D3T7A56F/
   deciles_table_url: https://jobs.opensafely.org/service-restoration-observatory/sro-key-measures-dashboard/published/01GGZ1273Y8PM2QYPWBDXWT433/
 
-- name: Liver Function Testing - Alanine Transferaminase (ALT)
+- name: Liver Function - Alanine Transferaminase (ALT) testing rate
   explanation: >
     An ALT blood test is one of a group of liver function tests (LFTs) which are used to detect problems with the function of the liver.
     It is often used to monitor patients on medications which may affect the liver or which rely on the liver to break them down within the body.
