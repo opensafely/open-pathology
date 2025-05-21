@@ -59,11 +59,11 @@
   top_5_codes_table_url: https://jobs.opensafely.org/service-restoration-observatory/sro-key-measures-dashboard/published/01GGWFEGM2Q5PXN17JG59HZFRQ/
   deciles_table_url: https://jobs.opensafely.org/service-restoration-observatory/sro-key-measures-dashboard/published/01GGZ1273RP68K1YM9TYRA2FBD/
 
-- name: Glycated Haemoglobin A1c Level (HbA1c)
+- name: Glycated Haemoglobin A1c (HbA1c) testing rate
   explanation: >
     HbA1c is a long term indicator of diabetes control.
-    Only test results returned to GPs are included,
-    which will usually exclude tests requested while a person is in hospital and other settings like a private clinic.
+    NICE guidelines recommend that individuals with diabetes have their HbA1c measured at least twice a year.
+    Poor diabetic control can place individuals living with diabetes at an increased risk of the complications of diabetes.
   caveats: >
     We use codes which represent results reported to GPs so tests requested but not yet reported are not included.
     Only test results returned to GPs are included,
