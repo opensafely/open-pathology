@@ -1,5 +1,17 @@
 {
   "files": {
+    "nhsd-primary-care-domain-refsets-dmtype2_cod.csv": {
+      "id": "nhsd-primary-care-domain-refsets/dmtype2_cod/20241205",
+      "url": "https://www.opencodelists.org/codelist/nhsd-primary-care-domain-refsets/dmtype2_cod/20241205/",
+      "downloaded_at": "2025-06-06 15:08:57.798516Z",
+      "sha": "d0150e2030c8452c247a41852853453a165a04d9"
+    },
+    "opensafely-methotrexate-oral.csv": {
+      "id": "opensafely/methotrexate-oral/26ee05e8",
+      "url": "https://www.opencodelists.org/codelist/opensafely/methotrexate-oral/26ee05e8/",
+      "downloaded_at": "2025-06-06 15:08:34.629956Z",
+      "sha": "416187c9c5ed53815a0579a12e905a1eaa8db359"
+    },
     "opensafely-psa-numeric-value.csv": {
       "id": "opensafely/psa-numeric-value/2258a288",
       "url": "https://www.opencodelists.org/codelist/opensafely/psa-numeric-value/2258a288/",
