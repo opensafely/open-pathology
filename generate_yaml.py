@@ -10,7 +10,7 @@ Output:
 """
 
 from datetime import datetime, timedelta
-
+from analysis.config import codelists
 # --- YAML HEADER ---
 
 yaml_header = """
@@ -30,7 +30,7 @@ yaml_template = """
         analysis/measure_definition.py
         --output output/{test}_tests/measures.arrow
         --
-        --codelist {path}
+        --test {test}
     outputs:
       highly_sensitive:
         measures: output/{test}_tests/measures.arrow
@@ -39,7 +39,7 @@ yaml_template = """
       python:latest 
         analysis/write_processed_csv_files.py
         --output-dir output/{test}_tests
-        --codelist {path}
+        --test {test}
     needs:
       [generate_measures_{test}_tests]
     outputs:
@@ -52,16 +52,10 @@ yaml_template = """
 
 yaml_body = ""
 needs = {}
-codelists = {'alt': 'codelists/opensafely-alanine-aminotransferase-alt-tests.csv',
-             'chol': 'codelists/opensafely-cholesterol-tests.csv',
-             'hba1c': 'codelists/opensafely-glycated-haemoglobin-hba1c-tests.csv', 
-             'rbc': 'codelists/opensafely-red-blood-cell-rbc-tests.csv', 
-             'sodium': 'codelists/opensafely-sodium-tests-numerical-value.csv',
-             'systol': 'codelists/opensafely-systolic-blood-pressure-qof.csv'}
 
-for test, path in codelists.items():
+for test in codelists.keys():
 
-    yaml_body += yaml_template.format(test = test, path = path)
+    yaml_body += yaml_template.format(test = test)
 
 yaml = yaml_header + yaml_body
 with open("project.yaml", "w") as file:

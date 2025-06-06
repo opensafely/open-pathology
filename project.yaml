@@ -9,7 +9,7 @@ actions:
         analysis/measure_definition.py
         --output output/alt_tests/measures.arrow
         --
-        --codelist codelists/opensafely-alanine-aminotransferase-alt-tests.csv
+        --test alt
     outputs:
       highly_sensitive:
         measures: output/alt_tests/measures.arrow
@@ -18,7 +18,7 @@ actions:
       python:latest 
         analysis/write_processed_csv_files.py
         --output-dir output/alt_tests
-        --codelist codelists/opensafely-alanine-aminotransferase-alt-tests.csv
+        --test alt
     needs:
       [generate_measures_alt_tests]
     outputs:
@@ -34,7 +34,7 @@ actions:
         analysis/measure_definition.py
         --output output/chol_tests/measures.arrow
         --
-        --codelist codelists/opensafely-cholesterol-tests.csv
+        --test chol
     outputs:
       highly_sensitive:
         measures: output/chol_tests/measures.arrow
@@ -43,7 +43,7 @@ actions:
       python:latest 
         analysis/write_processed_csv_files.py
         --output-dir output/chol_tests
-        --codelist codelists/opensafely-cholesterol-tests.csv
+        --test chol
     needs:
       [generate_measures_chol_tests]
     outputs:
@@ -59,7 +59,7 @@ actions:
         analysis/measure_definition.py
         --output output/hba1c_tests/measures.arrow
         --
-        --codelist codelists/opensafely-glycated-haemoglobin-hba1c-tests.csv
+        --test hba1c
     outputs:
       highly_sensitive:
         measures: output/hba1c_tests/measures.arrow
@@ -68,7 +68,7 @@ actions:
       python:latest 
         analysis/write_processed_csv_files.py
         --output-dir output/hba1c_tests
-        --codelist codelists/opensafely-glycated-haemoglobin-hba1c-tests.csv
+        --test hba1c
     needs:
       [generate_measures_hba1c_tests]
     outputs:
@@ -84,7 +84,7 @@ actions:
         analysis/measure_definition.py
         --output output/rbc_tests/measures.arrow
         --
-        --codelist codelists/opensafely-red-blood-cell-rbc-tests.csv
+        --test rbc
     outputs:
       highly_sensitive:
         measures: output/rbc_tests/measures.arrow
@@ -93,7 +93,7 @@ actions:
       python:latest 
         analysis/write_processed_csv_files.py
         --output-dir output/rbc_tests
-        --codelist codelists/opensafely-red-blood-cell-rbc-tests.csv
+        --test rbc
     needs:
       [generate_measures_rbc_tests]
     outputs:
@@ -109,7 +109,7 @@ actions:
         analysis/measure_definition.py
         --output output/sodium_tests/measures.arrow
         --
-        --codelist codelists/opensafely-sodium-tests-numerical-value.csv
+        --test sodium
     outputs:
       highly_sensitive:
         measures: output/sodium_tests/measures.arrow
@@ -118,7 +118,7 @@ actions:
       python:latest 
         analysis/write_processed_csv_files.py
         --output-dir output/sodium_tests
-        --codelist codelists/opensafely-sodium-tests-numerical-value.csv
+        --test sodium
     needs:
       [generate_measures_sodium_tests]
     outputs:
@@ -134,7 +134,7 @@ actions:
         analysis/measure_definition.py
         --output output/systol_tests/measures.arrow
         --
-        --codelist codelists/opensafely-systolic-blood-pressure-qof.csv
+        --test systol
     outputs:
       highly_sensitive:
         measures: output/systol_tests/measures.arrow
@@ -143,7 +143,7 @@ actions:
       python:latest 
         analysis/write_processed_csv_files.py
         --output-dir output/systol_tests
-        --codelist codelists/opensafely-systolic-blood-pressure-qof.csv
+        --test systol
     needs:
       [generate_measures_systol_tests]
     outputs:
@@ -151,4 +151,104 @@ actions:
         decile_table: output/systol_tests/deciles_table_counts_per_week_per_practice.csv
         code_table: output/systol_tests/top_5_code_table.csv
         event_counts_table: output/systol_tests/event_counts.csv
+
+
+  generate_measures_vit_d_tests:
+    run: >
+      ehrql:v1 generate-measures
+        analysis/measure_definition.py
+        --output output/vit_d_tests/measures.arrow
+        --
+        --test vit_d
+    outputs:
+      highly_sensitive:
+        measures: output/vit_d_tests/measures.arrow
+  generate_processed_data_vit_d_tests:
+    run: >
+      python:latest 
+        analysis/write_processed_csv_files.py
+        --output-dir output/vit_d_tests
+        --test vit_d
+    needs:
+      [generate_measures_vit_d_tests]
+    outputs:
+      moderately_sensitive:
+        decile_table: output/vit_d_tests/deciles_table_counts_per_week_per_practice.csv
+        code_table: output/vit_d_tests/top_5_code_table.csv
+        event_counts_table: output/vit_d_tests/event_counts.csv
+
+
+  generate_measures_vit_d_ref_tests:
+    run: >
+      ehrql:v1 generate-measures
+        analysis/measure_definition.py
+        --output output/vit_d_ref_tests/measures.arrow
+        --
+        --test vit_d_ref
+    outputs:
+      highly_sensitive:
+        measures: output/vit_d_ref_tests/measures.arrow
+  generate_processed_data_vit_d_ref_tests:
+    run: >
+      python:latest 
+        analysis/write_processed_csv_files.py
+        --output-dir output/vit_d_ref_tests
+        --test vit_d_ref
+    needs:
+      [generate_measures_vit_d_ref_tests]
+    outputs:
+      moderately_sensitive:
+        decile_table: output/vit_d_ref_tests/deciles_table_counts_per_week_per_practice.csv
+        code_table: output/vit_d_ref_tests/top_5_code_table.csv
+        event_counts_table: output/vit_d_ref_tests/event_counts.csv
+
+
+  generate_measures_psa_tests:
+    run: >
+      ehrql:v1 generate-measures
+        analysis/measure_definition.py
+        --output output/psa_tests/measures.arrow
+        --
+        --test psa
+    outputs:
+      highly_sensitive:
+        measures: output/psa_tests/measures.arrow
+  generate_processed_data_psa_tests:
+    run: >
+      python:latest 
+        analysis/write_processed_csv_files.py
+        --output-dir output/psa_tests
+        --test psa
+    needs:
+      [generate_measures_psa_tests]
+    outputs:
+      moderately_sensitive:
+        decile_table: output/psa_tests/deciles_table_counts_per_week_per_practice.csv
+        code_table: output/psa_tests/top_5_code_table.csv
+        event_counts_table: output/psa_tests/event_counts.csv
+
+
+  generate_measures_psa_ref_tests:
+    run: >
+      ehrql:v1 generate-measures
+        analysis/measure_definition.py
+        --output output/psa_ref_tests/measures.arrow
+        --
+        --test psa_ref
+    outputs:
+      highly_sensitive:
+        measures: output/psa_ref_tests/measures.arrow
+  generate_processed_data_psa_ref_tests:
+    run: >
+      python:latest 
+        analysis/write_processed_csv_files.py
+        --output-dir output/psa_ref_tests
+        --test psa_ref
+    needs:
+      [generate_measures_psa_ref_tests]
+    outputs:
+      moderately_sensitive:
+        decile_table: output/psa_ref_tests/deciles_table_counts_per_week_per_practice.csv
+        code_table: output/psa_ref_tests/top_5_code_table.csv
+        event_counts_table: output/psa_ref_tests/event_counts.csv
 
