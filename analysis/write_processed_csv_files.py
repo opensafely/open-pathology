@@ -1,6 +1,6 @@
 import argparse
 from pathlib import Path
-
+from config import codelists
 import pandas as pd
 
 
@@ -136,9 +136,9 @@ def main(output_dir, codelist_path):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--codelist")
+    parser.add_argument("--test")
     parser.add_argument("--output-dir")
     args = parser.parse_args()
-    codelist_path = args.codelist
+    codelist_path = codelists[args.test]
     output_dir = BASE_DIR / Path(args.output_dir)
     main(output_dir, codelist_path)
