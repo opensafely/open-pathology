@@ -7,5 +7,8 @@ codelists = {'alt': 'codelists/opensafely-alanine-aminotransferase-alt-tests.csv
              'vit_d': 'codelists/ardens-vitamin-d-level.csv',
              'vit_d_ref': 'codelists/ardens-vitamin-d-level.csv',
              'psa': 'codelists/opensafely-psa-numeric-value.csv',
-             'psa_ref': 'codelists/opensafely-psa-numeric-value.csv'}
+             'psa_ref': 'codelists/opensafely-psa-numeric-value.csv',
+             'hba1c_diab': 'codelists/nhsd-primary-care-domain-refsets-dmtype2_cod.csv',
+             'alt_mtx': 'codelists/opensafely-methotrexate-oral.csv',
+             'alt_mtx_ref': 'codelists/opensafely-methotrexate-oral.csv'} 
 
