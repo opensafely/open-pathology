@@ -9,6 +9,9 @@ codelists = {'alt': 'codelists/opensafely-alanine-aminotransferase-alt-tests.csv
              'psa': 'codelists/opensafely-psa-numeric-value.csv',
              'psa_ref': 'codelists/opensafely-psa-numeric-value.csv',
              'hba1c_diab': 'codelists/nhsd-primary-care-domain-refsets-dmtype2_cod.csv',
+             'hba1c_diab_mean': 'codelists/nhsd-primary-care-domain-refsets-dmtype2_cod.csv',
+             'diab_res': 'codelists/nhsd-primary-care-domain-refsets-dmres_cod.csv',
              'alt_mtx': 'codelists/opensafely-methotrexate-oral.csv',
-             'alt_mtx_ref': 'codelists/opensafely-methotrexate-oral.csv'} 
+             'alt_mtx_ref': 'codelists/opensafely-methotrexate-oral.csv',
+             } 
 

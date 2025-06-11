@@ -53,7 +53,10 @@ yaml_template = """
 yaml_body = ""
 needs = {}
 
-for test in codelists.keys():
+tests = codelists
+del tests['diab_res']
+
+for test in tests.keys():
 
     yaml_body += yaml_template.format(test = test)
 

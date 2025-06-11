@@ -42,24 +42,27 @@ is_sex_recorded = patients.sex.is_in(["male", "female"])
 
 is_male = patients.sex.is_in(['male'])
 
-# Reference ranges
+# Configuration
 # --------------------------------------------------------------------------------------
+
+search_start = INTERVAL.start_date
 
 if args.test in ['vit_d_ref']:
     is_outside_ref = ranges.numeric_value < ranges.lower_bound
-    search_start = INTERVAL.start_date
 elif args.test in ['psa_ref']:
     is_outside_ref = ranges.numeric_value > ranges.upper_bound
-    search_start = INTERVAL.start_date
-elif args.test in ['alt_mtx_ref', 'alt_mtx']:
+elif 'mtx' in args.test:
     is_outside_ref = ranges.numeric_value > ranges.upper_bound
     search_start = INTERVAL.end_date - months(3)
-
+elif 'diab' in args.test:
+    search_start = INTERVAL.end_date - months(6)
 
 # Codelists
 # --------------------------------------------------------------------------------------
 if 'mtx' in args.test:
     codelist_path = codelists['alt']
+elif 'diab' in args.test:
+    codelist_path = codelists['hba1c']
 else:
     codelist_path = codelists[args.test]
 
@@ -83,6 +86,7 @@ if 'ref' in args.test:
         is_outside_ref
     ).exists_for_patient()
 
+# Define methotrexate patients
 if 'mtx' in args.test:
 
     codelist_mtx = codelist_from_csv(codelists[args.test], column = "code")
@@ -99,7 +103,25 @@ if 'mtx' in args.test:
         medications.date.is_on_or_between(search_start - months(3), search_start)
     ).exists_for_patient()
     )
-    
+
+# Define diabetes patients
+if 'diab' in args.test:
+
+    codelist_diab = codelist_from_csv(codelists[args.test], column = "code")
+    codelist_diab_res = codelist_from_csv(codelists['diab_res'], column = "code")
+
+    prev_events = events.where(events.date.is_on_or_before(INTERVAL.start_date))
+    dmlate_date = prev_events.where(events.snomedct_code.is_in(codelist)).sort_by(events.date).last_for_patient().date
+    dmreso_date = prev_events.where(events.snomedct_code.is_in(codelist_diab_res)).sort_by(events.date).last_for_patient().date
+
+    # Has diabetes if latest diagnosis is after the latests resolved date or it was never resolved, and latests diagnosis exists
+    is_diabetic = (
+        ((dmlate_date > dmreso_date) | dmreso_date.is_null()) 
+        & dmlate_date.is_not_null()
+    ) 
+
+    # Latest hba1c values for each patient, rounded down to nearest integer
+    numeric_value = codelist_events.sort_by(events.date).last_for_patient().numeric_value.as_int()    
 
 # Measures
 # --------------------------------------------------------------------------------------
@@ -116,9 +138,16 @@ if 'psa' in args.test:
     denominator = denominator & is_male
 elif 'mtx' in args.test:
     denominator = denominator & has_mtx_rx
+elif 'hba1c_diab' in args.test:
+    denominator = denominator & is_diabetic
+
+if 'mean' in args.test:
+    numerator = numeric_value
+    denominator = denominator & has_codelist_event
 elif 'ref' in args.test: # These are reference range measures
     numerator = tests_outside_ref
     denominator = denominator & has_codelist_event
+
 
 measures.define_defaults(
     numerator = numerator,
