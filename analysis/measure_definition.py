@@ -7,6 +7,7 @@ from ehrql.tables.core import patients
 from ehrql.tables.tpp import practice_registrations as registrations, clinical_events_ranges as ranges, medications
 from config import codelists
 
+# Parse input test choice
 parser = argparse.ArgumentParser()
 parser.add_argument("--test")
 args = parser.parse_args()
@@ -30,6 +31,7 @@ assert num_months(date(2025, 2, 1), date(2024, 1, 1)) == 13
 
 # Demographic variables
 # --------------------------------------------------------------------------------------
+
 is_alive = patients.is_alive_on(INTERVAL.start_date)
 
 age = patients.age_on(INTERVAL.start_date)
@@ -47,18 +49,22 @@ is_male = patients.sex.is_in(['male'])
 
 search_start = INTERVAL.start_date
 
+# Configure bound definition and timespan of search based on test
 if args.test in ['vit_d_ref']:
     is_outside_ref = ranges.numeric_value < ranges.lower_bound
 elif args.test in ['psa_ref']:
     is_outside_ref = ranges.numeric_value > ranges.upper_bound
 elif 'mtx' in args.test:
     is_outside_ref = ranges.numeric_value > ranges.upper_bound
+    # Tests in last 3 months would include the specified month (e.g. Interval starting on April = {April, March, February})
     search_start = INTERVAL.end_date - months(3)
 elif 'diab' in args.test:
     search_start = INTERVAL.end_date - months(6)
 
 # Codelists
 # --------------------------------------------------------------------------------------
+
+# Configure test codelist path specifically if another codelist is also required (e.g. diabetes, methotrexate)
 if 'mtx' in args.test:
     codelist_path = codelists['alt']
 elif 'diab' in args.test:
@@ -69,6 +75,7 @@ else:
 codelist = codelist_from_csv(codelist_path, column="code")
 codelist_events = events.where(
     events.snomedct_code.is_in(codelist) & 
+    # Use 'search_start' to adapt interval start date for longer searches (e.g. last 3 months for alt with methotrexate)
     events.date.is_on_or_between(search_start, INTERVAL.end_date)
 )
 has_codelist_event = codelist_events.exists_for_patient()
@@ -77,7 +84,7 @@ last_codelist_event = codelist_events.sort_by(codelist_events.date).last_for_pat
 # Conditions
 # --------------------------------------------------------------------------------------
 
-# Define reference range
+# Define tests outside reference range
 if 'ref' in args.test:
 
     tests_outside_ref = ranges.where(
@@ -141,13 +148,13 @@ elif 'mtx' in args.test:
 elif 'hba1c_diab' in args.test:
     denominator = denominator & is_diabetic
 
+# For mean, sum(numeric_value) / sum(patients who had a test) = mean value of tests (ratio column)
 if 'mean' in args.test:
     numerator = numeric_value
     denominator = denominator & has_codelist_event
-elif 'ref' in args.test: # These are reference range measures
+elif 'ref' in args.test: 
     numerator = tests_outside_ref
     denominator = denominator & has_codelist_event
-
 
 measures.define_defaults(
     numerator = numerator,

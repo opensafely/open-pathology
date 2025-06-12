@@ -2,7 +2,7 @@ import argparse
 from pathlib import Path
 from config import codelists
 import pandas as pd
-
+import numpy as np
 
 BASE_DIR = Path(__file__).parents[1]
 
@@ -100,7 +100,7 @@ def get_event_counts_and_top_5_codes_tables(df_measure_output, codelist_path):
             "Proportion of codes (%)",
         ] = "> 99.995"
 
-    return df_event_counts, df_code_counts.loc[:4]
+    return df_event_counts, df_code_counts.iloc[:5]
 
 
 def main(output_dir, codelist_path):
@@ -115,11 +115,20 @@ def main(output_dir, codelist_path):
         The path to the codelist
     """
     df = pd.read_feather(output_dir / "measures.arrow")
+
+    if args.sim:
+        df['numerator'] = np.random.randint(0, 500, size = len(df))
+        df['denominator'] = np.random.randint(500, 1000, size = len(df))
+        df['ratio'] = df['numerator'] / df['denominator']
+        suffix = '_sim'
+    else:
+        suffix = ''
+
     df["practice"] = df["practice"].astype("Int64")
 
     deciles_table = get_deciles_table(df)
     deciles_table.to_csv(
-        output_dir / "deciles_table_counts_per_week_per_practice.csv",
+        output_dir / f"deciles_table_counts_per_week_per_practice{suffix}.csv",
         index=False,
     )
 
@@ -127,10 +136,10 @@ def main(output_dir, codelist_path):
         df, codelist_path
     )
     event_counts.to_csv(
-        output_dir / "event_counts.csv",
+        output_dir / f"event_counts{suffix}.csv",
     )
     top_5_code_table.to_csv(
-        output_dir / "top_5_code_table.csv",
+        output_dir / f"top_5_code_table{suffix}.csv",
     )
 
 
@@ -138,6 +147,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--test")
     parser.add_argument("--output-dir")
+    parser.add_argument("--sim", action = 'store_true')
     args = parser.parse_args()
     codelist_path = codelists[args.test]
     output_dir = BASE_DIR / Path(args.output_dir)
