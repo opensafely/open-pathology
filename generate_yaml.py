@@ -47,7 +47,31 @@ yaml_template = """
         decile_table: output/{test}_tests/deciles_table_counts_per_week_per_practice.csv
         code_table: output/{test}_tests/top_5_code_table.csv
         event_counts_table: output/{test}_tests/event_counts.csv
-
+  generate_processed_data_{test}_tests_sim:
+    run: >
+      python:latest 
+        analysis/write_processed_csv_files.py
+        --output-dir output/{test}_tests
+        --test {test}
+        --sim
+    needs:
+      [generate_measures_{test}_tests]
+    outputs:
+      moderately_sensitive:
+        decile_table: output/{test}_tests/deciles_table_counts_per_week_per_practice_sim.csv
+        code_table: output/{test}_tests/top_5_code_table_sim.csv
+        event_counts_table: output/{test}_tests/event_counts_sim.csv
+  generate_dataset_test_{test}:
+    run: >
+        ehrql:v1 generate-dataset
+        analysis/dataset_definition.py
+        --test-data-file analysis/test_dataset.py
+        --output output/tests/{test}_dataset.csv
+        --
+        --test {test}
+    outputs:
+      highly_sensitive:
+        population: output/tests/{test}_dataset.csv
 """
 
 yaml_body = ""
