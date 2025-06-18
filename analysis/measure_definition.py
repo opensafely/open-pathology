@@ -185,17 +185,19 @@ measures.define_defaults(
     intervals = intervals
 )
 
+measures.define_measure(
+    name="by_practice",
+    group_by={"practice": registration.practice_pseudo_id},
+)
+measures.define_measure(
+    name="by_snomedct_code",
+    group_by={"snomedct_code": last_codelist_event.snomedct_code},
+)
+
+# Additional breakdowns for original measures
 demographic_measures = ['alt', 'chol', 'hba1c', 'rbc', 'sodium', 'systol']
 
 if args.test in demographic_measures:
-    measures.define_measure(
-        name="by_practice",
-        group_by={"practice": registration.practice_pseudo_id},
-    )
-    measures.define_measure(
-        name="by_snomedct_code",
-        group_by={"snomedct_code": last_codelist_event.snomedct_code},
-    )
     measures.define_measure(
         name="by_IMD",
         group_by={"IMD": imd},

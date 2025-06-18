@@ -67,15 +67,18 @@ def get_event_counts_and_top_5_codes_tables(df_measure_output, codelist_path):
         .rename_axis(["Code", "Date"])
     )
 
-    # Populate the event counts table
+    # Initialize output tables
     df_event_counts = pd.DataFrame(
         columns=["count"], index=["total_events", "events_in_latest_period"]
     )
+    df_code_counts = pd.DataFrame(columns=["Code", "Events", "Description", "Proportion of codes (%)"])
+
     if not events.empty:
         # Populate the event counts table
         df_event_counts.loc["total_events"] = events.sum()
         
         grouped_by_date = events.groupby(level="Date").sum().sort_index(ascending=False)
+
         if not grouped_by_date.empty:
             df_event_counts.loc["events_in_latest_period"] = grouped_by_date.iloc[0]
         else:
@@ -110,7 +113,7 @@ def get_event_counts_and_top_5_codes_tables(df_measure_output, codelist_path):
     else:
         df_event_counts.loc["total_events"] = 0
         df_event_counts.loc["events_in_latest_period"] = 0
-        
+
     return df_event_counts, df_code_counts.iloc[:5]
 
 
