@@ -71,35 +71,46 @@ def get_event_counts_and_top_5_codes_tables(df_measure_output, codelist_path):
     df_event_counts = pd.DataFrame(
         columns=["count"], index=["total_events", "events_in_latest_period"]
     )
-    df_event_counts.loc["total_events"] = events.sum()
-    df_event_counts.loc["events_in_latest_period"] = (
-        events.groupby(level="Date").sum().sort_index(ascending=False).iloc[0]
-    )
+    if not events.empty:
+        # Populate the event counts table
+        df_event_counts.loc["total_events"] = events.sum()
+        
+        grouped_by_date = events.groupby(level="Date").sum().sort_index(ascending=False)
+        if not grouped_by_date.empty:
+            df_event_counts.loc["events_in_latest_period"] = grouped_by_date.iloc[0]
+        else:
+            df_event_counts.loc["events_in_latest_period"] = 0
 
-    # Tabulate the Top 5 codes by event count
-    df_code_counts = (
-        events.groupby(level="Code")
-        .sum()
-        .sort_values(ascending=False)
-        .reset_index()
-        .merge(codelist, on="Code")
-    )
-    # Calculate proportion of codes
-    df_code_counts["Proportion of codes (%)"] = (round(
-        100 * df_code_counts['Events'] / df_code_counts['Events'].sum(), 2)
+        # Tabulate the Top 5 codes by event count
+        df_code_counts = (
+            events.groupby(level="Code")
+            .sum()
+            .sort_values(ascending=False)
+            .reset_index()
+            .merge(codelist, on="Code", how="left")  # In case code not in codelist
+        )
+
+        # Calculate proportion of codes
+        total_events = df_code_counts['Events'].sum()
+        df_code_counts["Proportion of codes (%)"] = (
+            round(100 * df_code_counts['Events'] / total_events, 2)
         ).astype(str)
 
-    if len(df_code_counts) > 1:
-        df_code_counts.loc[
-            df_code_counts["Proportion of codes (%)"].str.replace("0", "") == ".",
-            "Proportion of codes (%)",
-        ] = "< 0.005"
+        # Formatting tweaks
+        if len(df_code_counts) > 1:
+            df_code_counts.loc[
+                df_code_counts["Proportion of codes (%)"].str.replace("0", "") == ".",
+                "Proportion of codes (%)",
+            ] = "< 0.005"
 
-        df_code_counts.loc[
-            df_code_counts["Proportion of codes (%)"].str.startswith("100."),
-            "Proportion of codes (%)",
-        ] = "> 99.995"
-
+            df_code_counts.loc[
+                df_code_counts["Proportion of codes (%)"].str.startswith("100."),
+                "Proportion of codes (%)",
+            ] = "> 99.995"
+    else:
+        df_event_counts.loc["total_events"] = 0
+        df_event_counts.loc["events_in_latest_period"] = 0
+        
     return df_event_counts, df_code_counts.iloc[:5]
 
 
