@@ -9,3 +9,4 @@ opensafely/psa-numeric-value/2258a288/
 opensafely/methotrexate-oral/26ee05e8/
 nhsd-primary-care-domain-refsets/dmtype2_cod/20241205/
 nhsd-primary-care-domain-refsets/dmres_cod/20241205/
+opensafely/ethnicity-snomed-0removed/22911876/

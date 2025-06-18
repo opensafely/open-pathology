@@ -1,5 +1,11 @@
 {
   "files": {
+    "opensafely-ethnicity-snomed-0removed.csv": {
+      "id": "opensafely/ethnicity-snomed-0removed/22911876",
+      "url": "https://www.opencodelists.org/codelist/opensafely/ethnicity-snomed-0removed/22911876/",
+      "downloaded_at": "2025-06-18 13:49:24.038472Z",
+      "sha": "d95a2f826299563aa57f6fa99009e6e13a65151b"
+    },
     "nhsd-primary-care-domain-refsets-dmres_cod.csv": {
       "id": "nhsd-primary-care-domain-refsets/dmres_cod/20241205",
       "url": "https://www.opencodelists.org/codelist/nhsd-primary-care-domain-refsets/dmres_cod/20241205/",

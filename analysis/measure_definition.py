@@ -1,10 +1,10 @@
 import argparse
 from datetime import date
 
-from ehrql import INTERVAL, Measures, codelist_from_csv, months
+from ehrql import INTERVAL, Measures, codelist_from_csv, months, show
 from ehrql.tables.core import clinical_events as events
 from ehrql.tables.core import patients
-from ehrql.tables.tpp import practice_registrations as registrations, clinical_events_ranges as ranges, medications
+from ehrql.tables.tpp import practice_registrations as registrations, clinical_events_ranges as ranges, medications, addresses
 from config import codelists
 
 # Parse input test choice
@@ -43,6 +43,27 @@ is_registered = registration.exists_for_patient()
 is_sex_recorded = patients.sex.is_in(["male", "female"])
 
 is_male = patients.sex.is_in(['male'])
+
+# Breakdown variables
+# --------------------------------------------------------------------------------------
+
+imd = addresses.for_patient_on(INTERVAL.start_date).imd_quintile
+
+ethnicity_codelist = codelist_from_csv("codelists/opensafely-ethnicity-snomed-0removed.csv", 
+                                       column="code",
+                                       category_column="Grouping_6")
+ethnicity = (
+    events.where(events.snomedct_code.is_in(ethnicity_codelist))
+    .where(events.date.is_on_or_before(INTERVAL.start_date))
+    .sort_by(events.date)
+    .last_for_patient()
+    .snomedct_code.to_category(ethnicity_codelist)
+)
+
+sex = patients.sex
+
+region = (registrations.for_patient_on(INTERVAL.start_date)
+          .practice_nuts1_region_name)
 
 # Configuration
 # --------------------------------------------------------------------------------------
@@ -133,11 +154,13 @@ if 'diab' in args.test:
 # Measures
 # --------------------------------------------------------------------------------------
 measures = Measures()
-measures.configure_dummy_data(population_size=100, legacy=True)
+measures.configure_dummy_data(population_size=10, legacy=True)
 measures.configure_disclosure_control(enabled=True)
 intervals = months(num_months(start_date, date.today())).starting_on(start_date)
 
 numerator = has_codelist_event
+# When testing, add has_codelist_event to denominator 
+# to have sufficient events for downstream processing to work
 denominator = is_alive & is_adult & is_registered & is_sex_recorded
 
 # Update population criteria for specific tests
@@ -162,11 +185,31 @@ measures.define_defaults(
     intervals = intervals
 )
 
-measures.define_measure(
-    name="by_practice",
-    group_by={"practice": registration.practice_pseudo_id},
-)
-measures.define_measure(
-    name="by_snomedct_code",
-    group_by={"snomedct_code": last_codelist_event.snomedct_code},
-)
+demographic_measures = ['alt', 'chol', 'hba1c', 'rbc', 'sodium', 'systol']
+
+if args.test in demographic_measures:
+    measures.define_measure(
+        name="by_practice",
+        group_by={"practice": registration.practice_pseudo_id},
+    )
+    measures.define_measure(
+        name="by_snomedct_code",
+        group_by={"snomedct_code": last_codelist_event.snomedct_code},
+    )
+    measures.define_measure(
+        name="by_IMD",
+        group_by={"IMD": imd},
+    )
+    measures.define_measure(
+        name="by_ethnicity",
+        group_by={"ethnicity": ethnicity},
+    )
+    measures.define_measure(
+        name="by_sex",
+        group_by={"sex": sex},
+    )
+    measures.define_measure(
+        name="by_region",
+        group_by={"region": region},
+    )
+
