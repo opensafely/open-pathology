@@ -11,3 +11,4 @@
 __pycache__/
 input.csv
 model.log
+analysis/test.py

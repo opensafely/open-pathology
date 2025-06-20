@@ -1,8 +1,8 @@
 import argparse
 from pathlib import Path
-
+from config import codelists
 import pandas as pd
-
+import numpy as np
 
 BASE_DIR = Path(__file__).parents[1]
 
@@ -67,40 +67,54 @@ def get_event_counts_and_top_5_codes_tables(df_measure_output, codelist_path):
         .rename_axis(["Code", "Date"])
     )
 
-    # Populate the event counts table
+    # Initialize output tables
     df_event_counts = pd.DataFrame(
         columns=["count"], index=["total_events", "events_in_latest_period"]
     )
-    df_event_counts.loc["total_events"] = events.sum()
-    df_event_counts.loc["events_in_latest_period"] = (
-        events.groupby(level="Date").sum().sort_index(ascending=False).iloc[0]
-    )
+    df_code_counts = pd.DataFrame(columns=["Code", "Events", "Description", "Proportion of codes (%)"])
 
-    # Tabulate the Top 5 codes by event count
-    df_code_counts = (
-        events.groupby(level="Code")
-        .sum()
-        .sort_values(ascending=False)
-        .reset_index()
-        .merge(codelist, on="Code")
-    )
-    # Calculate proportion of codes
-    df_code_counts["Proportion of codes (%)"] = (round(
-        100 * df_code_counts['Events'] / df_code_counts['Events'].sum(), 2)
+    if not events.empty:
+        # Populate the event counts table
+        df_event_counts.loc["total_events"] = events.sum()
+        
+        grouped_by_date = events.groupby(level="Date").sum().sort_index(ascending=False)
+
+        if not grouped_by_date.empty:
+            df_event_counts.loc["events_in_latest_period"] = grouped_by_date.iloc[0]
+        else:
+            df_event_counts.loc["events_in_latest_period"] = 0
+
+        # Tabulate the Top 5 codes by event count
+        df_code_counts = (
+            events.groupby(level="Code")
+            .sum()
+            .sort_values(ascending=False)
+            .reset_index()
+            .merge(codelist, on="Code", how="left")  # In case code not in codelist
+        )
+
+        # Calculate proportion of codes
+        total_events = df_code_counts['Events'].sum()
+        df_code_counts["Proportion of codes (%)"] = (
+            round(100 * df_code_counts['Events'] / total_events, 2)
         ).astype(str)
 
-    if len(df_code_counts) > 1:
-        df_code_counts.loc[
-            df_code_counts["Proportion of codes (%)"].str.replace("0", "") == ".",
-            "Proportion of codes (%)",
-        ] = "< 0.005"
+        # Formatting tweaks
+        if len(df_code_counts) > 1:
+            df_code_counts.loc[
+                df_code_counts["Proportion of codes (%)"].str.replace("0", "") == ".",
+                "Proportion of codes (%)",
+            ] = "< 0.005"
 
-        df_code_counts.loc[
-            df_code_counts["Proportion of codes (%)"].str.startswith("100."),
-            "Proportion of codes (%)",
-        ] = "> 99.995"
+            df_code_counts.loc[
+                df_code_counts["Proportion of codes (%)"].str.startswith("100."),
+                "Proportion of codes (%)",
+            ] = "> 99.995"
+    else:
+        df_event_counts.loc["total_events"] = 0
+        df_event_counts.loc["events_in_latest_period"] = 0
 
-    return df_event_counts, df_code_counts.loc[:4]
+    return df_event_counts, df_code_counts.iloc[:5]
 
 
 def main(output_dir, codelist_path):
@@ -115,11 +129,20 @@ def main(output_dir, codelist_path):
         The path to the codelist
     """
     df = pd.read_feather(output_dir / "measures.arrow")
+
+    if args.sim:
+        df['numerator'] = np.random.randint(0, 500, size = len(df))
+        df['denominator'] = np.random.randint(500, 1000, size = len(df))
+        df['ratio'] = df['numerator'] / df['denominator']
+        suffix = '_sim'
+    else:
+        suffix = ''
+
     df["practice"] = df["practice"].astype("Int64")
 
     deciles_table = get_deciles_table(df)
     deciles_table.to_csv(
-        output_dir / "deciles_table_counts_per_week_per_practice.csv",
+        output_dir / f"deciles_table_counts_per_week_per_practice{suffix}.csv",
         index=False,
     )
 
@@ -127,18 +150,19 @@ def main(output_dir, codelist_path):
         df, codelist_path
     )
     event_counts.to_csv(
-        output_dir / "event_counts.csv",
+        output_dir / f"event_counts{suffix}.csv",
     )
     top_5_code_table.to_csv(
-        output_dir / "top_5_code_table.csv",
+        output_dir / f"top_5_code_table{suffix}.csv",
     )
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--codelist")
+    parser.add_argument("--test")
     parser.add_argument("--output-dir")
+    parser.add_argument("--sim", action = 'store_true')
     args = parser.parse_args()
-    codelist_path = args.codelist
+    codelist_path = codelists[args.test]
     output_dir = BASE_DIR / Path(args.output_dir)
     main(output_dir, codelist_path)

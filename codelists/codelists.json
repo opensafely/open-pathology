@@ -1,5 +1,41 @@
 {
   "files": {
+    "opensafely-ethnicity-snomed-0removed.csv": {
+      "id": "opensafely/ethnicity-snomed-0removed/22911876",
+      "url": "https://www.opencodelists.org/codelist/opensafely/ethnicity-snomed-0removed/22911876/",
+      "downloaded_at": "2025-06-18 13:49:24.038472Z",
+      "sha": "d95a2f826299563aa57f6fa99009e6e13a65151b"
+    },
+    "nhsd-primary-care-domain-refsets-dmres_cod.csv": {
+      "id": "nhsd-primary-care-domain-refsets/dmres_cod/20241205",
+      "url": "https://www.opencodelists.org/codelist/nhsd-primary-care-domain-refsets/dmres_cod/20241205/",
+      "downloaded_at": "2025-06-11 09:19:24.501528Z",
+      "sha": "57682a6345da78472609f01f1ca065ace27fcb43"
+    },
+    "nhsd-primary-care-domain-refsets-dmtype2_cod.csv": {
+      "id": "nhsd-primary-care-domain-refsets/dmtype2_cod/20241205",
+      "url": "https://www.opencodelists.org/codelist/nhsd-primary-care-domain-refsets/dmtype2_cod/20241205/",
+      "downloaded_at": "2025-06-06 15:08:57.798516Z",
+      "sha": "d0150e2030c8452c247a41852853453a165a04d9"
+    },
+    "opensafely-methotrexate-oral.csv": {
+      "id": "opensafely/methotrexate-oral/26ee05e8",
+      "url": "https://www.opencodelists.org/codelist/opensafely/methotrexate-oral/26ee05e8/",
+      "downloaded_at": "2025-06-06 15:08:34.629956Z",
+      "sha": "416187c9c5ed53815a0579a12e905a1eaa8db359"
+    },
+    "opensafely-psa-numeric-value.csv": {
+      "id": "opensafely/psa-numeric-value/2258a288",
+      "url": "https://www.opencodelists.org/codelist/opensafely/psa-numeric-value/2258a288/",
+      "downloaded_at": "2025-06-06 12:44:42.949481Z",
+      "sha": "e8a3bb9f8791f1d56403896a0211892baaf30c01"
+    },
+    "ardens-vitamin-d-level.csv": {
+      "id": "ardens/vitamin-d-level/2020-11-06",
+      "url": "https://www.opencodelists.org/codelist/ardens/vitamin-d-level/2020-11-06/",
+      "downloaded_at": "2025-06-06 12:43:55.026002Z",
+      "sha": "f612514cf1f67d2130a87d1d2fabdc6488caa744"
+    },
     "opensafely-alanine-aminotransferase-alt-tests.csv": {
       "id": "opensafely/alanine-aminotransferase-alt-tests/11d2e678",
       "url": "https://www.opencodelists.org/codelist/opensafely/alanine-aminotransferase-alt-tests/11d2e678/",

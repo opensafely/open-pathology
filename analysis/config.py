@@ -1,0 +1,17 @@
+codelists = {'alt': 'codelists/opensafely-alanine-aminotransferase-alt-tests.csv',
+             'chol': 'codelists/opensafely-cholesterol-tests.csv',
+             'hba1c': 'codelists/opensafely-glycated-haemoglobin-hba1c-tests.csv', 
+             'rbc': 'codelists/opensafely-red-blood-cell-rbc-tests.csv', 
+             'sodium': 'codelists/opensafely-sodium-tests-numerical-value.csv',
+             'systol': 'codelists/opensafely-systolic-blood-pressure-qof.csv',
+             'vit_d': 'codelists/ardens-vitamin-d-level.csv',
+             'vit_d_ref': 'codelists/ardens-vitamin-d-level.csv',
+             'psa': 'codelists/opensafely-psa-numeric-value.csv',
+             'psa_ref': 'codelists/opensafely-psa-numeric-value.csv',
+             'hba1c_diab': 'codelists/nhsd-primary-care-domain-refsets-dmtype2_cod.csv',
+             'hba1c_diab_mean': 'codelists/nhsd-primary-care-domain-refsets-dmtype2_cod.csv',
+             'diab_res': 'codelists/nhsd-primary-care-domain-refsets-dmres_cod.csv',
+             'alt_mtx': 'codelists/opensafely-methotrexate-oral.csv',
+             'alt_mtx_ref': 'codelists/opensafely-methotrexate-oral.csv',
+             } 
+

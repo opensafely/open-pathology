@@ -4,3 +4,9 @@ opensafely/sodium-tests-numerical-value/1f50a646/
 opensafely/cholesterol-tests/62eb0940/
 opensafely/red-blood-cell-rbc-tests/17bcafa1/
 opensafely/glycated-haemoglobin-hba1c-tests/30cc22d6/
+ardens/vitamin-d-level/2020-11-06/
+opensafely/psa-numeric-value/2258a288/
+opensafely/methotrexate-oral/26ee05e8/
+nhsd-primary-care-domain-refsets/dmtype2_cod/20241205/
+nhsd-primary-care-domain-refsets/dmres_cod/20241205/
+opensafely/ethnicity-snomed-0removed/22911876/
