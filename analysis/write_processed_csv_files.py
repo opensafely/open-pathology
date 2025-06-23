@@ -163,6 +163,14 @@ if __name__ == "__main__":
     parser.add_argument("--output-dir")
     parser.add_argument("--sim", action = 'store_true')
     args = parser.parse_args()
-    codelist_path = codelists[args.test]
+
+    # Specify test for cases that use multiple codelists e.g. hba1c_diabetes
+    if 'hba1c' in args.test:
+        codelist_path = codelists['hba1c']
+    elif 'alt' in args.test:
+        codelist_path = codelists['alt']
+    else:
+        codelist_path = codelists[args.test]
+
     output_dir = BASE_DIR / Path(args.output_dir)
     main(output_dir, codelist_path)
