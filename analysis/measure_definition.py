@@ -85,6 +85,13 @@ elif 'diab' in args.test:
 # Codelists
 # --------------------------------------------------------------------------------------
 
+# Use clinical_events table instead of clinical_events_ranges (unless ref ranges needed)
+# because clinical_events table queries are much faster
+if 'ref' in args.test:
+    events_table = ranges
+else:
+    events_table = events
+
 # Configure test codelist path specifically if another codelist is also required (e.g. diabetes, methotrexate)
 if 'alt' in args.test:
 
@@ -107,10 +114,10 @@ else:
     codelist_path = codelists[args.test]
 
 codelist = codelist_from_csv(codelist_path, column="code")
-codelist_events = events.where(
-    events.snomedct_code.is_in(codelist) & 
+codelist_events = events_table.where(
+    events_table.snomedct_code.is_in(codelist) & 
     # Use 'search_start' to adapt interval start date for longer searches (e.g. last 3 months for alt with methotrexate)
-    events.date.is_on_or_between(search_start, INTERVAL.end_date)
+    events_table.date.is_on_or_between(search_start, INTERVAL.end_date)
 )
 has_codelist_event = codelist_events.exists_for_patient()
 last_codelist_event = codelist_events.sort_by(codelist_events.date).last_for_patient()
@@ -121,9 +128,8 @@ last_codelist_event = codelist_events.sort_by(codelist_events.date).last_for_pat
 # Define tests outside reference range
 if 'ref' in args.test:
 
-    tests_outside_ref = ranges.where(
-        ranges.snomedct_code.is_in(codelist) & 
-        ranges.date.is_on_or_between(search_start, INTERVAL.end_date) & 
+    tests_outside_ref = codelist_events.where(
+        codelist_events & 
         is_outside_ref
     ).exists_for_patient()
 
@@ -184,17 +190,20 @@ elif 'mtx' in args.test:
 elif 'hba1c_diab' in args.test:
     denominator = denominator & is_diabetic
 
-# For mean, sum(numeric_value) / sum(patients who had a test) = mean value of tests (ratio column)
-if 'mean' in args.test:
+# Remove tests with unreliable numeric values for measures that depend on that field
+if ('mean' in args.test) | ('ref' in args.test):
     has_codelist_event = (codelist_events.where(
                             (codelist_events.numeric_value.is_not_null()) & 
                             (codelist_events.numeric_value >= 0))
                             .exists_for_patient())
-    numerator = numeric_value
     denominator = denominator & has_codelist_event
-elif 'ref' in args.test: 
-    numerator = tests_outside_ref
-    denominator = denominator & has_codelist_event
+
+    # For mean, sum(numeric_value) / sum(patients who had a test) = mean value of tests (ratio column)
+    if 'mean' in args.test:
+        numerator = numeric_value
+
+    elif'ref' in args.test:
+        numerator = tests_outside_ref
 
 measures.define_defaults(
     numerator = numerator,
