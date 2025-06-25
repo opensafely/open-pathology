@@ -1,4 +1,5 @@
 codelists = {'alt': 'codelists/opensafely-alanine-aminotransferase-alt-tests.csv',
+             'alt_numeric': 'codelists/opensafely-alanine-aminotransferase-alt-tests-numerical-value.csv',
              'chol': 'codelists/opensafely-cholesterol-tests.csv',
              'hba1c': 'codelists/opensafely-glycated-haemoglobin-hba1c-tests.csv', 
              'hba1c_numeric': 'codelists/opensafely-glycated-haemoglobin-hba1c-tests-numerical-value.csv',

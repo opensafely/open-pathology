@@ -546,12 +546,12 @@ actions:
     run: >
       ehrql:v1 generate-measures
         analysis/measure_definition.py
-        --output output/hba1c_diab_mean_tests/measures.csv
+        --output output/hba1c_diab_mean_tests/measures.arrow
         --
         --test hba1c_diab_mean
     outputs:
       highly_sensitive:
-        measures: output/hba1c_diab_mean_tests/measures.csv
+        measures: output/hba1c_diab_mean_tests/measures.arrow
   generate_processed_data_hba1c_diab_mean_tests:
     run: >
       python:latest 
