@@ -88,8 +88,12 @@ elif 'diab' in args.test:
 # Configure test codelist path specifically if another codelist is also required (e.g. diabetes, methotrexate)
 if 'mtx' in args.test:
     codelist_path = codelists['alt']
-elif 'diab' in args.test:
-    codelist_path = codelists['hba1c']
+elif 'hba1c' in args.test:
+    # hb1c_numeric codelist is needed to remove misleading % value from mean calculation
+    if 'mean' in args.test:
+        codelist_path = codelists['hba1c_numeric']
+    else:
+        codelist_path = codelists['hba1c']
 else:
     codelist_path = codelists[args.test]
 
@@ -155,7 +159,7 @@ if 'diab' in args.test:
 # --------------------------------------------------------------------------------------
 measures = Measures()
 measures.configure_dummy_data(population_size=10, legacy=True)
-measures.configure_disclosure_control(enabled=True)
+measures.configure_disclosure_control(enabled=False)
 intervals = months(num_months(start_date, date.today())).starting_on(start_date)
 
 numerator = has_codelist_event
@@ -173,6 +177,10 @@ elif 'hba1c_diab' in args.test:
 
 # For mean, sum(numeric_value) / sum(patients who had a test) = mean value of tests (ratio column)
 if 'mean' in args.test:
+    has_codelist_event = (codelist_events.where(
+                            (codelist_events.numeric_value.is_not_null()) & 
+                            (codelist_events.numeric_value >= 0))
+                            .exists_for_patient())
     numerator = numeric_value
     denominator = denominator & has_codelist_event
 elif 'ref' in args.test: 
