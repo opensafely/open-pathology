@@ -129,7 +129,7 @@ last_codelist_event = codelist_events.sort_by(codelist_events.date).last_for_pat
 if 'ref' in args.test:
 
     tests_outside_ref = codelist_events.where(
-        codelist_events & 
+        codelist_events.exists_for_patient() & 
         is_outside_ref
     ).exists_for_patient()
 
