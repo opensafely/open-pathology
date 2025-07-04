@@ -100,16 +100,9 @@ if 'alt' in args.test:
         codelist_path = codelists['alt_numeric']
 
     codelist_path = codelists['alt']
-
+# hb1c_numeric codelist is needed to remove misleading % value from mean calculation
 elif 'hba1c' in args.test:
-
-    # hb1c_numeric codelist is needed to remove misleading % value from mean calculation
-    if 'mean' in args.test:
-        codelist_path = codelists['hba1c_numeric']
-
-    else:
-        codelist_path = codelists['hba1c']
-
+    codelist_path = codelists['hba1c_numeric']
 else:
     codelist_path = codelists[args.test]
 

@@ -177,7 +177,7 @@ if __name__ == "__main__":
 
     # Specify test for cases that use multiple codelists e.g. hba1c_diabetes
     if 'hba1c' in args.test:
-        codelist_path = codelists['hba1c']
+        codelist_path = codelists['hba1c_numeric']
     elif 'alt' in args.test:
         codelist_path = codelists['alt']
     else:
