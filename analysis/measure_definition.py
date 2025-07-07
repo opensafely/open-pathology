@@ -77,9 +77,12 @@ elif args.test in ['psa_ref']:
     is_outside_ref = ranges.numeric_value > ranges.upper_bound
 elif 'mtx' in args.test:
     is_outside_ref = ranges.numeric_value > ranges.upper_bound
+
+# Change intervals for alt mtx in 3 months and hba1c diab in 6 months
+if args.test in ['alt_mtx']:
     # Tests in last 3 months would include the specified month (e.g. Interval starting on April = {April, March, February})
     search_start = INTERVAL.end_date - months(3)
-elif 'diab' in args.test:
+elif args.test in ['hba1c_diab']:
     search_start = INTERVAL.end_date - months(6)
 
 # Codelists
