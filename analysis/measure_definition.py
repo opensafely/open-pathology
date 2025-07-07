@@ -167,7 +167,7 @@ if 'diab' in args.test:
 # --------------------------------------------------------------------------------------
 measures = Measures()
 measures.configure_dummy_data(population_size=10, legacy=True)
-measures.configure_disclosure_control(enabled=False)
+measures.configure_disclosure_control(enabled=True)
 intervals = months(num_months(start_date, date.today())).starting_on(start_date)
 
 numerator = has_codelist_event
