@@ -187,7 +187,7 @@ elif 'hba1c_diab' in args.test:
 if ('mean' in args.test) | ('ref' in args.test):
     has_codelist_event = (codelist_events.where(
                             (codelist_events.numeric_value.is_not_null()) & 
-                            (codelist_events.numeric_value >= 0))
+                            (codelist_events.numeric_value > 0))
                             .exists_for_patient())
     denominator = denominator & has_codelist_event
 
