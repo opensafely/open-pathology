@@ -24,6 +24,7 @@ def get_deciles_table(df_measure_output):
         df_measure_output["measure"] == "by_practice",
         ["interval_start", "ratio", "practice"],
     ]
+
     # Remove practices that have zero events during the study period
     df_practice = df_practice.loc[~df_practice["ratio"].isna()]
 
@@ -37,7 +38,11 @@ def get_deciles_table(df_measure_output):
         columns={"interval_start": "date", "level_1": "percentile"}
     )
     df_quantiles["percentile"] = (df_quantiles["percentile"] * 100).astype(int)
-    df_quantiles["value"] = df_quantiles["value"] * 1000  # Rate per 1000 patients
+
+    # Rate per 1000 patients (if we're calculating a rate and not a mean)
+    if 'mean' not in args.test:
+        df_quantiles["value"] = df_quantiles["value"] * 1000 
+
     return df_quantiles
 
 
@@ -60,8 +65,14 @@ def get_event_counts_and_top_5_codes_tables(df_measure_output, codelist_path):
         dtype={"Code": str},
     )
 
+    # Events counts are in the numerator except for the mean measure
+    if 'mean' in args.test:
+        events_col = "denominator"
+    else:
+        events_col = "numerator"
+
     events = (
-        df_measure_output.groupby(["snomedct_code", "interval_start"])["numerator"]
+        df_measure_output.groupby(["snomedct_code", "interval_start"])[events_col]
         .sum()
         .rename("Events")
         .rename_axis(["Code", "Date"])
@@ -166,7 +177,7 @@ if __name__ == "__main__":
 
     # Specify test for cases that use multiple codelists e.g. hba1c_diabetes
     if 'hba1c' in args.test:
-        codelist_path = codelists['hba1c']
+        codelist_path = codelists['hba1c_numeric']
     elif 'alt' in args.test:
         codelist_path = codelists['alt']
     else:

@@ -1,5 +1,17 @@
 {
   "files": {
+    "opensafely-alanine-aminotransferase-alt-tests-numerical-value.csv": {
+      "id": "opensafely/alanine-aminotransferase-alt-tests-numerical-value/78d4a307",
+      "url": "https://www.opencodelists.org/codelist/opensafely/alanine-aminotransferase-alt-tests-numerical-value/78d4a307/",
+      "downloaded_at": "2025-06-25 13:53:30.060050Z",
+      "sha": "4144fa821c5a8e560ea2aaa99b4543e58c231ed4"
+    },
+    "opensafely-glycated-haemoglobin-hba1c-tests-numerical-value.csv": {
+      "id": "opensafely/glycated-haemoglobin-hba1c-tests-numerical-value/5134e926",
+      "url": "https://www.opencodelists.org/codelist/opensafely/glycated-haemoglobin-hba1c-tests-numerical-value/5134e926/",
+      "downloaded_at": "2025-06-25 10:40:31.785773Z",
+      "sha": "bc7e48efd370be65686755f0a843058f1ec767e0"
+    },
     "opensafely-ethnicity-snomed-0removed.csv": {
       "id": "opensafely/ethnicity-snomed-0removed/22911876",
       "url": "https://www.opencodelists.org/codelist/opensafely/ethnicity-snomed-0removed/22911876/",
