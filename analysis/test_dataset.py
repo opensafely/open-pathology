@@ -95,18 +95,18 @@ test_data_options = {
             "tests_outside_ref": False,
         },
     },
-    5: {  # alt-mtx-ref within 3 months inside ref
+    5: {  # alt-mtx-ref within 1 months inside ref
         "patients": {"date_of_birth": date(1950, 1, 1), "sex": "male"},
         "medications": [
             {"date": date(2018, 2, 15), "dmd_code": "12816911000001103"},
             {"date": date(2017, 11, 15), "dmd_code": "12816911000001103"},
         ],
         "clinical_events": [
-            {"date": date(2018, 1, 15), "snomedct_code": "1013211000000103"}
+            {"date": date(2018, 4, 15), "snomedct_code": "1013211000000103"}
         ],
         "clinical_events_ranges": [
             {
-                "date": date(2018, 1, 15),
+                "date": date(2018, 4, 15),
                 "snomedct_code": "1013211000000103",
                 "numeric_value": 5,
                 "upper_bound": 7,
@@ -142,14 +142,14 @@ test_data_options = {
             "tests_outside_ref": False,
         },
     },
-    7: {  # hba1c_diab_mean numeric_value within 6 months
+    7: {  # hba1c_diab_mean numeric_value within 1 months
         "patients": {"date_of_birth": date(1950, 1, 1), "sex": "male"},
         "medications": [],
         "clinical_events": [
-            {"date": date(2017, 10, 15), "snomedct_code": "1196922005"},
+            {"date": date(2018, 3, 15), "snomedct_code": "1196922005"},
             {
-                "date": date(2017, 11, 15),
-                "snomedct_code": "1003671000000109",
+                "date": date(2017, 4, 15),
+                "snomedct_code": "999791000000106",
                 "numeric_value": 4,
             },
         ],
@@ -172,7 +172,7 @@ test_data_options = {
         "clinical_events_ranges": [
             {
                 "date": date(2015, 11, 15),
-                "snomedct_code": "1003671000000109",
+                "snomedct_code": "999791000000106",
                 "numeric_value": 4,
             }
         ],

@@ -138,12 +138,12 @@ if 'mtx' in args.test:
     has_mtx_rx = (
         medications.where(
         medications.dmd_code.is_in(codelist_mtx) & 
-        medications.date.is_on_or_between(search_start, INTERVAL.end_date)
+        medications.date.is_on_or_between(INTERVAL.start_date - months(3), INTERVAL.end_date)
     ).exists_for_patient()
     ) & (
         medications.where(
         medications.dmd_code.is_in(codelist_mtx) & 
-        medications.date.is_on_or_between(search_start - months(3), search_start)
+        medications.date.is_on_or_between(INTERVAL.start_date - months(6), INTERVAL.start_date - months(3))
     ).exists_for_patient()
     )
 
