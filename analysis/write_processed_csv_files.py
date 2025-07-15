@@ -6,6 +6,20 @@ import numpy as np
 
 BASE_DIR = Path(__file__).parents[1]
 
+def get_demographic_table(df_measure_output):
+    """
+    Get the population stratified table for a given measure
+    args:
+    df_measure_output: pd.DataFrame
+        The dataframe containing the rounded & redacted output from the generate-measures action
+    returns:
+        The deciles table for the measure as a pd.DataFrame
+    """
+    demograph_strata = ['by_IMD', 'by_ethnicity', 'by_sex', 'by_region']
+    df_demograph = df_measure_output[df_measure_output['measure'].isin(demograph_strata)]
+    df_demograph = df_demograph[["measure", "interval_start", "ratio", "numerator", 
+                                 "denominator", "IMD", "ethnicity", "sex", "region"]]
+    return df_demograph
 
 def get_deciles_table(df_measure_output):
     """
@@ -156,6 +170,14 @@ def main(output_dir, codelist_path):
         output_dir / f"deciles_table_counts_per_week_per_practice{suffix}.csv",
         index=False,
     )
+
+    # Generate demographic breakdown for original measures
+    if args.test in ['alt', 'chol', 'hba1c', 'hba1c_numeric', 'rbc', 'sodium', 'systol']:
+        demographic_table = get_demographic_table(df)
+        demographic_table.to_csv(
+            output_dir / f"demographic_table_counts_per_week{suffix}.csv",
+            index=False,
+        )
 
     event_counts, top_5_code_table = get_event_counts_and_top_5_codes_tables(
         df, codelist_path
