@@ -217,7 +217,7 @@ measures.define_measure(
 )
 
 # Additional breakdowns for original measures
-demographic_measures = ['alt', 'chol', 'hba1c', 'rbc', 'sodium', 'systol']
+demographic_measures = ['alt', 'chol', 'hba1c', 'hba1c_numeric', 'rbc', 'sodium', 'systol']
 
 if args.test in demographic_measures:
     measures.define_measure(
