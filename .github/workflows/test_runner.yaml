@@ -17,6 +17,6 @@ jobs:
       uses: opensafely-core/research-action@v2
       with:
         actions: generate_processed_data_alt_mtx_ref_tests generate_processed_data_alt_mtx_tests generate_processed_data_alt_tests
-          generate_processed_data_chol_tests generate_processed_data_hba1c_diab_mean_tests generate_processed_data_hba1c_diab_tests
-          generate_processed_data_hba1c_tests generate_processed_data_psa_ref_tests generate_processed_data_psa_tests generate_processed_data_systol_tests
+          generate_processed_data_chol_tests generate_processed_data_hba1c_numeric_diab_mean_tests generate_processed_data_hba1c_numeric_diab_tests
+          generate_processed_data_hba1c_numeric_tests generate_processed_data_psa_ref_tests generate_processed_data_psa_tests generate_processed_data_systol_tests
           generate_processed_data_vit_d_ref_tests generate_processed_data_vit_d_tests
