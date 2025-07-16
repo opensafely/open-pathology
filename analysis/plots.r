@@ -1,3 +1,6 @@
+# USAGE: Rscript analysis/plots.r
+# DEPENDENCY: Requires released data to be stored in format "output/output/[test]/*.csv"
+
 library(ggplot2)
 library(readr)
 library(tidyr)
