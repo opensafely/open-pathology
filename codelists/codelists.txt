@@ -12,3 +12,4 @@ nhsd-primary-care-domain-refsets/dmres_cod/20241205/
 opensafely/ethnicity-snomed-0removed/22911876/
 opensafely/glycated-haemoglobin-hba1c-tests-numerical-value/5134e926/
 opensafely/alanine-aminotransferase-alt-tests-numerical-value/78d4a307/
+opensafely/vitamin-d-level/1032ad60/

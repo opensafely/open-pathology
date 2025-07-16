@@ -1,5 +1,11 @@
 {
   "files": {
+    "opensafely-vitamin-d-level.csv": {
+      "id": "opensafely/vitamin-d-level/1032ad60",
+      "url": "https://www.opencodelists.org/codelist/opensafely/vitamin-d-level/1032ad60/",
+      "downloaded_at": "2025-07-16 11:03:56.759768Z",
+      "sha": "05b3dd85e9c5f8405344e98fcb99ad898939a63c"
+    },
     "opensafely-alanine-aminotransferase-alt-tests-numerical-value.csv": {
       "id": "opensafely/alanine-aminotransferase-alt-tests-numerical-value/78d4a307",
       "url": "https://www.opencodelists.org/codelist/opensafely/alanine-aminotransferase-alt-tests-numerical-value/78d4a307/",
