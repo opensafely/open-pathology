@@ -199,23 +199,37 @@ if 'mean' in args.test:
                     .exists_for_patient())
 
     denominator = denominator & has_codelist_event
-# Remove tests with unreliable numeric values & reference ranges for measures that depend on that field
+
 elif 'ref' in args.test:
+    
+    # Ensure no nulls/proxy nulls in lower bound for vit d
+    if args.test in ['vit_d_ref']:
 
-    numerator = tests_outside_ref
+        has_codelist_event = (events_table.where(
 
-    has_codelist_event = (events_table.where(
                     (events_table.numeric_value.is_not_null()) & 
                     (events_table.numeric_value > 0) &
 
-                    (events_table.upper_bound.is_not_null()) & 
-                    (events_table.upper_bound > 0) &
-                    
                     (events_table.lower_bound.is_not_null()) & 
                     (events_table.lower_bound > 0) 
                     )
                     .exists_for_patient())
+        
+    # Ensure no nulls/proxy nulls in upper bound for psa and alt
+    elif args.test in ['psa_ref', 'alt_mtx_ref']:
 
+        has_codelist_event = (events_table.where(
+
+                    (events_table.numeric_value.is_not_null()) & 
+                    (events_table.numeric_value > 0) &
+
+                    (events_table.upper_bound.is_not_null()) & 
+                    (events_table.upper_bound > 0) 
+                    )
+                    .exists_for_patient())
+        
+    # Adapt numerator/denominator for reference range based measures
+    numerator = tests_outside_ref
     denominator = denominator & has_codelist_event
 
 measures.define_defaults(
