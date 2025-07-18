@@ -23,7 +23,7 @@ actions:
       [generate_measures_alt_tests]
     outputs:
       moderately_sensitive:
-        monthly_tables: output/alt_tests/*per_week_per_practice.csv
+        monthly_tables: output/alt_tests/*table_counts_per_week*.csv
         code_table: output/alt_tests/top_5_code_table.csv
         event_counts_table: output/alt_tests/event_counts.csv
   generate_processed_data_alt_tests_sim:
@@ -72,7 +72,7 @@ actions:
       [generate_measures_chol_tests]
     outputs:
       moderately_sensitive:
-        monthly_tables: output/chol_tests/*per_week_per_practice.csv
+        monthly_tables: output/chol_tests/*table_counts_per_week*.csv
         code_table: output/chol_tests/top_5_code_table.csv
         event_counts_table: output/chol_tests/event_counts.csv
   generate_processed_data_chol_tests_sim:
@@ -121,7 +121,7 @@ actions:
       [generate_measures_hba1c_numeric_tests]
     outputs:
       moderately_sensitive:
-        monthly_tables: output/hba1c_numeric_tests/*per_week_per_practice.csv
+        monthly_tables: output/hba1c_numeric_tests/*table_counts_per_week*.csv
         code_table: output/hba1c_numeric_tests/top_5_code_table.csv
         event_counts_table: output/hba1c_numeric_tests/event_counts.csv
   generate_processed_data_hba1c_numeric_tests_sim:
@@ -170,7 +170,7 @@ actions:
       [generate_measures_rbc_tests]
     outputs:
       moderately_sensitive:
-        monthly_tables: output/rbc_tests/*per_week_per_practice.csv
+        monthly_tables: output/rbc_tests/*table_counts_per_week*.csv
         code_table: output/rbc_tests/top_5_code_table.csv
         event_counts_table: output/rbc_tests/event_counts.csv
   generate_processed_data_rbc_tests_sim:
@@ -219,7 +219,7 @@ actions:
       [generate_measures_sodium_tests]
     outputs:
       moderately_sensitive:
-        monthly_tables: output/sodium_tests/*per_week_per_practice.csv
+        monthly_tables: output/sodium_tests/*table_counts_per_week*.csv
         code_table: output/sodium_tests/top_5_code_table.csv
         event_counts_table: output/sodium_tests/event_counts.csv
   generate_processed_data_sodium_tests_sim:
@@ -268,7 +268,7 @@ actions:
       [generate_measures_systol_tests]
     outputs:
       moderately_sensitive:
-        monthly_tables: output/systol_tests/*per_week_per_practice.csv
+        monthly_tables: output/systol_tests/*table_counts_per_week*.csv
         code_table: output/systol_tests/top_5_code_table.csv
         event_counts_table: output/systol_tests/event_counts.csv
   generate_processed_data_systol_tests_sim:
@@ -317,7 +317,7 @@ actions:
       [generate_measures_vit_d_tests]
     outputs:
       moderately_sensitive:
-        monthly_tables: output/vit_d_tests/*per_week_per_practice.csv
+        monthly_tables: output/vit_d_tests/*table_counts_per_week*.csv
         code_table: output/vit_d_tests/top_5_code_table.csv
         event_counts_table: output/vit_d_tests/event_counts.csv
   generate_processed_data_vit_d_tests_sim:
@@ -366,7 +366,7 @@ actions:
       [generate_measures_vit_d_ref_tests]
     outputs:
       moderately_sensitive:
-        monthly_tables: output/vit_d_ref_tests/*per_week_per_practice.csv
+        monthly_tables: output/vit_d_ref_tests/*table_counts_per_week*.csv
         code_table: output/vit_d_ref_tests/top_5_code_table.csv
         event_counts_table: output/vit_d_ref_tests/event_counts.csv
   generate_processed_data_vit_d_ref_tests_sim:
@@ -415,7 +415,7 @@ actions:
       [generate_measures_psa_tests]
     outputs:
       moderately_sensitive:
-        monthly_tables: output/psa_tests/*per_week_per_practice.csv
+        monthly_tables: output/psa_tests/*table_counts_per_week*.csv
         code_table: output/psa_tests/top_5_code_table.csv
         event_counts_table: output/psa_tests/event_counts.csv
   generate_processed_data_psa_tests_sim:
@@ -464,7 +464,7 @@ actions:
       [generate_measures_psa_ref_tests]
     outputs:
       moderately_sensitive:
-        monthly_tables: output/psa_ref_tests/*per_week_per_practice.csv
+        monthly_tables: output/psa_ref_tests/*table_counts_per_week*.csv
         code_table: output/psa_ref_tests/top_5_code_table.csv
         event_counts_table: output/psa_ref_tests/event_counts.csv
   generate_processed_data_psa_ref_tests_sim:
@@ -513,7 +513,7 @@ actions:
       [generate_measures_hba1c_diab_tests]
     outputs:
       moderately_sensitive:
-        monthly_tables: output/hba1c_diab_tests/*per_week_per_practice.csv
+        monthly_tables: output/hba1c_diab_tests/*table_counts_per_week*.csv
         code_table: output/hba1c_diab_tests/top_5_code_table.csv
         event_counts_table: output/hba1c_diab_tests/event_counts.csv
   generate_processed_data_hba1c_diab_tests_sim:
@@ -562,7 +562,7 @@ actions:
       [generate_measures_hba1c_diab_mean_tests]
     outputs:
       moderately_sensitive:
-        monthly_tables: output/hba1c_diab_mean_tests/*per_week_per_practice.csv
+        monthly_tables: output/hba1c_diab_mean_tests/*table_counts_per_week*.csv
         code_table: output/hba1c_diab_mean_tests/top_5_code_table.csv
         event_counts_table: output/hba1c_diab_mean_tests/event_counts.csv
   generate_processed_data_hba1c_diab_mean_tests_sim:
@@ -611,7 +611,7 @@ actions:
       [generate_measures_alt_mtx_tests]
     outputs:
       moderately_sensitive:
-        monthly_tables: output/alt_mtx_tests/*per_week_per_practice.csv
+        monthly_tables: output/alt_mtx_tests/*table_counts_per_week*.csv
         code_table: output/alt_mtx_tests/top_5_code_table.csv
         event_counts_table: output/alt_mtx_tests/event_counts.csv
   generate_processed_data_alt_mtx_tests_sim:
@@ -660,7 +660,7 @@ actions:
       [generate_measures_alt_mtx_ref_tests]
     outputs:
       moderately_sensitive:
-        monthly_tables: output/alt_mtx_ref_tests/*per_week_per_practice.csv
+        monthly_tables: output/alt_mtx_ref_tests/*table_counts_per_week*.csv
         code_table: output/alt_mtx_ref_tests/top_5_code_table.csv
         event_counts_table: output/alt_mtx_ref_tests/event_counts.csv
   generate_processed_data_alt_mtx_ref_tests_sim:
@@ -688,3 +688,11 @@ actions:
     outputs:
       highly_sensitive:
         population: output/tests/alt_mtx_ref_dataset.csv
+
+  generate_plots:
+    run: >
+      r:latest 
+        analysis/plots.r
+    outputs:
+      moderately_sensitive:
+        plots: output*.png

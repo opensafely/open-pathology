@@ -44,7 +44,7 @@ yaml_template = """
       [generate_measures_{test}_tests]
     outputs:
       moderately_sensitive:
-        monthly_tables: output/{test}_tests/*per_week_per_practice.csv
+        monthly_tables: output/{test}_tests/*table_counts_per_week*.csv
         code_table: output/{test}_tests/top_5_code_table.csv
         event_counts_table: output/{test}_tests/event_counts.csv
   generate_processed_data_{test}_tests_sim:
@@ -85,6 +85,16 @@ for test in tests.keys():
 
     yaml_body += yaml_template.format(test = test)
 
-yaml = yaml_header + yaml_body
+yaml_plots = """
+  generate_plots:
+    run: >
+      r:latest 
+        analysis/plots.r
+    outputs:
+      moderately_sensitive:
+        plots: output*.png
+"""
+
+yaml = yaml_header + yaml_body + yaml_plots
 with open("project.yaml", "w") as file:
        file.write(yaml)

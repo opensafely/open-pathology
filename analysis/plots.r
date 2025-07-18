@@ -1,15 +1,44 @@
+# This script generates decile charts for all pathology tests
 # USAGE: Rscript analysis/plots.r
-# DEPENDENCY: Requires released data to be stored in format "output/output/[test]/*.csv"
+# ARGS: --released: Alters the file path to a nested folder containing released data. 
+#                   Requires released data to be stored in format "output/output/[test]/*.csv"
+#       --sim: Uses simulated data, needed when testing locally
 
 library(ggplot2)
 library(readr)
 library(tidyr)
 library(dplyr)
 library(glue)
+library(optparse)
+
+# ------ Configuration ---------------------------------------------------------------------
+
+# Define option list
+option_list <- list(
+  make_option("--released", action = "store_true", default = FALSE, 
+              help = "Uses data located in released folder"),
+  make_option("--sim", action = "store_true", default = FALSE, 
+              help = "Uses simulated data, needed when testing locally")            
+)
+
+# Parse arguments
+opt <- parse_args(OptionParser(option_list = option_list))
+
+if (opt$released){
+  path = "output/output" # path of released data
+} else {
+  path = "output"
+}
+if (opt$sim){
+  sim = "_sim"
+} else {
+  sim = ""
+}
 
 # Extract list of test names based on folder names in output folder
-tests <- list.dirs("output/output", full.names = FALSE, recursive = FALSE)
-print(tests)
+tests <- list.dirs(path, full.names = FALSE, recursive = FALSE)
+
+# ------ Plotting ---------------------------------------------------------------------
 
 # Iterate over all tests
 for(test in tests){
@@ -19,7 +48,15 @@ for(test in tests){
     y_axis = 'Rate per 1000'
   }
 
-  df <- read_csv(glue("output/output/{test}/deciles_table_counts_per_week_per_practice.csv"))
+  # Construct file path
+  file_path <- glue("{path}/{test}/deciles_table_counts_per_week_per_practice{sim}.csv")
+  
+  # Skip iteration if file doesn't exist
+  if (!file.exists(file_path)) {
+    message(glue("Skipping {test} - file not found"))
+    next
+  }
+  df <- read_csv(file_path)
 
   # Filter only deciles (0, 10, ..., 100)
   df <- filter(df, percentile %in% seq(1, 100, by = 1))  # keep all for now
@@ -57,5 +94,5 @@ for(test in tests){
       axis.text.x = element_text(angle = 45, hjust = 1)
     )
 
-  ggsave(glue("output/output/{test}/plot.png"))
+  ggsave(glue("{path}/{test}/plot{sim}.png"))
 }
