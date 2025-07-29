@@ -10,6 +10,8 @@ library(tidyr)
 library(dplyr)
 library(glue)
 library(optparse)
+library(lubridate)
+library(patchwork)
 
 # ------ Configuration ---------------------------------------------------------------------
 
@@ -42,6 +44,9 @@ tests <- list.dirs(path, full.names = FALSE, recursive = FALSE)
 
 # Iterate over all tests
 for(test in tests){
+
+  # ----- Generate decile plots ------------------------------------
+
   if(test == 'hba1c_diab_mean_tests'){
     y_axis = 'Mean HbA1c (mmol/mol)'
   } else{
@@ -76,7 +81,7 @@ for(test in tests){
                           levels = c("1st–9th, 91st–99th percentile", "decile", "median"))
 
   # Plot
-  ggplot(df, aes(x = date, y = value, group = percentile, linetype = line_group)) +
+  decile_plot <- ggplot(df, aes(x = date, y = value, group = percentile, linetype = line_group)) +
     geom_line(color = "black", linewidth = 0.6) +
     scale_linetype_manual(
       values = c("1st–9th, 91st–99th percentile" = "dotted",
@@ -94,5 +99,57 @@ for(test in tests){
       axis.text.x = element_text(angle = 45, hjust = 1)
     )
 
-  ggsave(glue("{path}/{test}/plot{sim}.png"))
+  ggsave(glue("{path}/{test}/plot{sim}.png"), decile_plot)
+
+  # ----- Generate demograph plots ------------------------------------
+
+  # Construct file path
+  file_path <- glue("{path}/{test}/demographic_table_counts_per_week{sim}.csv")
+  
+  # Skip iteration if file doesn't exist
+  if (!file.exists(file_path)) {
+    message(glue("Skipping {test} demograph breakdown - file not found"))
+    next
+  }
+  df <- read_csv(file_path)
+
+  # Process data
+  df <- df %>% mutate(interval_start = as.Date(interval_start))
+  df$ratio <- df$ratio * 1000
+  df$ethnicity <- recode(df$ethnicity, "1" = "White", "2" = "Mixed", "3" = "Asian or Asian British",
+                          "4" = "Black or Black British", "5" = "Chinese or Other Ethnic Group")
+
+  # One plot per measure using color instead of facets
+  p_region <- df %>%
+    filter(measure == "by_region" & !is.na(region)) %>%
+    ggplot(aes(x = interval_start, y = ratio, color = region)) +
+    geom_line() +
+    labs(title = "By Region", x = NULL, y = "Rate per 1000")
+
+  p_ethnicity <- df %>%
+    filter(measure == "by_ethnicity" & !is.na(ethnicity)) %>%
+    ggplot(aes(x = interval_start, y = ratio, color = as.factor(ethnicity))) +
+    geom_line() +
+    labs(title = "By Ethnicity", x = NULL, y = "Rate per 1000", color = "Ethnicity")
+
+  p_imd <- df %>%
+    filter(measure == "by_IMD" & !is.na(IMD)) %>%
+    ggplot(aes(x = interval_start, y = ratio, color = as.factor(IMD))) +
+    geom_line() +
+    labs(title = "By IMD", x = NULL, y = "Rate per 1000", color = "IMD Quintile")
+
+  p_sex <- df %>%
+    filter(measure == "by_sex" & !is.na(sex)) %>%
+    ggplot(aes(x = interval_start, y = ratio, color = sex)) +
+    geom_line() +
+    labs(title = "By Sex", x = NULL, y = "Rate per 1000")
+
+  # Combine plots using patchwork (2 rows)
+  demograph_plot <- (p_region | p_ethnicity) /
+                 (p_imd | p_sex) + 
+                 plot_annotation(
+                  title = glue("Rate of {test}"),
+  )
+
+  ggsave(glue("{path}/{test}/demograph_plot{sim}.png"), demograph_plot, width = 20, height = 12)
 }
