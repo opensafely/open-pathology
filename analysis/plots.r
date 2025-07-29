@@ -57,49 +57,49 @@ for(test in tests){
   file_path <- glue("{path}/{test}/deciles_table_counts_per_week_per_practice{sim}.csv")
   
   # Skip iteration if file doesn't exist
-  if (!file.exists(file_path)) {
+  if (file.exists(file_path)) {
+    
     message(glue("Skipping {test} - file not found"))
-    next
-  }
-  df <- read_csv(file_path)
+    df <- read_csv(file_path)
 
-  # Filter only deciles (0, 10, ..., 100)
-  df <- filter(df, percentile %in% seq(1, 100, by = 1))  # keep all for now
+    # Filter only deciles (0, 10, ..., 100)
+    df <- filter(df, percentile %in% seq(1, 100, by = 1))  # keep all for now
 
-  # Create a group variable for linetype/legend
-  df <- df %>%
-    mutate(
-      line_group = case_when(
-        percentile == 50 ~ "median",
-        percentile %% 10 == 0 ~ "decile",
-        TRUE ~ "1st–9th, 91st–99th percentile"
+    # Create a group variable for linetype/legend
+    df <- df %>%
+      mutate(
+        line_group = case_when(
+          percentile == 50 ~ "median",
+          percentile %% 10 == 0 ~ "decile",
+          TRUE ~ "1st–9th, 91st–99th percentile"
+        )
       )
-    )
 
-  # Convert to factor to control legend order
-  df$line_group <- factor(df$line_group,
-                          levels = c("1st–9th, 91st–99th percentile", "decile", "median"))
+    # Convert to factor to control legend order
+    df$line_group <- factor(df$line_group,
+                            levels = c("1st–9th, 91st–99th percentile", "decile", "median"))
 
-  # Plot
-  decile_plot <- ggplot(df, aes(x = date, y = value, group = percentile, linetype = line_group)) +
-    geom_line(color = "black", linewidth = 0.6) +
-    scale_linetype_manual(
-      values = c("1st–9th, 91st–99th percentile" = "dotted",
-                "decile" = "dashed",
-                "median" = "solid")
-    ) +
-    labs(
-      title=glue("Rate of {test}"),
-      x = "Interval start",
-      y = y_axis,
-      linetype = NULL
-    ) +
-    theme(
-      legend.position = "bottom",
-      axis.text.x = element_text(angle = 45, hjust = 1)
-    )
+    # Plot
+    decile_plot <- ggplot(df, aes(x = date, y = value, group = percentile, linetype = line_group)) +
+      geom_line(color = "black", linewidth = 0.6) +
+      scale_linetype_manual(
+        values = c("1st–9th, 91st–99th percentile" = "dotted",
+                  "decile" = "dashed",
+                  "median" = "solid")
+      ) +
+      labs(
+        title=glue("Rate of {test}"),
+        x = "Interval start",
+        y = y_axis,
+        linetype = NULL
+      ) +
+      theme(
+        legend.position = "bottom",
+        axis.text.x = element_text(angle = 45, hjust = 1)
+      )
 
-  ggsave(glue("{path}/{test}/plot{sim}.png"), decile_plot)
+    ggsave(glue("{path}/{test}/plot{sim}.png"), decile_plot)
+  }
 
   # ----- Generate demograph plots ------------------------------------
 
