@@ -31,27 +31,29 @@ def num_months(from_, to_):
 is_alive = patients.is_alive_on(study_start_date)
 age = patients.age_on(study_start_date)
 is_adult = (age >= 18) & (age < 120)
-registration = registrations.for_patient_on(study_start_date)
-is_registered = registration.exists_for_patient()
+# Registered at the start of the interval and
+# only include practices that became TPP before the interval being measured
+is_registered = (registrations.exists_for_patient_on(study_start_date) & 
+                  registrations.where(
+                    registrations.practice_systmone_go_live_date <= study_start_date
+                    ).exists_for_patient())
+
 is_sex_recorded = patients.sex.is_in(["male", "female"])
 is_male = patients.sex.is_in(["male"])
 
-# Codelist and search period setup
+# Configuration
 # --------------------------------------------------------------------------------------
 
 search_start = study_start_date
 
-if args.test in ['vit_d_ref']:
-    is_outside_ref = ranges.numeric_value < ranges.lower_bound
-    search_start = study_start_date
-elif args.test in ['psa_ref']:
-    is_outside_ref = ranges.numeric_value > ranges.upper_bound
-    search_start = study_start_date
-#elif args.test in ['alt_mtx_ref', 'alt_mtx']:
-is_outside_ref = ranges.numeric_value > ranges.upper_bound
-#search_start = study_start_date - months(3)
+# Change intervals for alt mtx in 3 months and hba1c diab in 6 months
+if args.test == 'alt_mtx':
+    # Tests in last 3 months would include the specified month (e.g. Interval starting on April = {April, March, February})
+    search_start = study_end_date - months(3)
+elif args.test == 'hba1c_diab':
+    search_start = study_end_date - months(6)
 
-# Codelists
+# Filter to codelist events
 # --------------------------------------------------------------------------------------
 
 # Use clinical_events table instead of clinical_events_ranges (unless ref ranges needed)
@@ -67,8 +69,9 @@ if 'alt' in args.test:
     # Use numeric alt codelist for reference range measure
     if 'ref' in args.test:
         codelist_path = codelists['alt_numeric']
+    else: 
+        codelist_path = codelists['alt']
 
-    codelist_path = codelists['alt']
 # hb1c_numeric codelist is needed to remove misleading % value from mean calculation
 elif 'hba1c' in args.test:
     codelist_path = codelists['hba1c_numeric']
@@ -81,20 +84,42 @@ codelist_events = events_table.where(
     # Use 'search_start' to adapt interval start date for longer searches (e.g. last 3 months for alt with methotrexate)
     events_table.date.is_on_or_between(search_start, study_end_date)
 )
-print(codelist_events)
-has_codelist_event = codelist_events.exists_for_patient()
-last_codelist_event = codelist_events.sort_by(codelist_events.date).last_for_patient()
 
-# Conditions
+# Quality Assurance
 # --------------------------------------------------------------------------------------
 
-# Define tests outside reference range
-if 'ref' in args.test:
+# Apply QA on numeric value when calculating mean or reference ranges
+if ('mean' in args.test) | ('ref' in args.test):
 
-    tests_outside_ref = codelist_events.where(
-        codelist_events.exists_for_patient() & 
-        is_outside_ref
-    ).exists_for_patient()
+    codelist_events = codelist_events.where(
+                        (codelist_events.numeric_value.is_not_null()) & 
+                        (codelist_events.numeric_value > 0))
+
+    if 'ref' in args.test:
+
+        # Apply additional QA on upper/lower bound for reference ranges
+        if args.test == 'vit_d_ref':
+            
+            is_outside_ref = codelist_events.numeric_value < codelist_events.lower_bound
+
+            codelist_events = codelist_events.where(
+                        (codelist_events.lower_bound.is_not_null()) & 
+                        (codelist_events.lower_bound > 0) 
+                        )
+            
+        elif args.test in ['psa_ref', 'alt_mtx_ref']:
+
+            is_outside_ref = codelist_events.numeric_value > codelist_events.upper_bound
+
+            codelist_events = codelist_events.where(
+                        (codelist_events.upper_bound.is_not_null()) & 
+                        (codelist_events.upper_bound > 0) 
+                        )
+            
+        tests_outside_ref = codelist_events.where(is_outside_ref).exists_for_patient()
+        
+# Defining subpopulations
+# --------------------------------------------------------------------------------------
 
 # Define methotrexate patients
 if 'mtx' in args.test:
@@ -105,12 +130,12 @@ if 'mtx' in args.test:
     has_mtx_rx = (
         medications.where(
         medications.dmd_code.is_in(codelist_mtx) & 
-        medications.date.is_on_or_between(study_start_date - months(3), study_start_date)
+        medications.date.is_on_or_between(study_start_date - months(3), study_end_date)
     ).exists_for_patient()
     ) & (
-        medications.where(
-        medications.dmd_code.is_in(codelist_mtx) & 
-        medications.date.is_on_or_between(study_start_date - months(6), study_start_date - months(3))
+       medications.where(
+       medications.dmd_code.is_in(codelist_mtx) & 
+       medications.date.is_on_or_between(study_start_date - months(6), study_start_date - months(3))
     ).exists_for_patient()
     )
 
@@ -128,11 +153,13 @@ if 'diab' in args.test:
     is_diabetic = (
         ((dmlate_date > dmreso_date) | dmreso_date.is_null()) 
         & dmlate_date.is_not_null()
-    ) 
+    )    
 
-    # Latest hba1c values for each patient, rounded down to nearest integer
-    numeric_value = codelist_events.sort_by(events.date).last_for_patient().numeric_value.as_int()    
+# Defining Measures
+# --------------------------------------------------------------------------------------
 
+has_codelist_event = codelist_events.exists_for_patient()
+last_codelist_event = codelist_events.sort_by(codelist_events.date).last_for_patient()
 
 numerator = has_codelist_event
 # When testing, add has_codelist_event to denominator 
@@ -147,58 +174,20 @@ elif 'mtx' in args.test:
 elif 'hba1c_diab' in args.test:
     denominator = denominator & is_diabetic
 
-# Remove tests with unreliable numeric values for measures that depend on that field
-if 'mean' in args.test:
-    
-    numerator = numeric_value
+# Add test taken as requirement to denominator reference range measures
+if 'ref' in args.test:
 
-    has_codelist_event = (codelist_events.where(
-                    (codelist_events.numeric_value.is_not_null()) & 
-                    (codelist_events.numeric_value > 0))
-                    .exists_for_patient())
-
-    denominator = denominator & has_codelist_event
-    
-# Remove tests with unreliable numeric values & reference ranges for measures that depend on that field
-elif 'ref' in args.test:
-    
-    # Ensure no nulls/proxy nulls in lower bound for vit d
-    if args.test in ['vit_d_ref']:
-
-        has_codelist_event = (events_table.where(
-
-                    (events_table.numeric_value.is_not_null()) & 
-                    (events_table.numeric_value > 0) &
-
-                    (events_table.lower_bound.is_not_null()) & 
-                    (events_table.lower_bound > 0) 
-                    )
-                    .exists_for_patient())
-        
-    # Ensure no nulls/proxy nulls in upper bound for psa and alt
-    elif args.test in ['psa_ref', 'alt_mtx_ref']:
-
-        has_codelist_event = (events_table.where(
-
-                    (events_table.numeric_value.is_not_null()) & 
-                    (events_table.numeric_value > 0) &
-
-                    (events_table.upper_bound.is_not_null()) & 
-                    (events_table.upper_bound > 0) 
-                    )
-                    .exists_for_patient())
-        
-    # Adapt numerator/denominator for reference range based measures
     numerator = tests_outside_ref
+    denominator = denominator & has_codelist_event
+
+# For mean, sum(numeric_value) / sum(patients who had a test) = mean value of tests (ratio column)
+if 'mean' in args.test:
+
+    # Latest values for each patient, rounded down to nearest integer
+    numerator = codelist_events.sort_by(events.date).last_for_patient().numeric_value.as_int() 
     denominator = denominator & has_codelist_event
 
 dataset.define_population(denominator)
 
-# Output columns depending on the test type
-if 'mean' in args.test:
-    dataset.mean = numeric_value
-elif 'ref' in args.test:
-    dataset.tests_outside_ref = tests_outside_ref
-else:
-    dataset.has_codelist_event = has_codelist_event
+dataset.numerator = numerator
 

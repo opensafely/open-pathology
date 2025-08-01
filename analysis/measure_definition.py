@@ -10,6 +10,7 @@ from config import codelists
 # Parse input test choice
 parser = argparse.ArgumentParser()
 parser.add_argument("--test")
+parser.add_argument("--light", action= 'store_true')
 args = parser.parse_args()
 
 start_date = date(2018, 4, 1)
@@ -37,8 +38,12 @@ is_alive = patients.is_alive_on(INTERVAL.start_date)
 age = patients.age_on(INTERVAL.start_date)
 is_adult = (age >= 18) & (age < 120)
 
-registration = registrations.for_patient_on(INTERVAL.start_date)
-is_registered = registration.exists_for_patient()
+# Registered at the start of the interval and
+# only include practices that became TPP before the interval being measured
+is_registered = (registrations.exists_for_patient_on(INTERVAL.start_date) & 
+                  registrations.where(
+                    registrations.practice_systmone_go_live_date <= INTERVAL.start_date
+                    ).exists_for_patient())
 
 is_sex_recorded = patients.sex.is_in(["male", "female"])
 
@@ -185,7 +190,11 @@ if 'diab' in args.test:
 measures = Measures()
 measures.configure_dummy_data(population_size=10, legacy=True)
 measures.configure_disclosure_control(enabled=True)
-intervals = months(num_months(start_date, date.today())).starting_on(start_date)
+if args.light == True:
+    # Run a single year for test run
+    intervals = months(12).starting_on(start_date)
+else:
+    intervals = months(num_months(start_date, date.today())).starting_on(start_date)
 
 has_codelist_event = codelist_events.exists_for_patient()
 last_codelist_event = codelist_events.sort_by(codelist_events.date).last_for_patient()
@@ -224,8 +233,9 @@ measures.define_defaults(
 
 measures.define_measure(
     name="by_practice",
-    group_by={"practice": registration.practice_pseudo_id},
+    group_by={"practice": registrations.for_patient_on(INTERVAL.start_date).practice_pseudo_id}
 )
+
 measures.define_measure(
     name="by_snomedct_code",
     group_by={"snomedct_code": last_codelist_event.snomedct_code},
