@@ -10,6 +10,7 @@ from config import codelists
 # Parse input test choice
 parser = argparse.ArgumentParser()
 parser.add_argument("--test")
+parser.add_argument("--light", action= 'store_true')
 args = parser.parse_args()
 
 start_date = date(2018, 4, 1)
@@ -189,7 +190,11 @@ if 'diab' in args.test:
 measures = Measures()
 measures.configure_dummy_data(population_size=10, legacy=True)
 measures.configure_disclosure_control(enabled=True)
-intervals = months(num_months(start_date, date.today())).starting_on(start_date)
+if args.light == True:
+    # Run a single year for test run
+    intervals = months(12).starting_on(start_date)
+else:
+    intervals = months(num_months(start_date, date.today())).starting_on(start_date)
 
 has_codelist_event = codelist_events.exists_for_patient()
 last_codelist_event = codelist_events.sort_by(codelist_events.date).last_for_patient()
