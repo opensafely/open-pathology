@@ -25,7 +25,7 @@ test_data_options = {
         ],
         "expected_in_population": True,
         "expected_columns": {
-            "tests_outside_ref": True,
+            "numerator": True,
         },
     },
     # Vit d inside ref
@@ -48,7 +48,7 @@ test_data_options = {
         ],
         "expected_in_population": True,
         "expected_columns": {
-            "tests_outside_ref": False,
+            "numerator": False,
         },
     },
     3: {  # PSA outside ref
@@ -70,7 +70,7 @@ test_data_options = {
         ],
         "expected_in_population": True,
         "expected_columns": {
-            "tests_outside_ref": True,
+            "numerator": True,
         },
     },
     4: {  # PSA inside ref
@@ -92,7 +92,7 @@ test_data_options = {
         ],
         "expected_in_population": True,
         "expected_columns": {
-            "tests_outside_ref": False,
+            "numerator": False,
         },
     },
     5: {  # alt-mtx-ref within 1 months inside ref
@@ -118,7 +118,7 @@ test_data_options = {
         ],
         "expected_in_population": True,
         "expected_columns": {
-            "tests_outside_ref": False,
+            "numerator": False,
         },
     },
     6: {  # alt-mtx-ref outside 3 months inside ref
@@ -141,7 +141,7 @@ test_data_options = {
         ],
         "expected_in_population": False,
         "expected_columns": {
-            "tests_outside_ref": False,
+            "numerator": False,
         },
     },
     7: {  # alt-mtx-ref within 1 months, proxy null lower bound
@@ -167,7 +167,7 @@ test_data_options = {
         ],
         "expected_in_population": True,
         "expected_columns": {
-            "tests_outside_ref": False,
+            "numerator": False,
         },
     },
     8: {  # alt-mtx-ref within 1 months, proxy null upper bound
@@ -193,7 +193,7 @@ test_data_options = {
         ],
         "expected_in_population": False,
         "expected_columns": {
-            "tests_outside_ref": False,
+            "numerator": False,
         },
     },
     9: {  # hba1c_diab_mean numeric_value within 1 months
@@ -213,7 +213,7 @@ test_data_options = {
         ],
         "expected_in_population": True,
         "expected_columns": {
-            "mean": 4,
+            "numerator": 4,
         },
     },
     10: {  # hba1c_diab numeric_value outside 6 months
@@ -235,7 +235,7 @@ test_data_options = {
         ],
         "expected_in_population": True,
         "expected_columns": {
-            "has_codelist_event": False,
+            "numerator": False,
         },
     },
     11: {  # Negative control
