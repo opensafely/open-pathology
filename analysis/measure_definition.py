@@ -38,12 +38,8 @@ is_alive = patients.is_alive_on(INTERVAL.start_date)
 age = patients.age_on(INTERVAL.start_date)
 is_adult = (age >= 18) & (age < 120)
 
-# Registered at the start of the interval and
-# only include practices that became TPP before the interval being measured
-is_registered = (registrations.exists_for_patient_on(INTERVAL.start_date) & 
-                  registrations.where(
-                    registrations.practice_systmone_go_live_date <= INTERVAL.start_date
-                    ).exists_for_patient())
+# Registered at the start of the interval 
+is_registered = registrations.exists_for_patient_on(INTERVAL.start_date)
 
 is_sex_recorded = patients.sex.is_in(["male", "female"])
 
