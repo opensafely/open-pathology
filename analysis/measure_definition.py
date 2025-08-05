@@ -189,7 +189,13 @@ if 'diab' in args.test:
 
 measures = Measures()
 measures.configure_dummy_data(population_size=10, legacy=True)
-measures.configure_disclosure_control(enabled=True)
+
+# Disable rounding & redaction for reference range measures & vit d
+if ('ref' in args.test) | ('vit_d' in args.test):
+    measures.configure_disclosure_control(enabled=False)
+else:
+    measures.configure_disclosure_control(enabled=True)
+
 if args.light == True:
     # Run a single year for test run
     intervals = months(12).starting_on(start_date)
