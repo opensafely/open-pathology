@@ -128,8 +128,17 @@ class OSJobsRepository:
         )
 
     def list(self):
-        """List the names of all the measures in the repository."""
-        return sorted(self._records.keys())
+        """
+        List the names of all the measures in the repository.
+        Pathology measures are listed first alphabetically, followed by other measures alphabetically.
+        """
+        pathology_measures = [
+            name for name, record in self._records.items() if record["is_pathology"]
+        ]
+        other_measures = [
+            name for name, record in self._records.items() if not record["is_pathology"]
+        ]
+        return sorted(pathology_measures) + sorted(other_measures)
 
 
 def _get_counts(counts_table_url):
