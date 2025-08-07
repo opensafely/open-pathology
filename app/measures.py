@@ -17,6 +17,7 @@ MEDIAN = "Median"
 @dataclasses.dataclass
 class Measure:
     name: str
+    is_pathology: bool
     explanation: str
     caveats: str
     classification: str
@@ -116,6 +117,7 @@ class OSJobsRepository:
 
         return Measure(
             name,
+            record["is_pathology"],
             record["explanation"],
             record["caveats"],
             record["classification"],
