@@ -38,12 +38,8 @@ is_alive = patients.is_alive_on(INTERVAL.start_date)
 age = patients.age_on(INTERVAL.start_date)
 is_adult = (age >= 18) & (age < 120)
 
-# Registered at the start of the interval and
-# only include practices that became TPP before the interval being measured
-is_registered = (registrations.exists_for_patient_on(INTERVAL.start_date) & 
-                  registrations.where(
-                    registrations.practice_systmone_go_live_date <= INTERVAL.start_date
-                    ).exists_for_patient())
+# Registered at the start of the interval 
+is_registered = registrations.exists_for_patient_on(INTERVAL.start_date)
 
 is_sex_recorded = patients.sex.is_in(["male", "female"])
 
@@ -189,7 +185,13 @@ if 'diab' in args.test:
 
 measures = Measures()
 measures.configure_dummy_data(population_size=10, legacy=True)
-measures.configure_disclosure_control(enabled=True)
+
+# Disable rounding & redaction for reference range measures & vit d
+if ('ref' in args.test) | ('vit_d' in args.test):
+    measures.configure_disclosure_control(enabled=False)
+else:
+    measures.configure_disclosure_control(enabled=True)
+
 if args.light == True:
     # Run a single year for test run
     intervals = months(12).starting_on(start_date)
