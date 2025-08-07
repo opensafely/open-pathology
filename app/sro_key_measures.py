@@ -9,9 +9,7 @@ def get_repository():
 def main():
     repository = get_repository()
 
-    selected_measure_name = streamlit.selectbox(
-        "Select a measure:", repository.list(), index=0
-    )
+    selected_measure_name = streamlit.selectbox("Select a measure:", repository.list())
 
     measure = repository.get(selected_measure_name)
 
