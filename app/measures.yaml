@@ -28,7 +28,7 @@
   classification: recovery
   codelist_url: https://www.opencodelists.org/codelist/opensafely/cholesterol-tests/0f1b2a4c/
   counts_table_url: https://jobs.opensafely.org/service-restoration-observatory/sro-key-measures-dashboard/published/01GGZ12745NSRAF6CSV2Y5587V/
-  top_5_codes_table_url: https://jobs.opensafely.org/service-restoration-observatory/sro-key-measures-dashboard/published/01GGWFEGMZPFNMFFPNJ0Q7AQW0/
+  top_5_codes_table_url: https://jobs.opensafely.org/service-restoration-observatory/sro-key-measures-dashboard/published/01GGWFEGN5YJM0VRCGQ979B68K/
   deciles_table_url: https://jobs.opensafely.org/service-restoration-observatory/sro-key-measures-dashboard/published/01GGZ1273GGXHAVCHAWF9MZMPY/
 
 - name: Liver Function - Alanine Transferaminase (ALT) testing rate
