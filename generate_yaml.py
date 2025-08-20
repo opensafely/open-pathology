@@ -55,7 +55,8 @@ yaml_template = """
       [generate_measures_{test}_tests]
     outputs:
       moderately_sensitive:
-        monthly_tables: output/{test}_tests/*table_counts_per_week*.csv
+        monthly_tables: output/{test}_tests/*table_counts_per_month*.csv
+        expanded_deciles: output/{test}_tests/*expanded_deciles_table*.csv
         code_table: output/{test}_tests/top_5_code_table.csv
         event_counts_table: output/{test}_tests/event_counts.csv
   generate_processed_data_{test}_tests_light:
@@ -69,7 +70,7 @@ yaml_template = """
       [generate_measures_{test}_tests_light]
     outputs:
       moderately_sensitive:
-        monthly_tables: output/{test}_tests/*per_week_per_practice_light.csv
+        monthly_tables: output/{test}_tests/*per_month_light.csv
         code_table: output/{test}_tests/top_5_code_table_light.csv
         event_counts_table: output/{test}_tests/event_counts_light.csv
   generate_dataset_test_{test}:

@@ -1,3 +1,10 @@
+# Usage: python analysis/write_processed_csv_files.py
+# Options:
+# --output-dir [path]  Specify output directory
+# --test [test]   Choose pathology test e.g. chol
+# --light   Imports light version of measures dataset (1 year)
+# --sim     Generates simulated, non-zero data for local development testing
+
 import argparse
 from pathlib import Path
 from config import codelists
@@ -36,28 +43,40 @@ def get_deciles_table(df_measure_output):
 
     df_practice = df_measure_output.loc[
         df_measure_output["measure"] == "by_practice",
-        ["interval_start", "ratio", "practice"],
+        ["interval_start", "ratio", "practice", "numerator", "denominator"],
     ]
-
+    
     # Remove practices that have zero events during the study period
     df_practice = df_practice.loc[~df_practice["ratio"].isna()]
 
     df_quantiles = (
         df_practice.groupby("interval_start")["ratio"]
         .quantile(percentiles / 100, interpolation="nearest")
-        .reset_index(name="value")
+        .reset_index(name="ratio")
     )
 
     df_quantiles = df_quantiles.rename(
         columns={"interval_start": "date", "level_1": "percentile"}
     )
+    df_practice = df_practice.rename(
+        columns={"interval_start": "date"}
+    )
     df_quantiles["percentile"] = (df_quantiles["percentile"] * 100).astype(int)
 
     # Rate per 1000 patients (if we're calculating a rate and not a mean)
     if 'mean' not in args.test:
-        df_quantiles["value"] = df_quantiles["value"] * 1000 
+        df_quantiles["ratio"] = df_quantiles["ratio"] * 1000 
+        df_practice["ratio"] = df_practice["ratio"] * 1000 
 
-    return df_quantiles
+    # Generate supplementary table showing rounded counts at each percentile (SDC)
+    expanded_deciles_df = df_quantiles.merge(
+        df_practice,
+        left_on=["date", "ratio"],
+        right_on=["date", "ratio"],
+        how="left")
+    expanded_deciles_df = expanded_deciles_df.drop(columns=["practice"])
+
+    return df_quantiles, expanded_deciles_df
 
 
 def get_event_counts_and_top_5_codes_tables(df_measure_output, codelist_path):
@@ -169,9 +188,13 @@ def main(output_dir, codelist_path):
 
     df["practice"] = df["practice"].astype("Int64")
 
-    deciles_table = get_deciles_table(df)
+    deciles_table, expanded_deciles_df = get_deciles_table(df)
     deciles_table.to_csv(
-        output_dir / f"deciles_table_counts_per_week_per_practice{suffix}.csv",
+        output_dir / f"deciles_table_counts_per_month{suffix}.csv",
+        index=False,
+    )
+    expanded_deciles_df.to_csv(
+        output_dir / f"expanded_deciles_table{suffix}.csv",
         index=False,
     )
 
