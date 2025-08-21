@@ -44,7 +44,7 @@ def get_deciles_table(df_measure_output):
 
     df_quantiles = (
         df_practice.groupby("interval_start")["ratio"]
-        .quantile(percentiles / 100)
+        .quantile(percentiles / 100, interpolation="nearest")
         .reset_index(name="value")
     )
 
@@ -153,14 +153,18 @@ def main(output_dir, codelist_path):
     codelist_path: string
         The path to the codelist
     """
-    df = pd.read_feather(output_dir / "measures.arrow")
 
     if args.sim:
+        df = pd.read_feather(output_dir / "measures.arrow")
         df['numerator'] = np.random.randint(0, 500, size = len(df))
         df['denominator'] = np.random.randint(500, 1000, size = len(df))
         df['ratio'] = df['numerator'] / df['denominator']
         suffix = '_sim'
+    elif args.light:
+        df = pd.read_feather(output_dir / "measures_light.arrow")
+        suffix = '_light'
     else:
+        df = pd.read_feather(output_dir / "measures.arrow")
         suffix = ''
 
     df["practice"] = df["practice"].astype("Int64")
@@ -195,6 +199,7 @@ if __name__ == "__main__":
     parser.add_argument("--test")
     parser.add_argument("--output-dir")
     parser.add_argument("--sim", action = 'store_true')
+    parser.add_argument("--light", action = 'store_true')
     args = parser.parse_args()
 
     # Specify test for cases that use multiple codelists e.g. hba1c_diabetes

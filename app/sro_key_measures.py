@@ -2,15 +2,19 @@ import measures
 import streamlit
 
 
-@streamlit.cache_resource
 def get_repository():
-    return measures.OSJobsRepository()
+    workspace = measures.OSJobsWorkspace(
+        "api/v2/workspaces/sro-key-measures-dashboard/snapshots/31"
+    )
+    return measures.OSJobsRepository(workspace.get_file_urls())
 
 
 def main():
     repository = get_repository()
 
-    selected_measure_name = streamlit.selectbox("Select a measure:", repository.list())
+    selected_measure_name = streamlit.selectbox(
+        "Select a measure:", repository.list(), index=0
+    )
 
     measure = repository.get(selected_measure_name)
 

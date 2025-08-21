@@ -13,6 +13,17 @@ actions:
     outputs:
       highly_sensitive:
         measures: output/alt_tests/measures.arrow
+  generate_measures_alt_tests_light:
+    run: >
+      ehrql:v1 generate-measures
+        analysis/measure_definition.py
+        --output output/alt_tests/measures_light.arrow
+        --
+        --test alt
+        --light
+    outputs:
+      highly_sensitive:
+        measures: output/alt_tests/measures_light.arrow
   generate_processed_data_alt_tests:
     run: >
       python:latest 
@@ -26,20 +37,20 @@ actions:
         monthly_tables: output/alt_tests/*table_counts_per_week*.csv
         code_table: output/alt_tests/top_5_code_table.csv
         event_counts_table: output/alt_tests/event_counts.csv
-  generate_processed_data_alt_tests_sim:
+  generate_processed_data_alt_tests_light:
     run: >
       python:latest 
         analysis/write_processed_csv_files.py
         --output-dir output/alt_tests
         --test alt
-        --sim
+        --light
     needs:
-      [generate_measures_alt_tests]
+      [generate_measures_alt_tests_light]
     outputs:
       moderately_sensitive:
-        monthly_tables: output/alt_tests/*per_week_per_practice_sim.csv
-        code_table: output/alt_tests/top_5_code_table_sim.csv
-        event_counts_table: output/alt_tests/event_counts_sim.csv
+        monthly_tables: output/alt_tests/*per_week_per_practice_light.csv
+        code_table: output/alt_tests/top_5_code_table_light.csv
+        event_counts_table: output/alt_tests/event_counts_light.csv
   generate_dataset_test_alt:
     run: >
         ehrql:v1 generate-dataset
@@ -62,6 +73,17 @@ actions:
     outputs:
       highly_sensitive:
         measures: output/chol_tests/measures.arrow
+  generate_measures_chol_tests_light:
+    run: >
+      ehrql:v1 generate-measures
+        analysis/measure_definition.py
+        --output output/chol_tests/measures_light.arrow
+        --
+        --test chol
+        --light
+    outputs:
+      highly_sensitive:
+        measures: output/chol_tests/measures_light.arrow
   generate_processed_data_chol_tests:
     run: >
       python:latest 
@@ -75,20 +97,20 @@ actions:
         monthly_tables: output/chol_tests/*table_counts_per_week*.csv
         code_table: output/chol_tests/top_5_code_table.csv
         event_counts_table: output/chol_tests/event_counts.csv
-  generate_processed_data_chol_tests_sim:
+  generate_processed_data_chol_tests_light:
     run: >
       python:latest 
         analysis/write_processed_csv_files.py
         --output-dir output/chol_tests
         --test chol
-        --sim
+        --light
     needs:
-      [generate_measures_chol_tests]
+      [generate_measures_chol_tests_light]
     outputs:
       moderately_sensitive:
-        monthly_tables: output/chol_tests/*per_week_per_practice_sim.csv
-        code_table: output/chol_tests/top_5_code_table_sim.csv
-        event_counts_table: output/chol_tests/event_counts_sim.csv
+        monthly_tables: output/chol_tests/*per_week_per_practice_light.csv
+        code_table: output/chol_tests/top_5_code_table_light.csv
+        event_counts_table: output/chol_tests/event_counts_light.csv
   generate_dataset_test_chol:
     run: >
         ehrql:v1 generate-dataset
@@ -111,6 +133,17 @@ actions:
     outputs:
       highly_sensitive:
         measures: output/hba1c_numeric_tests/measures.arrow
+  generate_measures_hba1c_numeric_tests_light:
+    run: >
+      ehrql:v1 generate-measures
+        analysis/measure_definition.py
+        --output output/hba1c_numeric_tests/measures_light.arrow
+        --
+        --test hba1c_numeric
+        --light
+    outputs:
+      highly_sensitive:
+        measures: output/hba1c_numeric_tests/measures_light.arrow
   generate_processed_data_hba1c_numeric_tests:
     run: >
       python:latest 
@@ -124,20 +157,20 @@ actions:
         monthly_tables: output/hba1c_numeric_tests/*table_counts_per_week*.csv
         code_table: output/hba1c_numeric_tests/top_5_code_table.csv
         event_counts_table: output/hba1c_numeric_tests/event_counts.csv
-  generate_processed_data_hba1c_numeric_tests_sim:
+  generate_processed_data_hba1c_numeric_tests_light:
     run: >
       python:latest 
         analysis/write_processed_csv_files.py
         --output-dir output/hba1c_numeric_tests
         --test hba1c_numeric
-        --sim
+        --light
     needs:
-      [generate_measures_hba1c_numeric_tests]
+      [generate_measures_hba1c_numeric_tests_light]
     outputs:
       moderately_sensitive:
-        monthly_tables: output/hba1c_numeric_tests/*per_week_per_practice_sim.csv
-        code_table: output/hba1c_numeric_tests/top_5_code_table_sim.csv
-        event_counts_table: output/hba1c_numeric_tests/event_counts_sim.csv
+        monthly_tables: output/hba1c_numeric_tests/*per_week_per_practice_light.csv
+        code_table: output/hba1c_numeric_tests/top_5_code_table_light.csv
+        event_counts_table: output/hba1c_numeric_tests/event_counts_light.csv
   generate_dataset_test_hba1c_numeric:
     run: >
         ehrql:v1 generate-dataset
@@ -160,6 +193,17 @@ actions:
     outputs:
       highly_sensitive:
         measures: output/rbc_tests/measures.arrow
+  generate_measures_rbc_tests_light:
+    run: >
+      ehrql:v1 generate-measures
+        analysis/measure_definition.py
+        --output output/rbc_tests/measures_light.arrow
+        --
+        --test rbc
+        --light
+    outputs:
+      highly_sensitive:
+        measures: output/rbc_tests/measures_light.arrow
   generate_processed_data_rbc_tests:
     run: >
       python:latest 
@@ -173,20 +217,20 @@ actions:
         monthly_tables: output/rbc_tests/*table_counts_per_week*.csv
         code_table: output/rbc_tests/top_5_code_table.csv
         event_counts_table: output/rbc_tests/event_counts.csv
-  generate_processed_data_rbc_tests_sim:
+  generate_processed_data_rbc_tests_light:
     run: >
       python:latest 
         analysis/write_processed_csv_files.py
         --output-dir output/rbc_tests
         --test rbc
-        --sim
+        --light
     needs:
-      [generate_measures_rbc_tests]
+      [generate_measures_rbc_tests_light]
     outputs:
       moderately_sensitive:
-        monthly_tables: output/rbc_tests/*per_week_per_practice_sim.csv
-        code_table: output/rbc_tests/top_5_code_table_sim.csv
-        event_counts_table: output/rbc_tests/event_counts_sim.csv
+        monthly_tables: output/rbc_tests/*per_week_per_practice_light.csv
+        code_table: output/rbc_tests/top_5_code_table_light.csv
+        event_counts_table: output/rbc_tests/event_counts_light.csv
   generate_dataset_test_rbc:
     run: >
         ehrql:v1 generate-dataset
@@ -209,6 +253,17 @@ actions:
     outputs:
       highly_sensitive:
         measures: output/sodium_tests/measures.arrow
+  generate_measures_sodium_tests_light:
+    run: >
+      ehrql:v1 generate-measures
+        analysis/measure_definition.py
+        --output output/sodium_tests/measures_light.arrow
+        --
+        --test sodium
+        --light
+    outputs:
+      highly_sensitive:
+        measures: output/sodium_tests/measures_light.arrow
   generate_processed_data_sodium_tests:
     run: >
       python:latest 
@@ -222,20 +277,20 @@ actions:
         monthly_tables: output/sodium_tests/*table_counts_per_week*.csv
         code_table: output/sodium_tests/top_5_code_table.csv
         event_counts_table: output/sodium_tests/event_counts.csv
-  generate_processed_data_sodium_tests_sim:
+  generate_processed_data_sodium_tests_light:
     run: >
       python:latest 
         analysis/write_processed_csv_files.py
         --output-dir output/sodium_tests
         --test sodium
-        --sim
+        --light
     needs:
-      [generate_measures_sodium_tests]
+      [generate_measures_sodium_tests_light]
     outputs:
       moderately_sensitive:
-        monthly_tables: output/sodium_tests/*per_week_per_practice_sim.csv
-        code_table: output/sodium_tests/top_5_code_table_sim.csv
-        event_counts_table: output/sodium_tests/event_counts_sim.csv
+        monthly_tables: output/sodium_tests/*per_week_per_practice_light.csv
+        code_table: output/sodium_tests/top_5_code_table_light.csv
+        event_counts_table: output/sodium_tests/event_counts_light.csv
   generate_dataset_test_sodium:
     run: >
         ehrql:v1 generate-dataset
@@ -258,6 +313,17 @@ actions:
     outputs:
       highly_sensitive:
         measures: output/systol_tests/measures.arrow
+  generate_measures_systol_tests_light:
+    run: >
+      ehrql:v1 generate-measures
+        analysis/measure_definition.py
+        --output output/systol_tests/measures_light.arrow
+        --
+        --test systol
+        --light
+    outputs:
+      highly_sensitive:
+        measures: output/systol_tests/measures_light.arrow
   generate_processed_data_systol_tests:
     run: >
       python:latest 
@@ -271,20 +337,20 @@ actions:
         monthly_tables: output/systol_tests/*table_counts_per_week*.csv
         code_table: output/systol_tests/top_5_code_table.csv
         event_counts_table: output/systol_tests/event_counts.csv
-  generate_processed_data_systol_tests_sim:
+  generate_processed_data_systol_tests_light:
     run: >
       python:latest 
         analysis/write_processed_csv_files.py
         --output-dir output/systol_tests
         --test systol
-        --sim
+        --light
     needs:
-      [generate_measures_systol_tests]
+      [generate_measures_systol_tests_light]
     outputs:
       moderately_sensitive:
-        monthly_tables: output/systol_tests/*per_week_per_practice_sim.csv
-        code_table: output/systol_tests/top_5_code_table_sim.csv
-        event_counts_table: output/systol_tests/event_counts_sim.csv
+        monthly_tables: output/systol_tests/*per_week_per_practice_light.csv
+        code_table: output/systol_tests/top_5_code_table_light.csv
+        event_counts_table: output/systol_tests/event_counts_light.csv
   generate_dataset_test_systol:
     run: >
         ehrql:v1 generate-dataset
@@ -307,6 +373,17 @@ actions:
     outputs:
       highly_sensitive:
         measures: output/vit_d_tests/measures.arrow
+  generate_measures_vit_d_tests_light:
+    run: >
+      ehrql:v1 generate-measures
+        analysis/measure_definition.py
+        --output output/vit_d_tests/measures_light.arrow
+        --
+        --test vit_d
+        --light
+    outputs:
+      highly_sensitive:
+        measures: output/vit_d_tests/measures_light.arrow
   generate_processed_data_vit_d_tests:
     run: >
       python:latest 
@@ -320,20 +397,20 @@ actions:
         monthly_tables: output/vit_d_tests/*table_counts_per_week*.csv
         code_table: output/vit_d_tests/top_5_code_table.csv
         event_counts_table: output/vit_d_tests/event_counts.csv
-  generate_processed_data_vit_d_tests_sim:
+  generate_processed_data_vit_d_tests_light:
     run: >
       python:latest 
         analysis/write_processed_csv_files.py
         --output-dir output/vit_d_tests
         --test vit_d
-        --sim
+        --light
     needs:
-      [generate_measures_vit_d_tests]
+      [generate_measures_vit_d_tests_light]
     outputs:
       moderately_sensitive:
-        monthly_tables: output/vit_d_tests/*per_week_per_practice_sim.csv
-        code_table: output/vit_d_tests/top_5_code_table_sim.csv
-        event_counts_table: output/vit_d_tests/event_counts_sim.csv
+        monthly_tables: output/vit_d_tests/*per_week_per_practice_light.csv
+        code_table: output/vit_d_tests/top_5_code_table_light.csv
+        event_counts_table: output/vit_d_tests/event_counts_light.csv
   generate_dataset_test_vit_d:
     run: >
         ehrql:v1 generate-dataset
@@ -356,6 +433,17 @@ actions:
     outputs:
       highly_sensitive:
         measures: output/vit_d_ref_tests/measures.arrow
+  generate_measures_vit_d_ref_tests_light:
+    run: >
+      ehrql:v1 generate-measures
+        analysis/measure_definition.py
+        --output output/vit_d_ref_tests/measures_light.arrow
+        --
+        --test vit_d_ref
+        --light
+    outputs:
+      highly_sensitive:
+        measures: output/vit_d_ref_tests/measures_light.arrow
   generate_processed_data_vit_d_ref_tests:
     run: >
       python:latest 
@@ -369,20 +457,20 @@ actions:
         monthly_tables: output/vit_d_ref_tests/*table_counts_per_week*.csv
         code_table: output/vit_d_ref_tests/top_5_code_table.csv
         event_counts_table: output/vit_d_ref_tests/event_counts.csv
-  generate_processed_data_vit_d_ref_tests_sim:
+  generate_processed_data_vit_d_ref_tests_light:
     run: >
       python:latest 
         analysis/write_processed_csv_files.py
         --output-dir output/vit_d_ref_tests
         --test vit_d_ref
-        --sim
+        --light
     needs:
-      [generate_measures_vit_d_ref_tests]
+      [generate_measures_vit_d_ref_tests_light]
     outputs:
       moderately_sensitive:
-        monthly_tables: output/vit_d_ref_tests/*per_week_per_practice_sim.csv
-        code_table: output/vit_d_ref_tests/top_5_code_table_sim.csv
-        event_counts_table: output/vit_d_ref_tests/event_counts_sim.csv
+        monthly_tables: output/vit_d_ref_tests/*per_week_per_practice_light.csv
+        code_table: output/vit_d_ref_tests/top_5_code_table_light.csv
+        event_counts_table: output/vit_d_ref_tests/event_counts_light.csv
   generate_dataset_test_vit_d_ref:
     run: >
         ehrql:v1 generate-dataset
@@ -405,6 +493,17 @@ actions:
     outputs:
       highly_sensitive:
         measures: output/psa_tests/measures.arrow
+  generate_measures_psa_tests_light:
+    run: >
+      ehrql:v1 generate-measures
+        analysis/measure_definition.py
+        --output output/psa_tests/measures_light.arrow
+        --
+        --test psa
+        --light
+    outputs:
+      highly_sensitive:
+        measures: output/psa_tests/measures_light.arrow
   generate_processed_data_psa_tests:
     run: >
       python:latest 
@@ -418,20 +517,20 @@ actions:
         monthly_tables: output/psa_tests/*table_counts_per_week*.csv
         code_table: output/psa_tests/top_5_code_table.csv
         event_counts_table: output/psa_tests/event_counts.csv
-  generate_processed_data_psa_tests_sim:
+  generate_processed_data_psa_tests_light:
     run: >
       python:latest 
         analysis/write_processed_csv_files.py
         --output-dir output/psa_tests
         --test psa
-        --sim
+        --light
     needs:
-      [generate_measures_psa_tests]
+      [generate_measures_psa_tests_light]
     outputs:
       moderately_sensitive:
-        monthly_tables: output/psa_tests/*per_week_per_practice_sim.csv
-        code_table: output/psa_tests/top_5_code_table_sim.csv
-        event_counts_table: output/psa_tests/event_counts_sim.csv
+        monthly_tables: output/psa_tests/*per_week_per_practice_light.csv
+        code_table: output/psa_tests/top_5_code_table_light.csv
+        event_counts_table: output/psa_tests/event_counts_light.csv
   generate_dataset_test_psa:
     run: >
         ehrql:v1 generate-dataset
@@ -454,6 +553,17 @@ actions:
     outputs:
       highly_sensitive:
         measures: output/psa_ref_tests/measures.arrow
+  generate_measures_psa_ref_tests_light:
+    run: >
+      ehrql:v1 generate-measures
+        analysis/measure_definition.py
+        --output output/psa_ref_tests/measures_light.arrow
+        --
+        --test psa_ref
+        --light
+    outputs:
+      highly_sensitive:
+        measures: output/psa_ref_tests/measures_light.arrow
   generate_processed_data_psa_ref_tests:
     run: >
       python:latest 
@@ -467,20 +577,20 @@ actions:
         monthly_tables: output/psa_ref_tests/*table_counts_per_week*.csv
         code_table: output/psa_ref_tests/top_5_code_table.csv
         event_counts_table: output/psa_ref_tests/event_counts.csv
-  generate_processed_data_psa_ref_tests_sim:
+  generate_processed_data_psa_ref_tests_light:
     run: >
       python:latest 
         analysis/write_processed_csv_files.py
         --output-dir output/psa_ref_tests
         --test psa_ref
-        --sim
+        --light
     needs:
-      [generate_measures_psa_ref_tests]
+      [generate_measures_psa_ref_tests_light]
     outputs:
       moderately_sensitive:
-        monthly_tables: output/psa_ref_tests/*per_week_per_practice_sim.csv
-        code_table: output/psa_ref_tests/top_5_code_table_sim.csv
-        event_counts_table: output/psa_ref_tests/event_counts_sim.csv
+        monthly_tables: output/psa_ref_tests/*per_week_per_practice_light.csv
+        code_table: output/psa_ref_tests/top_5_code_table_light.csv
+        event_counts_table: output/psa_ref_tests/event_counts_light.csv
   generate_dataset_test_psa_ref:
     run: >
         ehrql:v1 generate-dataset
@@ -503,6 +613,17 @@ actions:
     outputs:
       highly_sensitive:
         measures: output/hba1c_diab_tests/measures.arrow
+  generate_measures_hba1c_diab_tests_light:
+    run: >
+      ehrql:v1 generate-measures
+        analysis/measure_definition.py
+        --output output/hba1c_diab_tests/measures_light.arrow
+        --
+        --test hba1c_diab
+        --light
+    outputs:
+      highly_sensitive:
+        measures: output/hba1c_diab_tests/measures_light.arrow
   generate_processed_data_hba1c_diab_tests:
     run: >
       python:latest 
@@ -516,20 +637,20 @@ actions:
         monthly_tables: output/hba1c_diab_tests/*table_counts_per_week*.csv
         code_table: output/hba1c_diab_tests/top_5_code_table.csv
         event_counts_table: output/hba1c_diab_tests/event_counts.csv
-  generate_processed_data_hba1c_diab_tests_sim:
+  generate_processed_data_hba1c_diab_tests_light:
     run: >
       python:latest 
         analysis/write_processed_csv_files.py
         --output-dir output/hba1c_diab_tests
         --test hba1c_diab
-        --sim
+        --light
     needs:
-      [generate_measures_hba1c_diab_tests]
+      [generate_measures_hba1c_diab_tests_light]
     outputs:
       moderately_sensitive:
-        monthly_tables: output/hba1c_diab_tests/*per_week_per_practice_sim.csv
-        code_table: output/hba1c_diab_tests/top_5_code_table_sim.csv
-        event_counts_table: output/hba1c_diab_tests/event_counts_sim.csv
+        monthly_tables: output/hba1c_diab_tests/*per_week_per_practice_light.csv
+        code_table: output/hba1c_diab_tests/top_5_code_table_light.csv
+        event_counts_table: output/hba1c_diab_tests/event_counts_light.csv
   generate_dataset_test_hba1c_diab:
     run: >
         ehrql:v1 generate-dataset
@@ -552,6 +673,17 @@ actions:
     outputs:
       highly_sensitive:
         measures: output/hba1c_diab_mean_tests/measures.arrow
+  generate_measures_hba1c_diab_mean_tests_light:
+    run: >
+      ehrql:v1 generate-measures
+        analysis/measure_definition.py
+        --output output/hba1c_diab_mean_tests/measures_light.arrow
+        --
+        --test hba1c_diab_mean
+        --light
+    outputs:
+      highly_sensitive:
+        measures: output/hba1c_diab_mean_tests/measures_light.arrow
   generate_processed_data_hba1c_diab_mean_tests:
     run: >
       python:latest 
@@ -565,20 +697,20 @@ actions:
         monthly_tables: output/hba1c_diab_mean_tests/*table_counts_per_week*.csv
         code_table: output/hba1c_diab_mean_tests/top_5_code_table.csv
         event_counts_table: output/hba1c_diab_mean_tests/event_counts.csv
-  generate_processed_data_hba1c_diab_mean_tests_sim:
+  generate_processed_data_hba1c_diab_mean_tests_light:
     run: >
       python:latest 
         analysis/write_processed_csv_files.py
         --output-dir output/hba1c_diab_mean_tests
         --test hba1c_diab_mean
-        --sim
+        --light
     needs:
-      [generate_measures_hba1c_diab_mean_tests]
+      [generate_measures_hba1c_diab_mean_tests_light]
     outputs:
       moderately_sensitive:
-        monthly_tables: output/hba1c_diab_mean_tests/*per_week_per_practice_sim.csv
-        code_table: output/hba1c_diab_mean_tests/top_5_code_table_sim.csv
-        event_counts_table: output/hba1c_diab_mean_tests/event_counts_sim.csv
+        monthly_tables: output/hba1c_diab_mean_tests/*per_week_per_practice_light.csv
+        code_table: output/hba1c_diab_mean_tests/top_5_code_table_light.csv
+        event_counts_table: output/hba1c_diab_mean_tests/event_counts_light.csv
   generate_dataset_test_hba1c_diab_mean:
     run: >
         ehrql:v1 generate-dataset
@@ -601,6 +733,17 @@ actions:
     outputs:
       highly_sensitive:
         measures: output/alt_mtx_tests/measures.arrow
+  generate_measures_alt_mtx_tests_light:
+    run: >
+      ehrql:v1 generate-measures
+        analysis/measure_definition.py
+        --output output/alt_mtx_tests/measures_light.arrow
+        --
+        --test alt_mtx
+        --light
+    outputs:
+      highly_sensitive:
+        measures: output/alt_mtx_tests/measures_light.arrow
   generate_processed_data_alt_mtx_tests:
     run: >
       python:latest 
@@ -614,20 +757,20 @@ actions:
         monthly_tables: output/alt_mtx_tests/*table_counts_per_week*.csv
         code_table: output/alt_mtx_tests/top_5_code_table.csv
         event_counts_table: output/alt_mtx_tests/event_counts.csv
-  generate_processed_data_alt_mtx_tests_sim:
+  generate_processed_data_alt_mtx_tests_light:
     run: >
       python:latest 
         analysis/write_processed_csv_files.py
         --output-dir output/alt_mtx_tests
         --test alt_mtx
-        --sim
+        --light
     needs:
-      [generate_measures_alt_mtx_tests]
+      [generate_measures_alt_mtx_tests_light]
     outputs:
       moderately_sensitive:
-        monthly_tables: output/alt_mtx_tests/*per_week_per_practice_sim.csv
-        code_table: output/alt_mtx_tests/top_5_code_table_sim.csv
-        event_counts_table: output/alt_mtx_tests/event_counts_sim.csv
+        monthly_tables: output/alt_mtx_tests/*per_week_per_practice_light.csv
+        code_table: output/alt_mtx_tests/top_5_code_table_light.csv
+        event_counts_table: output/alt_mtx_tests/event_counts_light.csv
   generate_dataset_test_alt_mtx:
     run: >
         ehrql:v1 generate-dataset
@@ -650,6 +793,17 @@ actions:
     outputs:
       highly_sensitive:
         measures: output/alt_mtx_ref_tests/measures.arrow
+  generate_measures_alt_mtx_ref_tests_light:
+    run: >
+      ehrql:v1 generate-measures
+        analysis/measure_definition.py
+        --output output/alt_mtx_ref_tests/measures_light.arrow
+        --
+        --test alt_mtx_ref
+        --light
+    outputs:
+      highly_sensitive:
+        measures: output/alt_mtx_ref_tests/measures_light.arrow
   generate_processed_data_alt_mtx_ref_tests:
     run: >
       python:latest 
@@ -663,20 +817,20 @@ actions:
         monthly_tables: output/alt_mtx_ref_tests/*table_counts_per_week*.csv
         code_table: output/alt_mtx_ref_tests/top_5_code_table.csv
         event_counts_table: output/alt_mtx_ref_tests/event_counts.csv
-  generate_processed_data_alt_mtx_ref_tests_sim:
+  generate_processed_data_alt_mtx_ref_tests_light:
     run: >
       python:latest 
         analysis/write_processed_csv_files.py
         --output-dir output/alt_mtx_ref_tests
         --test alt_mtx_ref
-        --sim
+        --light
     needs:
-      [generate_measures_alt_mtx_ref_tests]
+      [generate_measures_alt_mtx_ref_tests_light]
     outputs:
       moderately_sensitive:
-        monthly_tables: output/alt_mtx_ref_tests/*per_week_per_practice_sim.csv
-        code_table: output/alt_mtx_ref_tests/top_5_code_table_sim.csv
-        event_counts_table: output/alt_mtx_ref_tests/event_counts_sim.csv
+        monthly_tables: output/alt_mtx_ref_tests/*per_week_per_practice_light.csv
+        code_table: output/alt_mtx_ref_tests/top_5_code_table_light.csv
+        event_counts_table: output/alt_mtx_ref_tests/event_counts_light.csv
   generate_dataset_test_alt_mtx_ref:
     run: >
         ehrql:v1 generate-dataset

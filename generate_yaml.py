@@ -34,6 +34,17 @@ yaml_template = """
     outputs:
       highly_sensitive:
         measures: output/{test}_tests/measures.arrow
+  generate_measures_{test}_tests_light:
+    run: >
+      ehrql:v1 generate-measures
+        analysis/measure_definition.py
+        --output output/{test}_tests/measures_light.arrow
+        --
+        --test {test}
+        --light
+    outputs:
+      highly_sensitive:
+        measures: output/{test}_tests/measures_light.arrow
   generate_processed_data_{test}_tests:
     run: >
       python:latest 
@@ -47,20 +58,20 @@ yaml_template = """
         monthly_tables: output/{test}_tests/*table_counts_per_week*.csv
         code_table: output/{test}_tests/top_5_code_table.csv
         event_counts_table: output/{test}_tests/event_counts.csv
-  generate_processed_data_{test}_tests_sim:
+  generate_processed_data_{test}_tests_light:
     run: >
       python:latest 
         analysis/write_processed_csv_files.py
         --output-dir output/{test}_tests
         --test {test}
-        --sim
+        --light
     needs:
-      [generate_measures_{test}_tests]
+      [generate_measures_{test}_tests_light]
     outputs:
       moderately_sensitive:
-        monthly_tables: output/{test}_tests/*per_week_per_practice_sim.csv
-        code_table: output/{test}_tests/top_5_code_table_sim.csv
-        event_counts_table: output/{test}_tests/event_counts_sim.csv
+        monthly_tables: output/{test}_tests/*per_week_per_practice_light.csv
+        code_table: output/{test}_tests/top_5_code_table_light.csv
+        event_counts_table: output/{test}_tests/event_counts_light.csv
   generate_dataset_test_{test}:
     run: >
         ehrql:v1 generate-dataset

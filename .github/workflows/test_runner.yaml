@@ -18,4 +18,4 @@ jobs:
       with:
         actions: generate_processed_data_alt_mtx_ref_tests generate_processed_data_alt_mtx_tests generate_processed_data_alt_tests
           generate_processed_data_hba1c_diab_mean_tests generate_processed_data_psa_ref_tests generate_processed_data_systol_tests
-          generate_processed_data_vit_d_ref_tests 
+          generate_processed_data_vit_d_ref_tests generate_processed_data_alt_mtx_ref_tests_light

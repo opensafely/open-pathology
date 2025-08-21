@@ -1,8 +1,11 @@
 import dataclasses
 import pathlib
+import re
+import urllib.parse
 
 import altair
 import pandas
+import requests
 import structlog
 import yaml
 
@@ -17,6 +20,7 @@ MEDIAN = "Median"
 @dataclasses.dataclass
 class Measure:
     name: str
+    is_pathology: bool
     explanation: str
     caveats: str
     classification: str
@@ -89,9 +93,37 @@ class Measure:
         return chart
 
 
+class OSJobsWorkspace:
+    def __init__(
+        self, endpoint, file_structure="output/(?P<shorthand>[^/]+)/(?P<name>.+)"
+    ):
+        self.base_url = "https://jobs.opensafely.org/"
+        self.endpoint_url = urllib.parse.urljoin(self.base_url, endpoint)
+        self.file_structure = file_structure
+
+    def get_file_urls(self):
+        response = requests.get(self.endpoint_url)
+        file_list = response.json()["files"]
+        name_to_url = {
+            file["name"]: urllib.parse.urljoin(self.base_url, file["url"])
+            for file in file_list
+        }
+        file_urls = {
+            key: url for name, url in name_to_url.items() if (key := self.get_key(name))
+        }
+        return file_urls
+
+    def get_key(self, file_name):
+        match = re.match(self.file_structure, file_name)
+        if not match:
+            return None
+        return (match.group("shorthand"), match.group("name"))
+
+
 class OSJobsRepository:
-    def __init__(self):
+    def __init__(self, file_urls):
         path = pathlib.Path(__file__).parent.joinpath("measures.yaml")
+        self._file_urls = file_urls
         self._records = {r["name"]: r for r in yaml.load(path.read_text(), yaml.Loader)}
         self._measures = {}  # the repository
 
@@ -110,12 +142,13 @@ class OSJobsRepository:
 
         # The following helpers don't need access to instance attributes, so we define
         # them as functions rather than as methods. Doing so makes them easier to mock.
-        counts = _get_counts(record["counts_table_url"])
-        top_5_codes_table = _get_top_5_codes_table(record["top_5_codes_table_url"])
-        deciles_table = _get_deciles_table(record["deciles_table_url"])
+        counts = self._get_counts(record["shorthand"])
+        top_5_codes_table = self._get_top_5_codes_table(record["shorthand"])
+        deciles_table = self._get_deciles_table(record["shorthand"])
 
         return Measure(
             name,
+            record["is_pathology"],
             record["explanation"],
             record["caveats"],
             record["classification"],
@@ -125,9 +158,33 @@ class OSJobsRepository:
             deciles_table,
         )
 
+    def _get_counts(self, shorthand):
+        return _get_counts(self._file_urls[(shorthand, "event_counts.csv")])
+
+    def _get_top_5_codes_table(self, shorthand):
+        return _get_top_5_codes_table(
+            self._file_urls[(shorthand, "top_5_code_table.csv")]
+        )
+
+    def _get_deciles_table(self, shorthand):
+        return _get_deciles_table(
+            self._file_urls[
+                (shorthand, "deciles_table_counts_per_week_per_practice.csv")
+            ]
+        )
+
     def list(self):
-        """List the names of all the measures in the repository."""
-        return sorted(self._records.keys())
+        """
+        List the names of all the measures in the repository.
+        Pathology measures are listed first alphabetically, followed by other measures alphabetically.
+        """
+        pathology_measures = [
+            name for name, record in self._records.items() if record["is_pathology"]
+        ]
+        other_measures = [
+            name for name, record in self._records.items() if not record["is_pathology"]
+        ]
+        return sorted(pathology_measures) + sorted(other_measures)
 
 
 def _get_counts(counts_table_url):
