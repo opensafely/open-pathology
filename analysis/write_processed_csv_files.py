@@ -1,3 +1,10 @@
+# Usage: 
+# Options:
+# --output-dir [path]  Specify output directory
+# --test [test]   Choose pathology test e.g. chol
+# --light   Imports light version of measures dataset (1 year)
+# --sim     Generates simulated, non-zero data for local development testing
+
 import argparse
 from pathlib import Path
 from config import codelists
@@ -42,6 +49,13 @@ def get_deciles_table(df_measure_output):
     # Remove practices that have zero events during the study period
     df_practice = df_practice.loc[~df_practice["ratio"].isna()]
 
+    # Calculate number of unique practices per month
+    df_prac_per_month = (
+        df_practice.groupby("interval_start")["practice"]
+        .nunique()
+        .reset_index(name="n_practices")
+    )
+
     df_quantiles = (
         df_practice.groupby("interval_start")["ratio"]
         .quantile(percentiles / 100, interpolation="nearest")
@@ -57,7 +71,7 @@ def get_deciles_table(df_measure_output):
     if 'mean' not in args.test:
         df_quantiles["value"] = df_quantiles["value"] * 1000 
 
-    return df_quantiles
+    return df_quantiles, df_prac_per_month
 
 
 def get_event_counts_and_top_5_codes_tables(df_measure_output, codelist_path):
@@ -169,10 +183,14 @@ def main(output_dir, codelist_path):
 
     df["practice"] = df["practice"].astype("Int64")
 
-    deciles_table = get_deciles_table(df)
+    deciles_table, df_prac_per_month = get_deciles_table(df)
     deciles_table.to_csv(
-        output_dir / f"deciles_table_counts_per_week_per_practice{suffix}.csv",
+        output_dir / f"deciles_table_counts_per_month{suffix}.csv",
         index=False,
+    )
+    df_prac_per_month.to_csv(
+        output_dir / f"practice_counts_per_month{suffix}.csv",
+        index=False, 
     )
 
     # Generate demographic breakdown for original measures
