@@ -49,7 +49,8 @@ actions:
       [generate_measures_alt_tests_light]
     outputs:
       moderately_sensitive:
-        monthly_tables: output/alt_tests/*per_week_per_practice_light.csv
+        monthly_tables: output/alt_tests/*deciles_table_counts_per_month*_light.csv
+        monthly_counts: output/alt_tests/*practice_counts_per_month*_light.csv
         code_table: output/alt_tests/top_5_code_table_light.csv
         event_counts_table: output/alt_tests/event_counts_light.csv
   generate_dataset_test_alt:
@@ -110,7 +111,8 @@ actions:
       [generate_measures_chol_tests_light]
     outputs:
       moderately_sensitive:
-        monthly_tables: output/chol_tests/*per_week_per_practice_light.csv
+        monthly_tables: output/chol_tests/*deciles_table_counts_per_month*_light.csv
+        monthly_counts: output/chol_tests/*practice_counts_per_month*_light.csv
         code_table: output/chol_tests/top_5_code_table_light.csv
         event_counts_table: output/chol_tests/event_counts_light.csv
   generate_dataset_test_chol:
@@ -171,7 +173,8 @@ actions:
       [generate_measures_hba1c_numeric_tests_light]
     outputs:
       moderately_sensitive:
-        monthly_tables: output/hba1c_numeric_tests/*per_week_per_practice_light.csv
+        monthly_tables: output/hba1c_numeric_tests/*deciles_table_counts_per_month*_light.csv
+        monthly_counts: output/hba1c_numeric_tests/*practice_counts_per_month*_light.csv
         code_table: output/hba1c_numeric_tests/top_5_code_table_light.csv
         event_counts_table: output/hba1c_numeric_tests/event_counts_light.csv
   generate_dataset_test_hba1c_numeric:
@@ -232,7 +235,8 @@ actions:
       [generate_measures_rbc_tests_light]
     outputs:
       moderately_sensitive:
-        monthly_tables: output/rbc_tests/*per_week_per_practice_light.csv
+        monthly_tables: output/rbc_tests/*deciles_table_counts_per_month*_light.csv
+        monthly_counts: output/rbc_tests/*practice_counts_per_month*_light.csv
         code_table: output/rbc_tests/top_5_code_table_light.csv
         event_counts_table: output/rbc_tests/event_counts_light.csv
   generate_dataset_test_rbc:
@@ -293,7 +297,8 @@ actions:
       [generate_measures_sodium_tests_light]
     outputs:
       moderately_sensitive:
-        monthly_tables: output/sodium_tests/*per_week_per_practice_light.csv
+        monthly_tables: output/sodium_tests/*deciles_table_counts_per_month*_light.csv
+        monthly_counts: output/sodium_tests/*practice_counts_per_month*_light.csv
         code_table: output/sodium_tests/top_5_code_table_light.csv
         event_counts_table: output/sodium_tests/event_counts_light.csv
   generate_dataset_test_sodium:
@@ -354,7 +359,8 @@ actions:
       [generate_measures_systol_tests_light]
     outputs:
       moderately_sensitive:
-        monthly_tables: output/systol_tests/*per_week_per_practice_light.csv
+        monthly_tables: output/systol_tests/*deciles_table_counts_per_month*_light.csv
+        monthly_counts: output/systol_tests/*practice_counts_per_month*_light.csv
         code_table: output/systol_tests/top_5_code_table_light.csv
         event_counts_table: output/systol_tests/event_counts_light.csv
   generate_dataset_test_systol:
@@ -415,7 +421,8 @@ actions:
       [generate_measures_vit_d_tests_light]
     outputs:
       moderately_sensitive:
-        monthly_tables: output/vit_d_tests/*per_week_per_practice_light.csv
+        monthly_tables: output/vit_d_tests/*deciles_table_counts_per_month*_light.csv
+        monthly_counts: output/vit_d_tests/*practice_counts_per_month*_light.csv
         code_table: output/vit_d_tests/top_5_code_table_light.csv
         event_counts_table: output/vit_d_tests/event_counts_light.csv
   generate_dataset_test_vit_d:
@@ -476,7 +483,8 @@ actions:
       [generate_measures_vit_d_ref_tests_light]
     outputs:
       moderately_sensitive:
-        monthly_tables: output/vit_d_ref_tests/*per_week_per_practice_light.csv
+        monthly_tables: output/vit_d_ref_tests/*deciles_table_counts_per_month*_light.csv
+        monthly_counts: output/vit_d_ref_tests/*practice_counts_per_month*_light.csv
         code_table: output/vit_d_ref_tests/top_5_code_table_light.csv
         event_counts_table: output/vit_d_ref_tests/event_counts_light.csv
   generate_dataset_test_vit_d_ref:
@@ -537,7 +545,8 @@ actions:
       [generate_measures_psa_tests_light]
     outputs:
       moderately_sensitive:
-        monthly_tables: output/psa_tests/*per_week_per_practice_light.csv
+        monthly_tables: output/psa_tests/*deciles_table_counts_per_month*_light.csv
+        monthly_counts: output/psa_tests/*practice_counts_per_month*_light.csv
         code_table: output/psa_tests/top_5_code_table_light.csv
         event_counts_table: output/psa_tests/event_counts_light.csv
   generate_dataset_test_psa:
@@ -598,7 +607,8 @@ actions:
       [generate_measures_psa_ref_tests_light]
     outputs:
       moderately_sensitive:
-        monthly_tables: output/psa_ref_tests/*per_week_per_practice_light.csv
+        monthly_tables: output/psa_ref_tests/*deciles_table_counts_per_month*_light.csv
+        monthly_counts: output/psa_ref_tests/*practice_counts_per_month*_light.csv
         code_table: output/psa_ref_tests/top_5_code_table_light.csv
         event_counts_table: output/psa_ref_tests/event_counts_light.csv
   generate_dataset_test_psa_ref:
@@ -659,7 +669,8 @@ actions:
       [generate_measures_hba1c_diab_tests_light]
     outputs:
       moderately_sensitive:
-        monthly_tables: output/hba1c_diab_tests/*per_week_per_practice_light.csv
+        monthly_tables: output/hba1c_diab_tests/*deciles_table_counts_per_month*_light.csv
+        monthly_counts: output/hba1c_diab_tests/*practice_counts_per_month*_light.csv
         code_table: output/hba1c_diab_tests/top_5_code_table_light.csv
         event_counts_table: output/hba1c_diab_tests/event_counts_light.csv
   generate_dataset_test_hba1c_diab:
@@ -720,7 +731,8 @@ actions:
       [generate_measures_hba1c_diab_mean_tests_light]
     outputs:
       moderately_sensitive:
-        monthly_tables: output/hba1c_diab_mean_tests/*per_week_per_practice_light.csv
+        monthly_tables: output/hba1c_diab_mean_tests/*deciles_table_counts_per_month*_light.csv
+        monthly_counts: output/hba1c_diab_mean_tests/*practice_counts_per_month*_light.csv
         code_table: output/hba1c_diab_mean_tests/top_5_code_table_light.csv
         event_counts_table: output/hba1c_diab_mean_tests/event_counts_light.csv
   generate_dataset_test_hba1c_diab_mean:
@@ -781,7 +793,8 @@ actions:
       [generate_measures_alt_mtx_tests_light]
     outputs:
       moderately_sensitive:
-        monthly_tables: output/alt_mtx_tests/*per_week_per_practice_light.csv
+        monthly_tables: output/alt_mtx_tests/*deciles_table_counts_per_month*_light.csv
+        monthly_counts: output/alt_mtx_tests/*practice_counts_per_month*_light.csv
         code_table: output/alt_mtx_tests/top_5_code_table_light.csv
         event_counts_table: output/alt_mtx_tests/event_counts_light.csv
   generate_dataset_test_alt_mtx:
@@ -842,7 +855,8 @@ actions:
       [generate_measures_alt_mtx_ref_tests_light]
     outputs:
       moderately_sensitive:
-        monthly_tables: output/alt_mtx_ref_tests/*per_week_per_practice_light.csv
+        monthly_tables: output/alt_mtx_ref_tests/*deciles_table_counts_per_month*_light.csv
+        monthly_counts: output/alt_mtx_ref_tests/*practice_counts_per_month*_light.csv
         code_table: output/alt_mtx_ref_tests/top_5_code_table_light.csv
         event_counts_table: output/alt_mtx_ref_tests/event_counts_light.csv
   generate_dataset_test_alt_mtx_ref:

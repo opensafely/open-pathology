@@ -70,7 +70,8 @@ yaml_template = """
       [generate_measures_{test}_tests_light]
     outputs:
       moderately_sensitive:
-        monthly_tables: output/{test}_tests/*per_week_per_practice_light.csv
+        monthly_tables: output/{test}_tests/*deciles_table_counts_per_month*_light.csv
+        monthly_counts: output/{test}_tests/*practice_counts_per_month*_light.csv
         code_table: output/{test}_tests/top_5_code_table_light.csv
         event_counts_table: output/{test}_tests/event_counts_light.csv
   generate_dataset_test_{test}:
