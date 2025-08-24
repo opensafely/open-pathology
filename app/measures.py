@@ -1,11 +1,8 @@
 import dataclasses
 import pathlib
-import re
-import urllib.parse
 
 import altair
 import pandas
-import requests
 import structlog
 import yaml
 
@@ -93,38 +90,12 @@ class Measure:
         return chart
 
 
-class OSJobsWorkspace:
-    def __init__(
-        self, endpoint, file_structure="output/(?P<shorthand>[^/]+)/(?P<name>.+)"
-    ):
-        self.base_url = "https://jobs.opensafely.org/"
-        self.endpoint_url = urllib.parse.urljoin(self.base_url, endpoint)
-        self.file_structure = file_structure
-
-    def get_file_urls(self):
-        response = requests.get(self.endpoint_url)
-        file_list = response.json()["files"]
-        name_to_url = {
-            file["name"]: urllib.parse.urljoin(self.base_url, file["url"])
-            for file in file_list
-        }
-        file_urls = {
-            key: url for name, url in name_to_url.items() if (key := self.get_key(name))
-        }
-        return file_urls
-
-    def get_key(self, file_name):
-        match = re.match(self.file_structure, file_name)
-        if not match:
-            return None
-        return (match.group("shorthand"), match.group("name"))
-
-
 class OSJobsRepository:
-    def __init__(self, file_urls):
+    def __init__(self):
         path = pathlib.Path(__file__).parent.joinpath("measures.yaml")
-        self._file_urls = file_urls
+        file_urls_path = pathlib.Path(__file__).parent.joinpath("file_urls.yaml")
         self._records = {r["name"]: r for r in yaml.load(path.read_text(), yaml.Loader)}
+        self._file_urls = yaml.load(file_urls_path.read_text(), yaml.Loader)
         self._measures = {}  # the repository
 
     def get(self, name):
@@ -134,6 +105,9 @@ class OSJobsRepository:
             self._measures[name] = self._construct(name)
         return self._measures[name]
 
+    def _get_file_url(self, shorthand, key):
+        return self._file_urls[shorthand][key + "_url"]
+
     def _construct(self, name):
         """Construct the measure with the given name from information stored on the
         local file system and on OS Jobs."""
@@ -142,9 +116,13 @@ class OSJobsRepository:
 
         # The following helpers don't need access to instance attributes, so we define
         # them as functions rather than as methods. Doing so makes them easier to mock.
-        counts = self._get_counts(record["shorthand"])
-        top_5_codes_table = self._get_top_5_codes_table(record["shorthand"])
-        deciles_table = self._get_deciles_table(record["shorthand"])
+        counts = _get_counts(self._get_file_url(record["shorthand"], "counts_table"))
+        top_5_codes_table = _get_top_5_codes_table(
+            self._get_file_url(record["shorthand"], "top_5_codes_table")
+        )
+        deciles_table = _get_deciles_table(
+            self._get_file_url(record["shorthand"], "deciles_table")
+        )
 
         return Measure(
             name,
@@ -156,21 +134,6 @@ class OSJobsRepository:
             counts["total_events"],
             top_5_codes_table,
             deciles_table,
-        )
-
-    def _get_counts(self, shorthand):
-        return _get_counts(self._file_urls[(shorthand, "event_counts.csv")])
-
-    def _get_top_5_codes_table(self, shorthand):
-        return _get_top_5_codes_table(
-            self._file_urls[(shorthand, "top_5_code_table.csv")]
-        )
-
-    def _get_deciles_table(self, shorthand):
-        return _get_deciles_table(
-            self._file_urls[
-                (shorthand, "deciles_table_counts_per_week_per_practice.csv")
-            ]
         )
 
     def list(self):
