@@ -1,26 +1,32 @@
 systol_tests:
   counts_table: output/systol_tests/event_counts.csv
   deciles_table: output/systol_tests/deciles_table_counts_per_week_per_practice.csv
+  demographics_table: output/systol_tests/demographic_table_counts_per_week.csv
   top_5_codes_table: output/systol_tests/top_5_code_table.csv
 chol_tests:
   counts_table: output/chol_tests/event_counts.csv
   deciles_table: output/chol_tests/deciles_table_counts_per_week_per_practice.csv
+  demographics_table: output/chol_tests/demographic_table_counts_per_week.csv
   top_5_codes_table: output/chol_tests/top_5_code_table.csv
 alt_tests:
   counts_table: output/alt_tests/event_counts.csv
   deciles_table: output/alt_tests/deciles_table_counts_per_week_per_practice.csv
+  demographics_table: output/alt_tests/demographic_table_counts_per_week.csv
   top_5_codes_table: output/alt_tests/top_5_code_table.csv
 rbc_tests:
   counts_table: output/rbc_tests/event_counts.csv
   deciles_table: output/rbc_tests/deciles_table_counts_per_week_per_practice.csv
+  demographics_table: output/rbc_tests/demographic_table_counts_per_week.csv
   top_5_codes_table: output/rbc_tests/top_5_code_table.csv
 hba1c_tests:
   counts_table: output/hba1c_tests/event_counts.csv
   deciles_table: output/hba1c_tests/deciles_table_counts_per_week_per_practice.csv
+  demographics_table: output/hba1c_numeric_tests/demographic_table_counts_per_week.csv
   top_5_codes_table: output/hba1c_tests/top_5_code_table.csv
 sodium_tests:
   counts_table: output/sodium_tests/event_counts.csv
   deciles_table: output/sodium_tests/deciles_table_counts_per_week_per_practice.csv
+  demographics_table: output/sodium_tests/demographic_table_counts_per_week.csv
   top_5_codes_table: output/sodium_tests/top_5_code_table.csv
 alt_mtx_ref_tests:
   counts_table: output/alt_mtx_ref_tests/event_counts.csv
