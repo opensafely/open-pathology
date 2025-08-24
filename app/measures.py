@@ -49,6 +49,10 @@ class Measure:
         return from_val, to_val, pct_change
 
     @property
+    def charts(self):
+        return {"Practice deciles": self.deciles_chart}
+
+    @property
     def deciles_chart(self):
         # selections
         legend_selection = altair.selection_point(bind="legend", fields=["label"])

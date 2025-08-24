@@ -26,7 +26,8 @@ def main():
     with streamlit.expander("Caveats"):
         streamlit.markdown(measure.caveats)
 
-    streamlit.altair_chart(measure.deciles_chart, use_container_width=True)
+    selected_chart = streamlit.selectbox("Select a chart:", measure.charts.keys())
+    streamlit.altair_chart(measure.charts[selected_chart], use_container_width=True)
 
     streamlit.markdown(f"**Most common codes ([codelist]({measure.codelist_url}))**")
 
