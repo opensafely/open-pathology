@@ -3,10 +3,7 @@ import streamlit
 
 
 def get_repository():
-    workspace = measures.OSJobsWorkspace(
-        "api/v2/workspaces/sro-key-measures-dashboard/snapshots/31"
-    )
-    return measures.OSJobsRepository(workspace.get_file_urls())
+    return measures.OSJobsRepository()
 
 
 def main():
