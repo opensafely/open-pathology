@@ -25,6 +25,7 @@ class Measure:
     total_events: int
     top_5_codes_table: pandas.DataFrame
     deciles_table: pandas.DataFrame
+    demographics_table: pandas.DataFrame
 
     def __repr__(self):
         return f"Measure(name='{self.name}')"
@@ -123,6 +124,12 @@ class OSJobsRepository:
         deciles_table = _get_deciles_table(
             self._get_file_url(record["shorthand"], "deciles_table")
         )
+        try:
+            demographics_table = _get_demographics_table(
+                self._get_file_url(record["shorthand"], "demographics_table")
+            )
+        except KeyError:
+            demographics_table = None
 
         return Measure(
             name,
@@ -134,6 +141,7 @@ class OSJobsRepository:
             counts["total_events"],
             top_5_codes_table,
             deciles_table,
+            demographics_table,
         )
 
     def list(self):
@@ -173,3 +181,20 @@ def _get_deciles_table(deciles_table_url):
     deciles_table.loc[deciles_table["percentile"] % 10 == 0, "label"] = DECILE
     deciles_table.loc[deciles_table["percentile"] == 50, "label"] = MEDIAN
     return deciles_table
+
+
+def _get_demographics_table(demographics_table_url):
+    log.info(f"Getting demographics table from {demographics_table_url}")
+    demographics_table = pandas.read_csv(
+        demographics_table_url, parse_dates=["interval_start"]
+    )
+    demographics_table = demographics_table.rename(
+        columns={
+            "interval_start": "date",
+            "ratio": "value",
+            "ethnicity": "Ethnicity",
+            "sex": "Sex",
+            "region": "Region",
+        }
+    )
+    return demographics_table
