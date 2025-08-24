@@ -1,44 +1,44 @@
 alt:
-  counts_table_url: https://jobs.opensafely.org/service-restoration-observatory/sro-key-measures-dashboard/published/01GGZ127420DXX35BM0MMQNW8N/
-  deciles_table_url: https://jobs.opensafely.org/service-restoration-observatory/sro-key-measures-dashboard/published/01GGZ12739P6B7Z00QAJBTBKK3/
-  top_5_codes_table_url: https://jobs.opensafely.org/service-restoration-observatory/sro-key-measures-dashboard/published/01GGWFEGKSB1ANPP4X5V2FM3FR/
+  counts_table: https://jobs.opensafely.org/service-restoration-observatory/sro-key-measures-dashboard/published/01GGZ127420DXX35BM0MMQNW8N/
+  deciles_table: https://jobs.opensafely.org/service-restoration-observatory/sro-key-measures-dashboard/published/01GGZ12739P6B7Z00QAJBTBKK3/
+  top_5_codes_table: https://jobs.opensafely.org/service-restoration-observatory/sro-key-measures-dashboard/published/01GGWFEGKSB1ANPP4X5V2FM3FR/
 asthma:
-  counts_table_url: https://jobs.opensafely.org/service-restoration-observatory/sro-key-measures-dashboard/published/01GGZ12744QQFDXNKDZFM6D9PA/
-  deciles_table_url: https://jobs.opensafely.org/service-restoration-observatory/sro-key-measures-dashboard/published/01GGZ1273E5ZJQ7TQ4EREQZXHV/
-  top_5_codes_table_url: https://jobs.opensafely.org/service-restoration-observatory/sro-key-measures-dashboard/published/01GGWFEGMZPFNMFFPNJ0Q7AQW0/
+  counts_table: https://jobs.opensafely.org/service-restoration-observatory/sro-key-measures-dashboard/published/01GGZ12744QQFDXNKDZFM6D9PA/
+  deciles_table: https://jobs.opensafely.org/service-restoration-observatory/sro-key-measures-dashboard/published/01GGZ1273E5ZJQ7TQ4EREQZXHV/
+  top_5_codes_table: https://jobs.opensafely.org/service-restoration-observatory/sro-key-measures-dashboard/published/01GGWFEGMZPFNMFFPNJ0Q7AQW0/
 cholesterol:
-  counts_table_url: https://jobs.opensafely.org/service-restoration-observatory/sro-key-measures-dashboard/published/01GGZ12745NSRAF6CSV2Y5587V/
-  deciles_table_url: https://jobs.opensafely.org/service-restoration-observatory/sro-key-measures-dashboard/published/01GGZ1273GGXHAVCHAWF9MZMPY/
-  top_5_codes_table_url: https://jobs.opensafely.org/service-restoration-observatory/sro-key-measures-dashboard/published/01GGWFEGN5YJM0VRCGQ979B68K/
+  counts_table: https://jobs.opensafely.org/service-restoration-observatory/sro-key-measures-dashboard/published/01GGZ12745NSRAF6CSV2Y5587V/
+  deciles_table: https://jobs.opensafely.org/service-restoration-observatory/sro-key-measures-dashboard/published/01GGZ1273GGXHAVCHAWF9MZMPY/
+  top_5_codes_table: https://jobs.opensafely.org/service-restoration-observatory/sro-key-measures-dashboard/published/01GGWFEGN5YJM0VRCGQ979B68K/
 copd:
-  counts_table_url: https://jobs.opensafely.org/service-restoration-observatory/sro-key-measures-dashboard/published/01GGZ12747S076CXG4DSYG3365/
-  deciles_table_url: https://jobs.opensafely.org/service-restoration-observatory/sro-key-measures-dashboard/published/01GGZ1273HBSH9AYT8V9FRB6S6/
-  top_5_codes_table_url: https://jobs.opensafely.org/service-restoration-observatory/sro-key-measures-dashboard/published/01GGWFEGN6HQTMHD0ZZEK9BWMZ/
+  counts_table: https://jobs.opensafely.org/service-restoration-observatory/sro-key-measures-dashboard/published/01GGZ12747S076CXG4DSYG3365/
+  deciles_table: https://jobs.opensafely.org/service-restoration-observatory/sro-key-measures-dashboard/published/01GGZ1273HBSH9AYT8V9FRB6S6/
+  top_5_codes_table: https://jobs.opensafely.org/service-restoration-observatory/sro-key-measures-dashboard/published/01GGWFEGN6HQTMHD0ZZEK9BWMZ/
 hba1c:
-  counts_table_url: https://jobs.opensafely.org/service-restoration-observatory/sro-key-measures-dashboard/published/01GGZ12749JZ938746AV8XCPZ3/
-  deciles_table_url: https://jobs.opensafely.org/service-restoration-observatory/sro-key-measures-dashboard/published/01GGZ1273K1QJM5EQ7238X7P3S/
-  top_5_codes_table_url: https://jobs.opensafely.org/service-restoration-observatory/sro-key-measures-dashboard/published/01GGWFEGMVQ62NGNM403MK32Z7/
+  counts_table: https://jobs.opensafely.org/service-restoration-observatory/sro-key-measures-dashboard/published/01GGZ12749JZ938746AV8XCPZ3/
+  deciles_table: https://jobs.opensafely.org/service-restoration-observatory/sro-key-measures-dashboard/published/01GGZ1273K1QJM5EQ7238X7P3S/
+  top_5_codes_table: https://jobs.opensafely.org/service-restoration-observatory/sro-key-measures-dashboard/published/01GGWFEGMVQ62NGNM403MK32Z7/
 medication_review:
-  counts_table_url: https://jobs.opensafely.org/service-restoration-observatory/sro-key-measures-dashboard/published/01GGZ1274AQTKME4H35S4DC2GN/
-  deciles_table_url: https://jobs.opensafely.org/service-restoration-observatory/sro-key-measures-dashboard/published/01GGZ1273NXRK2Z8C05BH3K235/
-  top_5_codes_table_url: https://jobs.opensafely.org/service-restoration-observatory/sro-key-measures-dashboard/published/01GGWFEGMRGETC544D3BZCZX0N/
+  counts_table: https://jobs.opensafely.org/service-restoration-observatory/sro-key-measures-dashboard/published/01GGZ1274AQTKME4H35S4DC2GN/
+  deciles_table: https://jobs.opensafely.org/service-restoration-observatory/sro-key-measures-dashboard/published/01GGZ1273NXRK2Z8C05BH3K235/
+  top_5_codes_table: https://jobs.opensafely.org/service-restoration-observatory/sro-key-measures-dashboard/published/01GGWFEGMRGETC544D3BZCZX0N/
 qrisk2:
-  counts_table_url: https://jobs.opensafely.org/service-restoration-observatory/sro-key-measures-dashboard/published/01GGZ1274CPVJ4PC1NN2QE8QG0/
-  deciles_table_url: https://jobs.opensafely.org/service-restoration-observatory/sro-key-measures-dashboard/published/01GGZ1273QS8ACSZMJENEFZ0BQ/
-  top_5_codes_table_url: https://jobs.opensafely.org/service-restoration-observatory/sro-key-measures-dashboard/published/01GGWFEGMMMX7YMJQ80F54E56Y/
+  counts_table: https://jobs.opensafely.org/service-restoration-observatory/sro-key-measures-dashboard/published/01GGZ1274CPVJ4PC1NN2QE8QG0/
+  deciles_table: https://jobs.opensafely.org/service-restoration-observatory/sro-key-measures-dashboard/published/01GGZ1273QS8ACSZMJENEFZ0BQ/
+  top_5_codes_table: https://jobs.opensafely.org/service-restoration-observatory/sro-key-measures-dashboard/published/01GGWFEGMMMX7YMJQ80F54E56Y/
 rbc:
-  counts_table_url: https://jobs.opensafely.org/service-restoration-observatory/sro-key-measures-dashboard/published/01GGZ1274E1QDEFYVGPFH13GBV/
-  deciles_table_url: https://jobs.opensafely.org/service-restoration-observatory/sro-key-measures-dashboard/published/01GGZ1273RP68K1YM9TYRA2FBD/
-  top_5_codes_table_url: https://jobs.opensafely.org/service-restoration-observatory/sro-key-measures-dashboard/published/01GGWFEGMGW5P6WH7TXV878FFK/
+  counts_table: https://jobs.opensafely.org/service-restoration-observatory/sro-key-measures-dashboard/published/01GGZ1274E1QDEFYVGPFH13GBV/
+  deciles_table: https://jobs.opensafely.org/service-restoration-observatory/sro-key-measures-dashboard/published/01GGZ1273RP68K1YM9TYRA2FBD/
+  top_5_codes_table: https://jobs.opensafely.org/service-restoration-observatory/sro-key-measures-dashboard/published/01GGWFEGMGW5P6WH7TXV878FFK/
 sodium:
-  counts_table_url: https://jobs.opensafely.org/service-restoration-observatory/sro-key-measures-dashboard/published/01GGZ1274G3QAPB7QP12QMH4A6/
-  deciles_table_url: https://jobs.opensafely.org/service-restoration-observatory/sro-key-measures-dashboard/published/01GGZ1273T25NQB2E84Y4X8HH2/
-  top_5_codes_table_url: https://jobs.opensafely.org/service-restoration-observatory/sro-key-measures-dashboard/published/01GGWFEGMADFDX6MCPE2P9DHM2/
+  counts_table: https://jobs.opensafely.org/service-restoration-observatory/sro-key-measures-dashboard/published/01GGZ1274G3QAPB7QP12QMH4A6/
+  deciles_table: https://jobs.opensafely.org/service-restoration-observatory/sro-key-measures-dashboard/published/01GGZ1273T25NQB2E84Y4X8HH2/
+  top_5_codes_table: https://jobs.opensafely.org/service-restoration-observatory/sro-key-measures-dashboard/published/01GGWFEGMADFDX6MCPE2P9DHM2/
 systolic_bp:
-  counts_table_url: https://jobs.opensafely.org/service-restoration-observatory/sro-key-measures-dashboard/published/01GGZ1274J5CHBHZYTD38Q4X3Z/
-  deciles_table_url: https://jobs.opensafely.org/service-restoration-observatory/sro-key-measures-dashboard/published/01GGZ1273Y8PM2QYPWBDXWT433/
-  top_5_codes_table_url: https://jobs.opensafely.org/service-restoration-observatory/sro-key-measures-dashboard/published/01GGWFEGM5TB62ZPT4D3T7A56F/
+  counts_table: https://jobs.opensafely.org/service-restoration-observatory/sro-key-measures-dashboard/published/01GGZ1274J5CHBHZYTD38Q4X3Z/
+  deciles_table: https://jobs.opensafely.org/service-restoration-observatory/sro-key-measures-dashboard/published/01GGZ1273Y8PM2QYPWBDXWT433/
+  top_5_codes_table: https://jobs.opensafely.org/service-restoration-observatory/sro-key-measures-dashboard/published/01GGWFEGM5TB62ZPT4D3T7A56F/
 tsh:
-  counts_table_url: https://jobs.opensafely.org/service-restoration-observatory/sro-key-measures-dashboard/published/01GGZ1274KHCEV4VV1RFJPVJ5B/
-  deciles_table_url: https://jobs.opensafely.org/service-restoration-observatory/sro-key-measures-dashboard/published/01GGZ12740V6XDKZY796V0MHWN/
-  top_5_codes_table_url: https://jobs.opensafely.org/service-restoration-observatory/sro-key-measures-dashboard/published/01GGWFEGM2Q5PXN17JG59HZFRQ/
+  counts_table: https://jobs.opensafely.org/service-restoration-observatory/sro-key-measures-dashboard/published/01GGZ1274KHCEV4VV1RFJPVJ5B/
+  deciles_table: https://jobs.opensafely.org/service-restoration-observatory/sro-key-measures-dashboard/published/01GGZ12740V6XDKZY796V0MHWN/
+  top_5_codes_table: https://jobs.opensafely.org/service-restoration-observatory/sro-key-measures-dashboard/published/01GGWFEGM2Q5PXN17JG59HZFRQ/
