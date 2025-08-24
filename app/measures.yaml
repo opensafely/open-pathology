@@ -1,5 +1,5 @@
 - name: Blood Pressure monitoring rate
-  shorthand: systolic_bp
+  shorthand: systol_tests
   is_pathology: false
   explanation: >
     A commonly-used assessment used to identify patients with hypertension or to ensure optimal treatment for those with known hypertension.
@@ -13,7 +13,7 @@
   codelist_url: https://www.opencodelists.org/codelist/opensafely/systolic-blood-pressure-qof/3572b5fb/
 
 - name: Cholesterol testing rate
-  shorthand: cholesterol
+  shorthand: chol_tests
   is_pathology: true
   explanation: >
     A commonly-used blood test used as part of a routine cardiovascular disease 10 year risk assessment
@@ -28,7 +28,7 @@
   codelist_url: https://www.opencodelists.org/codelist/opensafely/cholesterol-tests/0f1b2a4c/
 
 - name: Liver Function - Alanine Transferaminase (ALT) testing rate
-  shorthand: alt
+  shorthand: alt_tests
   is_pathology: true
   explanation: >
     An ALT blood test is one of a group of liver function tests (LFTs) which are used to detect problems with the function of the liver.
@@ -43,7 +43,7 @@
   codelist_url: https://www.opencodelists.org/codelist/opensafely/alanine-aminotransferase-alt-tests/2298df3e/
 
 - name: Red Blood Cell (RBC) count testing rate
-  shorthand: rbc
+  shorthand: rbc_tests
   is_pathology: true
   explanation: >
     RBC is completed as part of a group of tests referred to as a full blood count (FBC),
@@ -56,7 +56,7 @@
   codelist_url: https://www.opencodelists.org/codelist/opensafely/red-blood-cell-rbc-tests/576a859e/
 
 - name: Glycated Haemoglobin A1c (HbA1c) testing rate
-  shorthand: hba1c
+  shorthand: hba1c_tests
   is_pathology: true
   explanation: >
     HbA1c is a long term indicator of diabetes control.
@@ -70,7 +70,7 @@
   codelist_url: https://www.opencodelists.org/codelist/opensafely/glycated-haemoglobin-hba1c-tests/3e5b1269/
 
 - name: Renal Function - Sodium testing rate
-  shorthand: sodium
+  shorthand: sodium_tests
   is_pathology: true
   explanation: >
     Sodium is completed as part of a group of tests referred to as a renal profile,
@@ -82,3 +82,109 @@
     which will usually exclude tests requested while a person is in hospital and other settings like a private clinic.
   classification: recovery
   codelist_url: https://www.opencodelists.org/codelist/opensafely/sodium-tests-numerical-value/32bff605/
+
+- name: "Methotrexate: LFT safety monitoring completion rate"
+  shorthand: alt_mtx_ref_tests
+  is_pathology: true
+  explanation: >
+    An ALT blood test is one of a group of liver function tests (LFTs) which are used to detect problems with the function of the liver.
+    Patients taking methotrexate are recommended to have their LFTs checked at least every 3 months.
+    Following these recommendations helps identify any signs of liver toxicity in these patients, which reduces the risk of adverse drug events.
+  caveats: >
+    In a small number of places, an ALT test may NOT be included within a liver function test.
+    We use codes which represent results reported to GPs so tests requested but not yet reported are not included.
+    Only tests results returned to GPs are included, which will usually exclude tests requested while a person is in hospital and other settings like a private clinic.
+  classification: TBC pending data
+  codelist_url: https://www.opencodelists.org/codelist/opensafely/alanine-aminotransferase-alt-tests/
+
+- name: "Methotrexate: LFT safety monitoring results"
+  shorthand: alt_mtx_tests
+  is_pathology: true
+  explanation: >
+    An ALT blood test is one of a group of liver function tests (LFTs) which are used to detect problems with the function of the liver.
+    Patients taking methotrexate are recommended to have their LFTs checked at least every 3 months.
+    Following these recommendations helps identify any signs of liver toxicity in these patients, which reduces the risk of adverse drug events.
+  caveats: >
+    In a small number of places, an ALT test may NOT be included within a liver function test.
+    We use codes which represent results reported to GPs so tests requested but not yet reported are not included.
+    Only tests results returned to GPs are included, which will usually exclude tests requested while a person is in hospital and other settings like a private clinic.
+  classification: TBC pending data
+  codelist_url: https://www.opencodelists.org/codelist/opensafely/alanine-aminotransferase-alt-tests-numerical-value/
+
+- name: HbA1c testing rate in patients with Type 2 diabetes
+  shorthand: hba1c_diab_mean_tests
+  is_pathology: true
+  explanation: >
+    HbA1c is a long term indicator of diabetes control.
+    NICE guidelines recommend that individuals with diabetes have their HbA1c measured at least twice a year.
+    Poor diabetic control can place individuals living with diabetes at an increased risk of the complications of diabetes.
+  caveats: >
+    We use codes which represent results reported to GPs so tests requested but not yet reported are not included.
+    Only tests results returned to GPs are included, which will usually exclude tests requested while a person is in hospital and other settings like a private clinic.
+  classification: TBC pending data
+  codelist_url: https://www.opencodelists.org/codelist/opensafely/glycated-haemoglobin-hba1c-tests/2ab11f20/
+
+- name: HbA1c results in patients with Type 2 diabetes
+  shorthand: hba1c_diab_tests
+  is_pathology: true
+  explanation: >
+    HbA1c is a long term indicator of diabetes control.
+    NICE guidelines recommend that individuals with diabetes have their HbA1c measured at least twice a year.
+    Poor diabetic control can place individuals living with diabetes at an increased risk of the complications of diabetes.
+  caveats: >
+    We use codes which represent results reported to GPs so tests requested but not yet reported are not included.
+    Only tests results returned to GPs are included, which will usually exclude tests requested while a person is in hospital and other settings like a private clinic.
+  classification: TBC pending data
+  codelist_url: https://www.opencodelists.org/codelist/opensafely/glycated-haemoglobin-hba1c-tests-numerical-value/5134e926/
+
+- name: Prostate-specific antigen testing rate
+  shorthand: psa_ref_tests
+  is_pathology: true
+  explanation: >
+    Prostate-specific antigen (PSA) is a protein produced by the prostate gland which can be monitored to help detect prostate cancer.
+    NICE recommends offering PSA testing to men who have unexplained symptoms that could be attributable to prostate cancer.
+    Following these recommendations helps ensure early detection of clinically significant prostate cancer while avoiding unnecessary harm from overdiagnosis and overtreatment.
+  caveats: >
+    We use codes which represent results reported to GPs so tests requested but not yet reported are not included.
+    Only tests results returned to GPs are included, which will usually exclude tests requested while a person is in hospital and other settings like a private clinic.
+  classification: TBC pending data
+  codelist_url: https://www.opencodelists.org/codelist/opensafely/psa-numeric-value/2258a288/
+
+- name: Prostate-specific antigen test results
+  shorthand: psa_tests
+  is_pathology: true
+  explanation: >
+    Prostate-specific antigen (PSA) is a protein produced by the prostate gland which can be monitored to help detect prostate cancer.
+    NICE recommends offering PSA testing to men who have unexplained symptoms that could be attributable to prostate cancer.
+    Following these recommendations helps ensure early detection of clinically significant prostate cancer while avoiding unnecessary harm from overdiagnosis and overtreatment.
+  caveats: >
+    We use codes which represent results reported to GPs so tests requested but not yet reported are not included.
+    Only tests results returned to GPs are included, which will usually exclude tests requested while a person is in hospital and other settings like a private clinic.
+  classification: TBC pending data
+  codelist_url: https://www.opencodelists.org/codelist/opensafely/psa-numeric-value/2258a288/
+
+- name: Vitamin D testing rate
+  shorthand: vit_d_ref_tests
+  is_pathology: true
+  explanation: >
+    Vitamin D is essential for bone health, immune function and more.
+    NICE recommends testing vitamin D levels in certain situations such as where there are symptoms suggestive of deficiency, or where suspected bone disease exists.
+    Good management of vitamin D levels reduces the risk of complications from deficiency, such as osteoporosis, fractures, or impaired immune function.
+  caveats: >
+    We use codes which represent results reported to GPs so tests requested but not yet reported are not included.
+    Only tests results returned to GPs are included, which will usually exclude tests requested while a person is in hospital and other settings like a private clinic.
+  classification: TBC pending data
+  codelist_url: https://www.opencodelists.org/codelist/opensafely/vitamin-d-level/1032ad60/
+
+- name: Vitamin D test results
+  shorthand: vit_d_tests
+  is_pathology: true
+  explanation: >
+    Vitamin D is essential for bone health, immune function and more.
+    NICE recommends testing vitamin D levels in certain situations such as where there are symptoms suggestive of deficiency, or where suspected bone disease exists.
+    Good management of vitamin D levels reduces the risk of complications from deficiency, such as osteoporosis, fractures, or impaired immune function.
+  caveats: >
+    We use codes which represent results reported to GPs so tests requested but not yet reported are not included.
+    Only tests results returned to GPs are included, which will usually exclude tests requested while a person is in hospital and other settings like a private clinic.
+  classification: TBC pending data
+  codelist_url: https://www.opencodelists.org/codelist/opensafely/vitamin-d-level/1032ad60/
