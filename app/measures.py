@@ -50,7 +50,18 @@ class Measure:
 
     @property
     def charts(self):
-        return {"Practice deciles": self.deciles_chart}
+        charts = {"Practice deciles": self.deciles_chart}
+        if self.demographics_table is not None:
+            for segmentation, column_name in [
+                ("by_IMD", "IMD"),
+                ("by_ethnicity", "Ethnicity"),
+                ("by_region", "Region"),
+                ("by_sex", "Sex"),
+            ]:
+                charts[f"Demographic breakdown: {column_name}"] = (
+                    self._plot_demographic_chart(segmentation, column_name)
+                )
+        return charts
 
     @property
     def deciles_chart(self):
@@ -91,6 +102,22 @@ class Measure:
                 opacity=opacity,
             )
             .add_params(legend_selection)
+        )
+        return chart
+
+    def _plot_demographic_chart(self, segmentation, column_name):
+        table = self.demographics_table[
+            self.demographics_table["measure"] == segmentation
+        ].sort_values(by=[column_name, "date"])
+        assert len(table) > 0, f"No data for {segmentation}"
+        chart = (
+            altair.Chart(table)
+            .mark_line()
+            .encode(
+                x=altair.X("date", title=None),
+                y=altair.Y("value", title=None),
+                color=altair.Color(column_name + ":N"),
+            )
         )
         return chart
 
