@@ -2,6 +2,7 @@ import measures
 import streamlit
 
 
+@streamlit.cache_resource
 def get_repository():
     return measures.OSJobsRepository()
 
