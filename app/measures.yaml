@@ -7,7 +7,6 @@
     In a small number of places, an ALT test may NOT be included within a liver function test.
     We use codes which represent results reported to GPs so tests requested but not yet reported are not included.
     Only tests results returned to GPs are included, which will usually exclude tests requested while a person is in hospital and other settings like a private clinic.
-  classification: TBC pending data
   codelist_url: https://www.opencodelists.org/codelist/opensafely/alanine-aminotransferase-alt-tests-numerical-value/
   counts_table_url: https://jobs.opensafely.org/opensafely-feedback/openpathology-main/published/01K06VQTDH9SY57GHN0N7W4615/
   top_5_codes_table_url: https://jobs.opensafely.org/opensafely-feedback/openpathology-main/published/01K06VQTDNCX8ZGVAH8GH3RFNS/
@@ -22,7 +21,6 @@
     In a small number of places, an ALT test may NOT be included within a liver function test.
     We use codes which represent results reported to GPs so tests requested but not yet reported are not included.
     Only tests results returned to GPs are included, which will usually exclude tests requested while a person is in hospital and other settings like a private clinic.
-  classification: TBC pending data
   codelist_url: https://www.opencodelists.org/codelist/opensafely/alanine-aminotransferase-alt-tests/
   counts_table_url: https://jobs.opensafely.org/opensafely-feedback/openpathology-main/published/01K3JRW3B2W78XTHDPH4MEGRN3/
   top_5_codes_table_url: https://jobs.opensafely.org/opensafely-feedback/openpathology-main/published/01K3JRW3B53AY6DWXSTR5SKR5K/
@@ -38,7 +36,6 @@
     We use codes which represent results reported to GPs so tests requested but not yet reported are not included.
     Only tests results returned to GPs are included,
     which will usually exclude tests requested while a person is in hospital and other settings like a private clinic.
-  classification: recovery
   codelist_url: https://www.opencodelists.org/codelist/opensafely/alanine-aminotransferase-alt-tests/2298df3e/
   counts_table_url: https://jobs.opensafely.org/opensafely-feedback/openpathology-main/published/01JV51PQ51SJ986YQ2AAQFT6X6/
   top_5_codes_table_url: https://jobs.opensafely.org/opensafely-feedback/openpathology-main/published/01JV51PQ5443KC2JKYR07TPTM2/
@@ -54,7 +51,6 @@
     We use codes which represent results reported to GPs so tests requested but not yet reported are not included.
     Only tests results returned to GPs are included,
     which will usually exclude tests requested while a person is in hospital and other settings like a private clinic.
-  classification: recovery
   codelist_url: https://www.opencodelists.org/codelist/opensafely/cholesterol-tests/0f1b2a4c/
   counts_table_url: https://jobs.opensafely.org/opensafely-feedback/openpathology-main/published/01JV51PQ4SEGEGM8V74A6KTM4C/
   top_5_codes_table_url: https://jobs.opensafely.org/opensafely-feedback/openpathology-main/published/01JV51PQ4WHDY4GHZ18A57SZ8Z/
@@ -68,7 +64,6 @@
   caveats: >
     We use codes which represent results reported to GPs so tests requested but not yet reported are not included.
     Only tests results returned to GPs are included, which will usually exclude tests requested while a person is in hospital and other settings like a private clinic.
-  classification: TBC pending data
   codelist_url: https://www.opencodelists.org/codelist/opensafely/glycated-haemoglobin-hba1c-tests/2ab11f20/
   counts_table_url: https://jobs.opensafely.org/opensafely-feedback/openpathology-main/published/01K06VQTE4D39TCGGM3EK9F2MJ/
   top_5_codes_table_url: https://jobs.opensafely.org/opensafely-feedback/openpathology-main/published/01K06VQTE89W3MDV7JSZ80EJKS/
@@ -82,7 +77,6 @@
   caveats: >
     We use codes which represent results reported to GPs so tests requested but not yet reported are not included.
     Only tests results returned to GPs are included, which will usually exclude tests requested while a person is in hospital and other settings like a private clinic.
-  classification: TBC pending data
   codelist_url: https://www.opencodelists.org/codelist/opensafely/glycated-haemoglobin-hba1c-tests-numerical-value/5134e926/
   counts_table_url: https://jobs.opensafely.org/opensafely-feedback/openpathology-main/published/01K06VQTDV3ZVEMJNN1FC3XE4X/
   top_5_codes_table_url: https://jobs.opensafely.org/opensafely-feedback/openpathology-main/published/01K06VQTDY9JGQVEQAJEHY90S3/
@@ -97,7 +91,6 @@
     We use codes which represent results reported to GPs so tests requested but not yet reported are not included.
     Only test results returned to GPs are included,
     which will usually exclude tests requested while a person is in hospital and other settings like a private clinic.
-  classification: recovery
   codelist_url: https://www.opencodelists.org/codelist/opensafely/glycated-haemoglobin-hba1c-tests/3e5b1269/
   counts_table_url: https://jobs.opensafely.org/opensafely-feedback/openpathology-main/published/01JV51PQ4HGSVJKA02AVNCK23E/
   top_5_codes_table_url: https://jobs.opensafely.org/opensafely-feedback/openpathology-main/published/01JV51PQ4M9XAWJ7FZS31C2D09/
@@ -111,7 +104,6 @@
   caveats: >
     We use codes which represent results reported to GPs so tests requested but not yet reported are not included.
     Only tests results returned to GPs are included, which will usually exclude tests requested while a person is in hospital and other settings like a private clinic.
-  classification: TBC pending data
   codelist_url: https://www.opencodelists.org/codelist/opensafely/psa-numeric-value/2258a288/
   counts_table_url: https://jobs.opensafely.org/opensafely-feedback/openpathology-main/published/01K06VQTG94PRA5MPY3GV1M3VC/
   top_5_codes_table_url: https://jobs.opensafely.org/opensafely-feedback/openpathology-main/published/01K06VQTGC177KMCJAGAKG7BVH/
@@ -125,7 +117,6 @@
   caveats: >
     We use codes which represent results reported to GPs so tests requested but not yet reported are not included.
     Only tests results returned to GPs are included, which will usually exclude tests requested while a person is in hospital and other settings like a private clinic.
-  classification: TBC pending data
   codelist_url: https://www.opencodelists.org/codelist/opensafely/psa-numeric-value/2258a288/
   counts_table_url: https://jobs.opensafely.org/opensafely-feedback/openpathology-main/published/01K3JRW3BSR2T7EHRCX27W3Q5S/
   top_5_codes_table_url: https://jobs.opensafely.org/opensafely-feedback/openpathology-main/published/01K3JRW3BVRYE7R98YQFNMYGSY/
@@ -139,7 +130,6 @@
     We use codes which represent results reported to GPs so tests requested but not yet reported are not included.
     Only tests results returned to GPs are included,
     which will usually exclude tests requested while a person is in hospital and other settings like a private clinic.
-  classification: recovery
   codelist_url: https://www.opencodelists.org/codelist/opensafely/red-blood-cell-rbc-tests/576a859e/
   counts_table_url: https://jobs.opensafely.org/opensafely-feedback/openpathology-main/published/01JV51PQ491D3PD7GFKM5YX4F9/
   top_5_codes_table_url: https://jobs.opensafely.org/opensafely-feedback/openpathology-main/published/01JV51PQ4CG01ZJA0D3QGMRH56/
@@ -154,7 +144,6 @@
     We use codes which represent results reported to GPs so tests requested but not yet reported are not included.
     Only tests results returned to GPs are included,
     which will usually exclude tests requested while a person is in hospital and other settings like a private clinic.
-  classification: recovery
   codelist_url: https://www.opencodelists.org/codelist/opensafely/sodium-tests-numerical-value/32bff605/
   counts_table_url: https://jobs.opensafely.org/opensafely-feedback/openpathology-main/published/01JV51PQ40W3HBSKGS0BWJY721/
   top_5_codes_table_url: https://jobs.opensafely.org/opensafely-feedback/openpathology-main/published/01JV51PQ43N5BN3VHKFS2ER1Y4/
@@ -169,7 +158,6 @@
     We use codes which represent results reported to GPs so tests requested but not yet reported are not included.
     Only test results returned to GPs are included,
     which will usually exclude tests requested while a person is in hospital and other settings like a private clinic.
-  classification: sustained drop
   codelist_url: https://www.opencodelists.org/codelist/opensafely/systolic-blood-pressure-qof/3572b5fb/
   counts_table_url: https://jobs.opensafely.org/opensafely-feedback/openpathology-main/published/01JV51PQ3QCRBWBX6QEG9G18QE/
   top_5_codes_table_url: https://jobs.opensafely.org/opensafely-feedback/openpathology-main/published/01JV51PQ3TG5ES5HRAYBX32PF5/
@@ -183,7 +171,6 @@
   caveats: >
     We use codes which represent results reported to GPs so tests requested but not yet reported are not included.
     Only tests results returned to GPs are included, which will usually exclude tests requested while a person is in hospital and other settings like a private clinic.
-  classification: TBC pending data
   codelist_url: https://www.opencodelists.org/codelist/opensafely/vitamin-d-level/1032ad60/
   counts_table_url: https://jobs.opensafely.org/opensafely-feedback/openpathology-main/published/01K3JRW3BBFZ3HMRYJFEDRR0AM/
   top_5_codes_table_url: https://jobs.opensafely.org/opensafely-feedback/openpathology-main/published/01K3JRW3BD1P019M9C7NFRJAYN/
@@ -197,7 +184,6 @@
   caveats: >
     We use codes which represent results reported to GPs so tests requested but not yet reported are not included.
     Only tests results returned to GPs are included, which will usually exclude tests requested while a person is in hospital and other settings like a private clinic.
-  classification: TBC pending data
   codelist_url: https://www.opencodelists.org/codelist/opensafely/vitamin-d-level/1032ad60/
   counts_table_url: https://jobs.opensafely.org/opensafely-feedback/openpathology-main/published/01K3JRW3BJ01YP6YP8FG47KB7W/
   top_5_codes_table_url: https://jobs.opensafely.org/opensafely-feedback/openpathology-main/published/01K3JRW3BNP1NZ0W5KYVRM1C80/

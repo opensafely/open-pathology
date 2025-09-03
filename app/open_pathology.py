@@ -43,8 +43,6 @@ def main():
             f"**{pct_change:.2%}**"
         )
 
-    streamlit.markdown(f"Overall classification: **{measure.classification}**")
-
 
 if __name__ == "__main__":
     main()
