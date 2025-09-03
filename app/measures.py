@@ -106,7 +106,7 @@ class OSJobsRepository:
         return self._measures[name]
 
     def _get_file_url(self, shorthand, key):
-        return self._file_urls[shorthand][key]
+        return self._file_urls[shorthand][key + "_url"]
 
     def _construct(self, name):
         """Construct the measure with the given name from information stored on the
