@@ -6,35 +6,37 @@
 #
 cfgv==3.4.0
     # via pre-commit
-coverage==7.6.9
+coverage==7.10.6
     # via -r requirements.dev.in
-distlib==0.3.9
+distlib==0.4.0
     # via virtualenv
-filelock==3.16.1
+filelock==3.19.1
     # via virtualenv
-identify==2.6.3
+identify==2.6.13
     # via pre-commit
-iniconfig==2.0.0
+iniconfig==2.1.0
     # via pytest
 nodeenv==1.9.1
     # via pre-commit
 opensafely-ehrql @ git+https://github.com/opensafely-core/ehrql.git@v1.27.0
     # via -r requirements.dev.in
-packaging==24.2
+packaging==25.0
     # via pytest
-platformdirs==4.3.6
+platformdirs==4.4.0
     # via virtualenv
-pluggy==1.5.0
+pluggy==1.6.0
     # via pytest
-pre-commit==4.0.1
+pre-commit==4.3.0
     # via -r requirements.dev.in
-pytest==8.3.4
+pygments==2.19.2
+    # via pytest
+pytest==8.4.1
     # via -r requirements.dev.in
 pyyaml==6.0.2
     # via pre-commit
-ruff==0.8.2
+ruff==0.12.11
     # via -r requirements.dev.in
-virtualenv==20.28.0
+virtualenv==20.34.0
     # via pre-commit
 watchdog==6.0.0
     # via -r requirements.dev.in
