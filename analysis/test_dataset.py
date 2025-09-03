@@ -1,8 +1,9 @@
 # This script is used to test the measures definition.
 
 from datetime import date
-from dataset_definition import dataset
+
 from dataset_definition import args
+
 
 test_data_options = {
     # Vit d outside ref
@@ -159,7 +160,7 @@ test_data_options = {
                 "snomedct_code": "1013211000000103",
                 "numeric_value": 5,
                 "upper_bound": 7,
-                "lower_bound": 0
+                "lower_bound": 0,
             }
         ],
         "practice_registrations": [
@@ -185,7 +186,7 @@ test_data_options = {
                 "snomedct_code": "1013211000000103",
                 "numeric_value": 5,
                 "lower_bound": 1,
-                "upper_bound": 0
+                "upper_bound": 0,
             }
         ],
         "practice_registrations": [

@@ -1,5 +1,5 @@
 """
-Description: 
+Description:
 - This script generates the YAML file for the project.
 
 Usage:
@@ -9,8 +9,9 @@ Output:
 - project.yaml
 """
 
-from datetime import datetime, timedelta
 from analysis.config import codelists
+
+
 # --- YAML HEADER ---
 
 yaml_header = """
@@ -47,7 +48,7 @@ yaml_template = """
         measures: output/{test}_tests/measures_light.arrow
   generate_processed_data_{test}_tests:
     run: >
-      python:latest 
+      python:latest
         analysis/write_processed_csv_files.py
         --output-dir output/{test}_tests
         --test {test}
@@ -61,7 +62,7 @@ yaml_template = """
         event_counts_table: output/{test}_tests/event_counts.csv
   generate_processed_data_{test}_tests_light:
     run: >
-      python:latest 
+      python:latest
         analysis/write_processed_csv_files.py
         --output-dir output/{test}_tests
         --test {test}
@@ -91,17 +92,16 @@ yaml_body = ""
 needs = {}
 
 tests = codelists
-del tests['diab_res']
-del tests['alt_numeric']
+del tests["diab_res"]
+del tests["alt_numeric"]
 
 for test in tests.keys():
-
-    yaml_body += yaml_template.format(test = test)
+    yaml_body += yaml_template.format(test=test)
 
 yaml_plots = """
   generate_plots:
     run: >
-      r:latest 
+      r:latest
         analysis/plots.r
     outputs:
       moderately_sensitive:
@@ -110,4 +110,4 @@ yaml_plots = """
 
 yaml = yaml_header + yaml_body + yaml_plots
 with open("project.yaml", "w") as file:
-       file.write(yaml)
+    file.write(yaml)

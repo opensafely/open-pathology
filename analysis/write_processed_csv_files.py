@@ -1,4 +1,4 @@
-# Usage: 
+# Usage:
 # Options:
 # --output-dir [path]  Specify output directory
 # --test [test]   Choose pathology test e.g. chol
@@ -7,11 +7,14 @@
 
 import argparse
 from pathlib import Path
-from config import codelists
-import pandas as pd
+
 import numpy as np
+import pandas as pd
+from config import codelists
+
 
 BASE_DIR = Path(__file__).parents[1]
+
 
 def get_demographic_table(df_measure_output):
     """
@@ -22,11 +25,25 @@ def get_demographic_table(df_measure_output):
     returns:
         The deciles table for the measure as a pd.DataFrame
     """
-    demograph_strata = ['by_IMD', 'by_ethnicity', 'by_sex', 'by_region']
-    df_demograph = df_measure_output[df_measure_output['measure'].isin(demograph_strata)]
-    df_demograph = df_demograph[["measure", "interval_start", "ratio", "numerator", 
-                                 "denominator", "IMD", "ethnicity", "sex", "region"]]
+    demograph_strata = ["by_IMD", "by_ethnicity", "by_sex", "by_region"]
+    df_demograph = df_measure_output[
+        df_measure_output["measure"].isin(demograph_strata)
+    ]
+    df_demograph = df_demograph[
+        [
+            "measure",
+            "interval_start",
+            "ratio",
+            "numerator",
+            "denominator",
+            "IMD",
+            "ethnicity",
+            "sex",
+            "region",
+        ]
+    ]
     return df_demograph
+
 
 def get_deciles_table(df_measure_output):
     """
@@ -68,8 +85,8 @@ def get_deciles_table(df_measure_output):
     df_quantiles["percentile"] = (df_quantiles["percentile"] * 100).astype(int)
 
     # Rate per 1000 patients (if we're calculating a rate and not a mean)
-    if 'mean' not in args.test:
-        df_quantiles["value"] = df_quantiles["value"] * 1000 
+    if "mean" not in args.test:
+        df_quantiles["value"] = df_quantiles["value"] * 1000
 
     return df_quantiles, df_prac_per_month
 
@@ -94,7 +111,7 @@ def get_event_counts_and_top_5_codes_tables(df_measure_output, codelist_path):
     )
 
     # Events counts are in the numerator except for the mean measure
-    if 'mean' in args.test:
+    if "mean" in args.test:
         events_col = "denominator"
     else:
         events_col = "numerator"
@@ -110,12 +127,14 @@ def get_event_counts_and_top_5_codes_tables(df_measure_output, codelist_path):
     df_event_counts = pd.DataFrame(
         columns=["count"], index=["total_events", "events_in_latest_period"]
     )
-    df_code_counts = pd.DataFrame(columns=["Code", "Events", "Description", "Proportion of codes (%)"])
+    df_code_counts = pd.DataFrame(
+        columns=["Code", "Events", "Description", "Proportion of codes (%)"]
+    )
 
     if not events.empty:
         # Populate the event counts table
         df_event_counts.loc["total_events"] = events.sum()
-        
+
         grouped_by_date = events.groupby(level="Date").sum().sort_index(ascending=False)
 
         if not grouped_by_date.empty:
@@ -133,9 +152,9 @@ def get_event_counts_and_top_5_codes_tables(df_measure_output, codelist_path):
         )
 
         # Calculate proportion of codes
-        total_events = df_code_counts['Events'].sum()
+        total_events = df_code_counts["Events"].sum()
         df_code_counts["Proportion of codes (%)"] = (
-            round(100 * df_code_counts['Events'] / total_events, 2)
+            round(100 * df_code_counts["Events"] / total_events, 2)
         ).astype(str)
 
         # Formatting tweaks
@@ -158,7 +177,7 @@ def get_event_counts_and_top_5_codes_tables(df_measure_output, codelist_path):
 
 def main(output_dir, codelist_path):
     """
-    For a given output directory, read in the rounded & redacted measures file, 
+    For a given output directory, read in the rounded & redacted measures file,
     write the deciles table, event counts table and top 5 codes table to CSV files.
     These files are SDC-compliant as they are derived from the rounded & redacted measures files.
     args:
@@ -170,16 +189,16 @@ def main(output_dir, codelist_path):
 
     if args.sim:
         df = pd.read_feather(output_dir / "measures.arrow")
-        df['numerator'] = np.random.randint(0, 500, size = len(df))
-        df['denominator'] = np.random.randint(500, 1000, size = len(df))
-        df['ratio'] = df['numerator'] / df['denominator']
-        suffix = '_sim'
+        df["numerator"] = np.random.randint(0, 500, size=len(df))
+        df["denominator"] = np.random.randint(500, 1000, size=len(df))
+        df["ratio"] = df["numerator"] / df["denominator"]
+        suffix = "_sim"
     elif args.light:
         df = pd.read_feather(output_dir / "measures_light.arrow")
-        suffix = '_light'
+        suffix = "_light"
     else:
         df = pd.read_feather(output_dir / "measures.arrow")
-        suffix = ''
+        suffix = ""
 
     df["practice"] = df["practice"].astype("Int64")
 
@@ -190,11 +209,19 @@ def main(output_dir, codelist_path):
     )
     df_prac_per_month.to_csv(
         output_dir / f"practice_counts_per_month{suffix}.csv",
-        index=False, 
+        index=False,
     )
 
     # Generate demographic breakdown for original measures
-    if args.test in ['alt', 'chol', 'hba1c', 'hba1c_numeric', 'rbc', 'sodium', 'systol']:
+    if args.test in [
+        "alt",
+        "chol",
+        "hba1c",
+        "hba1c_numeric",
+        "rbc",
+        "sodium",
+        "systol",
+    ]:
         demographic_table = get_demographic_table(df)
         demographic_table.to_csv(
             output_dir / f"demographic_table_counts_per_week{suffix}.csv",
@@ -216,15 +243,15 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--test")
     parser.add_argument("--output-dir")
-    parser.add_argument("--sim", action = 'store_true')
-    parser.add_argument("--light", action = 'store_true')
+    parser.add_argument("--sim", action="store_true")
+    parser.add_argument("--light", action="store_true")
     args = parser.parse_args()
 
     # Specify test for cases that use multiple codelists e.g. hba1c_diabetes
-    if 'hba1c' in args.test:
-        codelist_path = codelists['hba1c_numeric']
-    elif 'alt' in args.test:
-        codelist_path = codelists['alt']
+    if "hba1c" in args.test:
+        codelist_path = codelists["hba1c_numeric"]
+    elif "alt" in args.test:
+        codelist_path = codelists["alt"]
     else:
         codelist_path = codelists[args.test]
 
