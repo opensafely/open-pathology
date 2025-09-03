@@ -93,9 +93,7 @@ class Measure:
 class OSJobsRepository:
     def __init__(self):
         path = pathlib.Path(__file__).parent.joinpath("measures.yaml")
-        file_urls_path = pathlib.Path(__file__).parent.joinpath("file_urls.yaml")
         self._records = {r["name"]: r for r in yaml.load(path.read_text(), yaml.Loader)}
-        self._file_urls = yaml.load(file_urls_path.read_text(), yaml.Loader)
         self._measures = {}  # the repository
 
     def get(self, name):
@@ -105,9 +103,6 @@ class OSJobsRepository:
             self._measures[name] = self._construct(name)
         return self._measures[name]
 
-    def _get_file_url(self, shorthand, key):
-        return self._file_urls[shorthand][key + "_url"]
-
     def _construct(self, name):
         """Construct the measure with the given name from information stored on the
         local file system and on OS Jobs."""
@@ -116,13 +111,9 @@ class OSJobsRepository:
 
         # The following helpers don't need access to instance attributes, so we define
         # them as functions rather than as methods. Doing so makes them easier to mock.
-        counts = _get_counts(self._get_file_url(record["shorthand"], "counts_table"))
-        top_5_codes_table = _get_top_5_codes_table(
-            self._get_file_url(record["shorthand"], "top_5_codes_table")
-        )
-        deciles_table = _get_deciles_table(
-            self._get_file_url(record["shorthand"], "deciles_table")
-        )
+        counts = _get_counts(record["counts_table_url"])
+        top_5_codes_table = _get_top_5_codes_table(record["top_5_codes_table_url"])
+        deciles_table = _get_deciles_table(record["deciles_table_url"])
 
         return Measure(
             name,
