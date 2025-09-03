@@ -127,7 +127,7 @@ class OSJobsRepository:
 
     def list(self):
         """List the names of all the measures in the repository."""
-        return sorted(self._records.keys())
+        return self._records.keys()
 
 
 def _get_counts(counts_table_url):
