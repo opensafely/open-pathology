@@ -1,5 +1,4 @@
 - name: Blood Pressure monitoring rate
-  is_pathology: false
   explanation: >
     A commonly-used assessment used to identify patients with hypertension or to ensure optimal treatment for those with known hypertension.
     This helps ensure appropriate treatment, with the aim of reducing long term risks of complications from hypertension such as stroke,
@@ -15,7 +14,6 @@
   deciles_table_url: https://jobs.opensafely.org/service-restoration-observatory/sro-key-measures-dashboard/published/01GGZ1273Y8PM2QYPWBDXWT433/
 
 - name: Cholesterol testing rate
-  is_pathology: true
   explanation: >
     A commonly-used blood test used as part of a routine cardiovascular disease 10 year risk assessment
     and also to identify patients with lipid disorders (e.g. familial hypercholesterolaemia).
@@ -32,7 +30,6 @@
   deciles_table_url: https://jobs.opensafely.org/service-restoration-observatory/sro-key-measures-dashboard/published/01GGZ1273Y8PM2QYPWBDXWT433/
 
 - name: Liver Function - Alanine Transferaminase (ALT) testing rate
-  is_pathology: true
   explanation: >
     An ALT blood test is one of a group of liver function tests (LFTs) which are used to detect problems with the function of the liver.
     It is often used to monitor patients on medications which may affect the liver or which rely on the liver to break them down within the body.
@@ -49,7 +46,6 @@
   deciles_table_url: https://jobs.opensafely.org/service-restoration-observatory/sro-key-measures-dashboard/published/01GGZ12739P6B7Z00QAJBTBKK3/
 
 - name: Red Blood Cell (RBC) count testing rate
-  is_pathology: true
   explanation: >
     RBC is completed as part of a group of tests referred to as a full blood count (FBC),
     used to detect a variety of disorders of the blood, such as anaemia and infection.
@@ -64,7 +60,6 @@
   deciles_table_url: https://jobs.opensafely.org/service-restoration-observatory/sro-key-measures-dashboard/published/01GGZ1273RP68K1YM9TYRA2FBD/
 
 - name: Glycated Haemoglobin A1c (HbA1c) testing rate
-  is_pathology: true
   explanation: >
     HbA1c is a long term indicator of diabetes control.
     NICE guidelines recommend that individuals with diabetes have their HbA1c measured at least twice a year.
@@ -80,7 +75,6 @@
   deciles_table_url: https://jobs.opensafely.org/service-restoration-observatory/sro-key-measures-dashboard/published/01GGZ1273K1QJM5EQ7238X7P3S/
 
 - name: Renal Function - Sodium testing rate
-  is_pathology: true
   explanation: >
     Sodium is completed as part of a group of tests referred to as a renal profile,
     used to detect a variety of disorders of the kidneys.
