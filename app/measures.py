@@ -19,7 +19,6 @@ class Measure:
     name: str
     explanation: str
     caveats: str
-    classification: str
     codelist_url: str
     total_events: int
     top_5_codes_table: pandas.DataFrame
@@ -118,7 +117,6 @@ class OSJobsRepository:
             name,
             record["explanation"],
             record["caveats"],
-            record["classification"],
             record["codelist_url"],
             counts["total_events"],
             top_5_codes_table,
