@@ -175,20 +175,6 @@
   top_5_codes_table_url: https://jobs.opensafely.org/opensafely-feedback/openpathology-main/published/01JV51PQ3TG5ES5HRAYBX32PF5/
   deciles_table_url: https://jobs.opensafely.org/opensafely-feedback/openpathology-main/published/01JV51PQ3KGBDGXZKRS3VY6FPF/
 
-- name: Vitamin D test results
-  explanation: >
-    Vitamin D is essential for bone health, immune function and more.
-    NICE recommends testing vitamin D levels in certain situations such as where there are symptoms suggestive of deficiency, or where suspected bone disease exists.
-    Good management of vitamin D levels reduces the risk of complications from deficiency, such as osteoporosis, fractures, or impaired immune function.
-  caveats: >
-    We use codes which represent results reported to GPs so tests requested but not yet reported are not included.
-    Only tests results returned to GPs are included, which will usually exclude tests requested while a person is in hospital and other settings like a private clinic.
-  classification: TBC pending data
-  codelist_url: https://www.opencodelists.org/codelist/opensafely/vitamin-d-level/1032ad60/
-  counts_table_url: https://jobs.opensafely.org/opensafely-feedback/openpathology-main/published/01K3JRW3BJ01YP6YP8FG47KB7W/
-  top_5_codes_table_url: https://jobs.opensafely.org/opensafely-feedback/openpathology-main/published/01K3JRW3BNP1NZ0W5KYVRM1C80/
-  deciles_table_url: https://jobs.opensafely.org/opensafely-feedback/openpathology-main/published/01K3JRW3BGQH6DW7P9BMZG05Z2/
-
 - name: Vitamin D testing rate
   explanation: >
     Vitamin D is essential for bone health, immune function and more.
@@ -202,3 +188,17 @@
   counts_table_url: https://jobs.opensafely.org/opensafely-feedback/openpathology-main/published/01K3JRW3BBFZ3HMRYJFEDRR0AM/
   top_5_codes_table_url: https://jobs.opensafely.org/opensafely-feedback/openpathology-main/published/01K3JRW3BD1P019M9C7NFRJAYN/
   deciles_table_url: https://jobs.opensafely.org/opensafely-feedback/openpathology-main/published/01K3JRW3B87QQJGHTE7WTMHYV5/
+
+- name: Vitamin D test results
+  explanation: >
+    Vitamin D is essential for bone health, immune function and more.
+    NICE recommends testing vitamin D levels in certain situations such as where there are symptoms suggestive of deficiency, or where suspected bone disease exists.
+    Good management of vitamin D levels reduces the risk of complications from deficiency, such as osteoporosis, fractures, or impaired immune function.
+  caveats: >
+    We use codes which represent results reported to GPs so tests requested but not yet reported are not included.
+    Only tests results returned to GPs are included, which will usually exclude tests requested while a person is in hospital and other settings like a private clinic.
+  classification: TBC pending data
+  codelist_url: https://www.opencodelists.org/codelist/opensafely/vitamin-d-level/1032ad60/
+  counts_table_url: https://jobs.opensafely.org/opensafely-feedback/openpathology-main/published/01K3JRW3BJ01YP6YP8FG47KB7W/
+  top_5_codes_table_url: https://jobs.opensafely.org/opensafely-feedback/openpathology-main/published/01K3JRW3BNP1NZ0W5KYVRM1C80/
+  deciles_table_url: https://jobs.opensafely.org/opensafely-feedback/openpathology-main/published/01K3JRW3BGQH6DW7P9BMZG05Z2/
