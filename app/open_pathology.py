@@ -10,11 +10,13 @@ def get_repository():
 def main():
     repository = get_repository()
 
+    streamlit.title("OpenPathology")
+
     selected_measure_name = streamlit.selectbox("Select a measure:", repository.list())
 
     measure = repository.get(selected_measure_name)
 
-    streamlit.markdown(f"# {measure.name}")
+    streamlit.header(measure.name)
 
     streamlit.markdown(
         "The codes used for this measure "
@@ -29,7 +31,7 @@ def main():
 
     streamlit.altair_chart(measure.deciles_chart, use_container_width=True)
 
-    streamlit.markdown(f"**Most common codes ([codelist]({measure.codelist_url}))**")
+    streamlit.subheader(f"Most common codes ([codelist]({measure.codelist_url}))")
 
     streamlit.dataframe(measure.top_5_codes_table)
 
