@@ -23,6 +23,7 @@ class Measure:
     total_events: int
     top_5_codes_table: pandas.DataFrame
     deciles_table: pandas.DataFrame
+    chart_units: str
 
     def __repr__(self):
         return f"Measure(name='{self.name}')"
@@ -73,7 +74,7 @@ class Measure:
 
         # chart
         chart = (
-            altair.Chart(self.deciles_table, title="Rate per 1,000 registered patients")
+            altair.Chart(self.deciles_table, title=self.chart_units)
             .mark_line()
             .encode(
                 altair.X("date", title=None),
@@ -121,6 +122,7 @@ class OSJobsRepository:
             counts["total_events"],
             top_5_codes_table,
             deciles_table,
+            record["chart_units"],
         )
 
     def list(self):
