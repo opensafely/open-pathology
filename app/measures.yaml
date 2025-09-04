@@ -8,9 +8,9 @@
     We use codes which represent results reported to GPs so tests requested but not yet reported are not included.
     Only tests results returned to GPs are included, which will usually exclude tests requested while a person is in hospital and other settings like a private clinic.
   codelist_url: https://www.opencodelists.org/codelist/opensafely/alanine-aminotransferase-alt-tests-numerical-value/
-  counts_table_url: https://jobs.opensafely.org/opensafely-feedback/openpathology-main/published/01K06VQTDH9SY57GHN0N7W4615/
-  top_5_codes_table_url: https://jobs.opensafely.org/opensafely-feedback/openpathology-main/published/01K06VQTDNCX8ZGVAH8GH3RFNS/
-  deciles_table_url: https://jobs.opensafely.org/opensafely-feedback/openpathology-main/published/01K06VQTDE8QPWR3DSNSNHAFA8/
+  counts_table_url: output/alt_mtx_tests/event_counts.csv
+  top_5_codes_table_url: output/alt_mtx_tests/top_5_code_table.csv
+  deciles_table_url: output/alt_mtx_tests/deciles_table_counts_per_week_per_practice.csv
 
 - name: "Methotrexate: LFT safety monitoring results"
   explanation: >
@@ -22,9 +22,9 @@
     We use codes which represent results reported to GPs so tests requested but not yet reported are not included.
     Only tests results returned to GPs are included, which will usually exclude tests requested while a person is in hospital and other settings like a private clinic.
   codelist_url: https://www.opencodelists.org/codelist/opensafely/alanine-aminotransferase-alt-tests/
-  counts_table_url: https://jobs.opensafely.org/opensafely-feedback/openpathology-main/published/01K3JRW3B2W78XTHDPH4MEGRN3/
-  top_5_codes_table_url: https://jobs.opensafely.org/opensafely-feedback/openpathology-main/published/01K3JRW3B53AY6DWXSTR5SKR5K/
-  deciles_table_url: https://jobs.opensafely.org/opensafely-feedback/openpathology-main/published/01K3JRW3AX1CSDNRQMGBNDJ2P0/
+  counts_table_url: output/alt_mtx_ref_tests/event_counts.csv
+  top_5_codes_table_url: output/alt_mtx_ref_tests/top_5_code_table.csv
+  deciles_table_url: output/alt_mtx_ref_tests/deciles_table_counts_per_week_per_practice.csv
 
 - name: Liver Function - Alanine Transferaminase (ALT) testing rate
   explanation: >
@@ -37,9 +37,9 @@
     Only tests results returned to GPs are included,
     which will usually exclude tests requested while a person is in hospital and other settings like a private clinic.
   codelist_url: https://www.opencodelists.org/codelist/opensafely/alanine-aminotransferase-alt-tests/2298df3e/
-  counts_table_url: https://jobs.opensafely.org/opensafely-feedback/openpathology-main/published/01JV51PQ51SJ986YQ2AAQFT6X6/
-  top_5_codes_table_url: https://jobs.opensafely.org/opensafely-feedback/openpathology-main/published/01JV51PQ5443KC2JKYR07TPTM2/
-  deciles_table_url: https://jobs.opensafely.org/opensafely-feedback/openpathology-main/published/01JV51PQ4YBA56Y0BYKNMWTKZJ/
+  counts_table_url: output/alt_tests/event_counts.csv
+  top_5_codes_table_url: output/alt_tests/top_5_code_table.csv
+  deciles_table_url: output/alt_tests/deciles_table_counts_per_week_per_practice.csv
 
 - name: Cholesterol testing rate
   explanation: >
@@ -52,9 +52,9 @@
     Only tests results returned to GPs are included,
     which will usually exclude tests requested while a person is in hospital and other settings like a private clinic.
   codelist_url: https://www.opencodelists.org/codelist/opensafely/cholesterol-tests/0f1b2a4c/
-  counts_table_url: https://jobs.opensafely.org/opensafely-feedback/openpathology-main/published/01JV51PQ4SEGEGM8V74A6KTM4C/
-  top_5_codes_table_url: https://jobs.opensafely.org/opensafely-feedback/openpathology-main/published/01JV51PQ4WHDY4GHZ18A57SZ8Z/
-  deciles_table_url: https://jobs.opensafely.org/opensafely-feedback/openpathology-main/published/01JV51PQ4PAD684P485V9DP2CG/
+  counts_table_url: output/chol_tests/event_counts.csv
+  top_5_codes_table_url: output/chol_tests/top_5_code_table.csv
+  deciles_table_url: output/chol_tests/deciles_table_counts_per_week_per_practice.csv
 
 - name: HbA1c testing rate in patients with Type 2 diabetes
   explanation: >
@@ -65,9 +65,9 @@
     We use codes which represent results reported to GPs so tests requested but not yet reported are not included.
     Only tests results returned to GPs are included, which will usually exclude tests requested while a person is in hospital and other settings like a private clinic.
   codelist_url: https://www.opencodelists.org/codelist/opensafely/glycated-haemoglobin-hba1c-tests/2ab11f20/
-  counts_table_url: https://jobs.opensafely.org/opensafely-feedback/openpathology-main/published/01K06VQTE4D39TCGGM3EK9F2MJ/
-  top_5_codes_table_url: https://jobs.opensafely.org/opensafely-feedback/openpathology-main/published/01K06VQTE89W3MDV7JSZ80EJKS/
-  deciles_table_url: https://jobs.opensafely.org/opensafely-feedback/openpathology-main/published/01K06VQTE1P5M79576947X9CT3/
+  counts_table_url: output/hba1c_diab_tests/event_counts.csv
+  top_5_codes_table_url: output/hba1c_diab_tests/top_5_code_table.csv
+  deciles_table_url: output/hba1c_diab_tests/deciles_table_counts_per_week_per_practice.csv
 
 - name: HbA1c results in patients with Type 2 diabetes
   explanation: >
@@ -78,9 +78,9 @@
     We use codes which represent results reported to GPs so tests requested but not yet reported are not included.
     Only tests results returned to GPs are included, which will usually exclude tests requested while a person is in hospital and other settings like a private clinic.
   codelist_url: https://www.opencodelists.org/codelist/opensafely/glycated-haemoglobin-hba1c-tests-numerical-value/5134e926/
-  counts_table_url: https://jobs.opensafely.org/opensafely-feedback/openpathology-main/published/01K06VQTDV3ZVEMJNN1FC3XE4X/
-  top_5_codes_table_url: https://jobs.opensafely.org/opensafely-feedback/openpathology-main/published/01K06VQTDY9JGQVEQAJEHY90S3/
-  deciles_table_url: https://jobs.opensafely.org/opensafely-feedback/openpathology-main/published/01K06VQTDRC0HM6D5MQY9FDXBX/
+  counts_table_url: output/hba1c_diab_mean_tests/event_counts.csv
+  top_5_codes_table_url: output/hba1c_diab_mean_tests/top_5_code_table.csv
+  deciles_table_url: output/hba1c_diab_mean_tests/deciles_table_counts_per_week_per_practice.csv
 
 - name: Glycated Haemoglobin A1c (HbA1c) testing rate
   explanation: >
@@ -92,9 +92,9 @@
     Only test results returned to GPs are included,
     which will usually exclude tests requested while a person is in hospital and other settings like a private clinic.
   codelist_url: https://www.opencodelists.org/codelist/opensafely/glycated-haemoglobin-hba1c-tests/3e5b1269/
-  counts_table_url: https://jobs.opensafely.org/opensafely-feedback/openpathology-main/published/01JV51PQ4HGSVJKA02AVNCK23E/
-  top_5_codes_table_url: https://jobs.opensafely.org/opensafely-feedback/openpathology-main/published/01JV51PQ4M9XAWJ7FZS31C2D09/
-  deciles_table_url: https://jobs.opensafely.org/opensafely-feedback/openpathology-main/published/01JV51PQ4ERN2V46N3YEZE0VJ6/
+  counts_table_url: output/hba1c_tests/event_counts.csv
+  top_5_codes_table_url: output/hba1c_tests/top_5_code_table.csv
+  deciles_table_url: output/hba1c_tests/deciles_table_counts_per_week_per_practice.csv
 
 - name: Prostate-specific antigen testing rate
   explanation: >
@@ -105,9 +105,9 @@
     We use codes which represent results reported to GPs so tests requested but not yet reported are not included.
     Only tests results returned to GPs are included, which will usually exclude tests requested while a person is in hospital and other settings like a private clinic.
   codelist_url: https://www.opencodelists.org/codelist/opensafely/psa-numeric-value/2258a288/
-  counts_table_url: https://jobs.opensafely.org/opensafely-feedback/openpathology-main/published/01K06VQTG94PRA5MPY3GV1M3VC/
-  top_5_codes_table_url: https://jobs.opensafely.org/opensafely-feedback/openpathology-main/published/01K06VQTGC177KMCJAGAKG7BVH/
-  deciles_table_url: https://jobs.opensafely.org/opensafely-feedback/openpathology-main/published/01K06VQTG6WDFYJ482CH2ZAH1H/
+  counts_table_url: output/psa_tests/event_counts.csv
+  top_5_codes_table_url: output/psa_tests/top_5_code_table.csv
+  deciles_table_url: output/psa_tests/deciles_table_counts_per_week_per_practice.csv
 
 - name: Prostate-specific antigen test results
   explanation: >
@@ -118,9 +118,9 @@
     We use codes which represent results reported to GPs so tests requested but not yet reported are not included.
     Only tests results returned to GPs are included, which will usually exclude tests requested while a person is in hospital and other settings like a private clinic.
   codelist_url: https://www.opencodelists.org/codelist/opensafely/psa-numeric-value/2258a288/
-  counts_table_url: https://jobs.opensafely.org/opensafely-feedback/openpathology-main/published/01K3JRW3BSR2T7EHRCX27W3Q5S/
-  top_5_codes_table_url: https://jobs.opensafely.org/opensafely-feedback/openpathology-main/published/01K3JRW3BVRYE7R98YQFNMYGSY/
-  deciles_table_url: https://jobs.opensafely.org/opensafely-feedback/openpathology-main/published/01K3JRW3BQCH69PH9S9E6YZRAF/
+  counts_table_url: output/psa_ref_tests/event_counts.csv
+  top_5_codes_table_url: output/psa_ref_tests/top_5_code_table.csv
+  deciles_table_url: output/psa_ref_tests/deciles_table_counts_per_week_per_practice.csv
 
 - name: Red Blood Cell (RBC) count testing rate
   explanation: >
@@ -131,9 +131,9 @@
     Only tests results returned to GPs are included,
     which will usually exclude tests requested while a person is in hospital and other settings like a private clinic.
   codelist_url: https://www.opencodelists.org/codelist/opensafely/red-blood-cell-rbc-tests/576a859e/
-  counts_table_url: https://jobs.opensafely.org/opensafely-feedback/openpathology-main/published/01JV51PQ491D3PD7GFKM5YX4F9/
-  top_5_codes_table_url: https://jobs.opensafely.org/opensafely-feedback/openpathology-main/published/01JV51PQ4CG01ZJA0D3QGMRH56/
-  deciles_table_url: https://jobs.opensafely.org/opensafely-feedback/openpathology-main/published/01JV51PQ46AWH82Q4SJMDEX1P0/
+  counts_table_url: output/rbc_tests/event_counts.csv
+  top_5_codes_table_url: output/rbc_tests/top_5_code_table.csv
+  deciles_table_url: output/rbc_tests/deciles_table_counts_per_week_per_practice.csv
 
 - name: Renal Function - Sodium testing rate
   explanation: >
@@ -145,9 +145,9 @@
     Only tests results returned to GPs are included,
     which will usually exclude tests requested while a person is in hospital and other settings like a private clinic.
   codelist_url: https://www.opencodelists.org/codelist/opensafely/sodium-tests-numerical-value/32bff605/
-  counts_table_url: https://jobs.opensafely.org/opensafely-feedback/openpathology-main/published/01JV51PQ40W3HBSKGS0BWJY721/
-  top_5_codes_table_url: https://jobs.opensafely.org/opensafely-feedback/openpathology-main/published/01JV51PQ43N5BN3VHKFS2ER1Y4/
-  deciles_table_url: https://jobs.opensafely.org/opensafely-feedback/openpathology-main/published/01JV51PQ3XKCD9HVNS5ZAV5GG0/
+  counts_table_url: output/sodium_tests/event_counts.csv
+  top_5_codes_table_url: output/sodium_tests/top_5_code_table.csv
+  deciles_table_url: output/sodium_tests/deciles_table_counts_per_week_per_practice.csv
 
 - name: Blood Pressure monitoring rate
   explanation: >
@@ -159,9 +159,9 @@
     Only test results returned to GPs are included,
     which will usually exclude tests requested while a person is in hospital and other settings like a private clinic.
   codelist_url: https://www.opencodelists.org/codelist/opensafely/systolic-blood-pressure-qof/3572b5fb/
-  counts_table_url: https://jobs.opensafely.org/opensafely-feedback/openpathology-main/published/01JV51PQ3QCRBWBX6QEG9G18QE/
-  top_5_codes_table_url: https://jobs.opensafely.org/opensafely-feedback/openpathology-main/published/01JV51PQ3TG5ES5HRAYBX32PF5/
-  deciles_table_url: https://jobs.opensafely.org/opensafely-feedback/openpathology-main/published/01JV51PQ3KGBDGXZKRS3VY6FPF/
+  counts_table_url: output/systol_tests/event_counts.csv
+  top_5_codes_table_url: output/systol_tests/top_5_code_table.csv
+  deciles_table_url: output/systol_tests/deciles_table_counts_per_week_per_practice.csv
 
 - name: Vitamin D testing rate
   explanation: >
@@ -172,9 +172,9 @@
     We use codes which represent results reported to GPs so tests requested but not yet reported are not included.
     Only tests results returned to GPs are included, which will usually exclude tests requested while a person is in hospital and other settings like a private clinic.
   codelist_url: https://www.opencodelists.org/codelist/opensafely/vitamin-d-level/1032ad60/
-  counts_table_url: https://jobs.opensafely.org/opensafely-feedback/openpathology-main/published/01K3JRW3BBFZ3HMRYJFEDRR0AM/
-  top_5_codes_table_url: https://jobs.opensafely.org/opensafely-feedback/openpathology-main/published/01K3JRW3BD1P019M9C7NFRJAYN/
-  deciles_table_url: https://jobs.opensafely.org/opensafely-feedback/openpathology-main/published/01K3JRW3B87QQJGHTE7WTMHYV5/
+  counts_table_url: output/vit_d_tests/event_counts.csv
+  top_5_codes_table_url: output/vit_d_tests/top_5_code_table.csv
+  deciles_table_url: output/vit_d_tests/deciles_table_counts_per_week_per_practice.csv
 
 - name: Vitamin D test results
   explanation: >
@@ -185,6 +185,6 @@
     We use codes which represent results reported to GPs so tests requested but not yet reported are not included.
     Only tests results returned to GPs are included, which will usually exclude tests requested while a person is in hospital and other settings like a private clinic.
   codelist_url: https://www.opencodelists.org/codelist/opensafely/vitamin-d-level/1032ad60/
-  counts_table_url: https://jobs.opensafely.org/opensafely-feedback/openpathology-main/published/01K3JRW3BJ01YP6YP8FG47KB7W/
-  top_5_codes_table_url: https://jobs.opensafely.org/opensafely-feedback/openpathology-main/published/01K3JRW3BNP1NZ0W5KYVRM1C80/
-  deciles_table_url: https://jobs.opensafely.org/opensafely-feedback/openpathology-main/published/01K3JRW3BGQH6DW7P9BMZG05Z2/
+  counts_table_url: output/vit_d_ref_tests/event_counts.csv
+  top_5_codes_table_url: output/vit_d_ref_tests/top_5_code_table.csv
+  deciles_table_url: output/vit_d_ref_tests/deciles_table_counts_per_week_per_practice.csv
