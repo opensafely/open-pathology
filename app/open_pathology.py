@@ -31,6 +31,18 @@ def main():
 
     streamlit.altair_chart(measure.deciles_chart, use_container_width=True)
 
+    streamlit.subheader("Demographic breakdowns")
+
+    if measure.measures_tables:
+        selected_demographic = streamlit.selectbox(
+            "Select a demographic breakdown:", sorted(measure.measures_tables.keys())
+        )
+
+        streamlit.altair_chart(measure.measure_chart(selected_demographic))
+
+    else:
+        streamlit.markdown("No demographic breakdowns are available.")
+
     streamlit.subheader(f"Most common codes ([codelist]({measure.codelist_url}))")
 
     streamlit.dataframe(measure.top_5_codes_table)

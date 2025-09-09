@@ -43,6 +43,7 @@
   top_5_codes_table_url: output/alt_tests/top_5_code_table.csv
   deciles_table_url: output/alt_tests/deciles_table_counts_per_week_per_practice.csv
   chart_units: Percentage of patients aged ≥ 18 tested
+  measures_tables_url: output/alt_tests/demographic_table_counts_per_week.csv
 
 - name: Cholesterol testing rate
   explanation: >
@@ -59,6 +60,7 @@
   top_5_codes_table_url: output/chol_tests/top_5_code_table.csv
   deciles_table_url: output/chol_tests/deciles_table_counts_per_week_per_practice.csv
   chart_units: Percentage of patients aged ≥ 18 tested
+  measures_tables_url: output/chol_tests/demographic_table_counts_per_week.csv
 
 - name: HbA1c testing rate in patients with Type 2 diabetes
   explanation: >
@@ -144,6 +146,7 @@
   top_5_codes_table_url: output/rbc_tests/top_5_code_table.csv
   deciles_table_url: output/rbc_tests/deciles_table_counts_per_week_per_practice.csv
   chart_units: Percentage of patients aged ≥ 18 tested
+  measures_tables_url: output/rbc_tests/demographic_table_counts_per_week.csv
 
 - name: Renal Function - Sodium testing rate
   explanation: >
@@ -159,6 +162,7 @@
   top_5_codes_table_url: output/sodium_tests/top_5_code_table.csv
   deciles_table_url: output/sodium_tests/deciles_table_counts_per_week_per_practice.csv
   chart_units: Percentage of patients aged ≥ 18 tested
+  measures_tables_url: output/sodium_tests/demographic_table_counts_per_week.csv
 
 - name: Blood Pressure monitoring rate
   explanation: >
@@ -174,6 +178,7 @@
   top_5_codes_table_url: output/systol_tests/top_5_code_table.csv
   deciles_table_url: output/systol_tests/deciles_table_counts_per_week_per_practice.csv
   chart_units: Percentage of patients aged ≥ 18 tested
+  measures_tables_url: output/systol_tests/demographic_table_counts_per_week.csv
 
 - name: Vitamin D testing rate
   explanation: >

@@ -24,6 +24,7 @@ class Measure:
     top_5_codes_table: pandas.DataFrame
     deciles_table: pandas.DataFrame
     chart_units: str
+    measures_tables: dict[str, pandas.DataFrame]
 
     def __repr__(self):
         return f"Measure(name='{self.name}')"
@@ -88,6 +89,18 @@ class Measure:
         )
         return chart
 
+    def measure_chart(self, measure_name):
+        chart = (
+            altair.Chart(self.measures_tables[measure_name])
+            .mark_line()
+            .encode(
+                altair.X("interval_start", title=None),
+                altair.Y("ratio", title=None),
+                color=altair.Color(measure_name),
+            )
+        )
+        return chart
+
 
 class OSJobsRepository:
     def __init__(self):
@@ -113,6 +126,10 @@ class OSJobsRepository:
         counts = _get_counts(record["counts_table_url"])
         top_5_codes_table = _get_top_5_codes_table(record["top_5_codes_table_url"])
         deciles_table = _get_deciles_table(record["deciles_table_url"])
+        if "measures_tables_url" in record:
+            measures_tables = dict(_get_measures_tables(record["measures_tables_url"]))
+        else:
+            measures_tables = dict()
 
         return Measure(
             name,
@@ -123,6 +140,7 @@ class OSJobsRepository:
             top_5_codes_table,
             deciles_table,
             record["chart_units"],
+            measures_tables,
         )
 
     def list(self):
@@ -153,3 +171,30 @@ def _get_deciles_table(deciles_table_url):
     deciles_table.loc[deciles_table["percentile"] % 10 == 0, "label"] = DECILE
     deciles_table.loc[deciles_table["percentile"] == 50, "label"] = MEDIAN
     return deciles_table
+
+
+def _get_measures_tables(measures_tables_url):
+    log.info(f"Getting measures tables from {measures_tables_url}")
+    measures_tables = pandas.read_csv(
+        measures_tables_url, parse_dates=["interval_start"]
+    )
+    headers = ["measure", "interval_start", "ratio", "numerator", "denominator"]
+    measures_headers = set(measures_tables.columns) - set(headers)
+    for measure_header in measures_headers:
+        included_rows = measures_tables[measure_header].notna()
+        included_cols = headers + [measure_header]
+        measure_table = measures_tables.loc[included_rows, included_cols]
+
+        if measure_header == "ethnicity":
+            # We hard-code the labels for expediency.
+            measure_table[measure_header] = measure_table[measure_header].replace(
+                {
+                    1: "White",
+                    2: "Mixed",
+                    3: "Asian or Asian British",
+                    4: "Black or Black British",
+                    5: "Chinese or Other Ethnic Groups",
+                }
+            )
+
+        yield measure_header, measure_table
