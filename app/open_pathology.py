@@ -49,14 +49,6 @@ def main():
 
     streamlit.markdown(f"Total events: {measure.total_events:,} events")
 
-    for from_year, to_year in [(2019, 2020), (2019, 2021)]:
-        from_val, to_val, pct_change = measure.change_in_median(from_year, to_year, 4)
-        streamlit.markdown(
-            f"Change in median from April {from_year} ({from_val:.2f}) "
-            f"to April {to_year} ({to_val:.2f}): "
-            f"**{pct_change:.2%}**"
-        )
-
 
 if __name__ == "__main__":
     main()
