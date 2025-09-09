@@ -170,6 +170,11 @@ def _get_deciles_table(deciles_table_url):
     deciles_table.loc[:, "label"] = PERCENTILE
     deciles_table.loc[deciles_table["percentile"] % 10 == 0, "label"] = DECILE
     deciles_table.loc[deciles_table["percentile"] == 50, "label"] = MEDIAN
+
+    # Obviously, this is sub-optimal.
+    if "hba1c_diab_mean_tests" not in deciles_table_url:
+        deciles_table["value"] = deciles_table["value"] / 10
+
     return deciles_table
 
 
@@ -184,6 +189,9 @@ def _get_measures_tables(measures_tables_url):
         included_rows = measures_tables[measure_header].notna()
         included_cols = headers + [measure_header]
         measure_table = measures_tables.loc[included_rows, included_cols]
+
+        # Obviously, this is sub-optimal.
+        measure_table["ratio"] = measure_table["ratio"] * 100
 
         if measure_header == "ethnicity":
             # We hard-code the labels for expediency.
