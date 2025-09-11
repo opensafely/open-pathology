@@ -1,4 +1,4 @@
-# Usage:
+# Usage: analysis/write_processed_csv_files.py
 # Options:
 # --output-dir [path]  Specify output directory
 # --test [test]   Choose pathology test e.g. chol
@@ -55,7 +55,7 @@ def get_deciles_table(df_measure_output):
         The deciles table for the measure as a pd.DataFrame
     """
     percentiles = pd.Series(
-        [*range(0, 10, 1), *range(10, 90, 10), *range(90, 100, 1)],
+        [*range(10, 100, 10)],
     )
 
     df_practice = df_measure_output.loc[
