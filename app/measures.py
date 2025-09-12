@@ -57,7 +57,7 @@ class Measure:
             "label",
             title=None,
             scale=altair.Scale(
-                domain=[PERCENTILE, DECILE, MEDIAN],
+                domain=[DECILE, MEDIAN],
                 range=[[1, 1], [5, 5], [0, 0]],
             ),
             legend=altair.Legend(orient="bottom"),
@@ -168,12 +168,20 @@ def _get_deciles_table(deciles_table_url):
     log.info(f"Getting deciles table from {deciles_table_url}")
     deciles_table = pandas.read_csv(deciles_table_url, parse_dates=["date"])
     deciles_table.loc[:, "label"] = PERCENTILE
-    deciles_table.loc[deciles_table["percentile"] % 10 == 0, "label"] = DECILE
+    is_decile = (
+        (deciles_table["percentile"] != 0)
+        & (deciles_table["percentile"] != 100)
+        & (deciles_table["percentile"] % 10 == 0)
+    )
+    deciles_table.loc[is_decile, "label"] = DECILE
     deciles_table.loc[deciles_table["percentile"] == 50, "label"] = MEDIAN
 
     # Obviously, this is sub-optimal.
     if "hba1c_diab_mean_tests" not in deciles_table_url:
         deciles_table["value"] = deciles_table["value"] / 10
+
+    # As is this.
+    deciles_table = deciles_table[deciles_table["label"] != PERCENTILE]
 
     return deciles_table
 
