@@ -26,7 +26,7 @@
   counts_table_url: output/alt_mtx_ref_tests/event_counts.csv
   top_5_codes_table_url: output/alt_mtx_ref_tests/top_5_code_table.csv
   deciles_table_url: output/alt_mtx_ref_tests/deciles_table_counts_per_week_per_practice.csv
-  chart_units: Percentage of patients aged ≥ 18 prescribed methotrexate with LFTs within the prior 3 months (denominator) who had an out-of-range result (numerator)
+  chart_units: Percentage of patients aged ≥ 18 prescribed methotrexate with LFTs within the stated month (denominator) who had an out-of-range result (numerator)
 
 - name: Liver Function - Alanine Transferaminase (ALT) testing rate
   explanation: >
