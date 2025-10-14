@@ -11,7 +11,7 @@
   counts_table_url: output/alt_mtx_tests/event_counts.csv
   top_5_codes_table_url: output/alt_mtx_tests/top_5_code_table.csv
   deciles_table_url: output/alt_mtx_tests/deciles_table_counts_per_week_per_practice.csv
-  chart_units: Percentage of patients aged ≥ 18 prescribed methotrexate tested
+  chart_units: Percentage of patients aged ≥ 18 prescribed methotrexate (denominator) who had LFTs within the prior 3 months (numerator)
 
 - name: "Methotrexate: LFT safety monitoring results"
   explanation: >
@@ -26,7 +26,7 @@
   counts_table_url: output/alt_mtx_ref_tests/event_counts.csv
   top_5_codes_table_url: output/alt_mtx_ref_tests/top_5_code_table.csv
   deciles_table_url: output/alt_mtx_ref_tests/deciles_table_counts_per_week_per_practice.csv
-  chart_units: Percentage of patients aged ≥ 18 prescribed methotrexate tested with a result out-of-range
+  chart_units: Percentage of patients aged ≥ 18 prescribed methotrexate with LFTs within the stated month (denominator) who had an out-of-range result (numerator)
 
 - name: Liver Function - Alanine Transferaminase (ALT) testing rate
   explanation: >
@@ -42,7 +42,7 @@
   counts_table_url: output/alt_tests/event_counts.csv
   top_5_codes_table_url: output/alt_tests/top_5_code_table.csv
   deciles_table_url: output/alt_tests/deciles_table_counts_per_week_per_practice.csv
-  chart_units: Percentage of patients aged ≥ 18 tested
+  chart_units: Percentage of patients aged ≥ 18 (denominator) who had LFTs within the stated month (numerator)
   measures_tables_url: output/alt_tests/demographic_table_counts_per_week.csv
 
 - name: Cholesterol testing rate
@@ -59,7 +59,7 @@
   counts_table_url: output/chol_tests/event_counts.csv
   top_5_codes_table_url: output/chol_tests/top_5_code_table.csv
   deciles_table_url: output/chol_tests/deciles_table_counts_per_week_per_practice.csv
-  chart_units: Percentage of patients aged ≥ 18 tested
+  chart_units: Percentage of patients aged ≥ 18 (denominator) who had a cholesterol test within the stated month (numerator)
   measures_tables_url: output/chol_tests/demographic_table_counts_per_week.csv
 
 - name: HbA1c testing rate in patients with Type 2 diabetes
@@ -74,7 +74,7 @@
   counts_table_url: output/hba1c_diab_tests/event_counts.csv
   top_5_codes_table_url: output/hba1c_diab_tests/top_5_code_table.csv
   deciles_table_url: output/hba1c_diab_tests/deciles_table_counts_per_week_per_practice.csv
-  chart_units: Percentage of patients aged ≥ 18 with type 2 diabetes tested
+  chart_units: Percentage of patients aged ≥ 18 with type 2 diabetes (denominator) who had an HbA1c test within the prior 6 months (numerator)
 
 - name: HbA1c results in patients with Type 2 diabetes
   explanation: >
@@ -88,7 +88,7 @@
   counts_table_url: output/hba1c_diab_mean_tests/event_counts.csv
   top_5_codes_table_url: output/hba1c_diab_mean_tests/top_5_code_table.csv
   deciles_table_url: output/hba1c_diab_mean_tests/deciles_table_counts_per_week_per_practice.csv
-  chart_units: Mean HbA1c result in patients aged ≥ 18 with type 2 diabetes
+  chart_units: Mean HbA1c result in patients aged ≥ 18 with type 2 diabetes within the stated month
 
 - name: Glycated Haemoglobin A1c (HbA1c) testing rate
   explanation: >
@@ -103,7 +103,7 @@
   counts_table_url: output/hba1c_tests/event_counts.csv
   top_5_codes_table_url: output/hba1c_tests/top_5_code_table.csv
   deciles_table_url: output/hba1c_tests/deciles_table_counts_per_week_per_practice.csv
-  chart_units: Percentage of patients aged ≥ 18 tested
+  chart_units: Percentage of patients aged ≥ 18 (denominator) who had an HbA1c test within the stated month (numerator)
 
 - name: Prostate-specific antigen testing rate
   explanation: >
@@ -117,7 +117,7 @@
   counts_table_url: output/psa_tests/event_counts.csv
   top_5_codes_table_url: output/psa_tests/top_5_code_table.csv
   deciles_table_url: output/psa_tests/deciles_table_counts_per_week_per_practice.csv
-  chart_units: Percentage of men aged ≥ 18 tested
+  chart_units: Percentage of men aged ≥ 18 (denominator) who had a PSA test within the stated month (numerator)
 
 - name: Prostate-specific antigen test results
   explanation: >
@@ -131,7 +131,7 @@
   counts_table_url: output/psa_ref_tests/event_counts.csv
   top_5_codes_table_url: output/psa_ref_tests/top_5_code_table.csv
   deciles_table_url: output/psa_ref_tests/deciles_table_counts_per_week_per_practice.csv
-  chart_units: Percentage of men aged ≥ 18 tested with a result out-of-range
+  chart_units: Percentage of men aged ≥ 18 with a PSA test within the stated month (denominator) who had an out-of-range result (numerator)
 
 - name: Red Blood Cell (RBC) count testing rate
   explanation: >
@@ -145,7 +145,7 @@
   counts_table_url: output/rbc_tests/event_counts.csv
   top_5_codes_table_url: output/rbc_tests/top_5_code_table.csv
   deciles_table_url: output/rbc_tests/deciles_table_counts_per_week_per_practice.csv
-  chart_units: Percentage of patients aged ≥ 18 tested
+  chart_units: Percentage of patients aged ≥ 18 (denominator) who had an RBC test within the stated month (numerator)
   measures_tables_url: output/rbc_tests/demographic_table_counts_per_week.csv
 
 - name: Renal Function - Sodium testing rate
@@ -161,7 +161,7 @@
   counts_table_url: output/sodium_tests/event_counts.csv
   top_5_codes_table_url: output/sodium_tests/top_5_code_table.csv
   deciles_table_url: output/sodium_tests/deciles_table_counts_per_week_per_practice.csv
-  chart_units: Percentage of patients aged ≥ 18 tested
+  chart_units: Percentage of patients aged ≥ 18 (denominator) who had a sodium test within the stated month (numerator)
   measures_tables_url: output/sodium_tests/demographic_table_counts_per_week.csv
 
 - name: Blood Pressure monitoring rate
@@ -177,7 +177,7 @@
   counts_table_url: output/systol_tests/event_counts.csv
   top_5_codes_table_url: output/systol_tests/top_5_code_table.csv
   deciles_table_url: output/systol_tests/deciles_table_counts_per_week_per_practice.csv
-  chart_units: Percentage of patients aged ≥ 18 tested
+  chart_units: Percentage of patients aged ≥ 18 (denominator) who had a BP test within the stated month (numerator)
   measures_tables_url: output/systol_tests/demographic_table_counts_per_week.csv
 
 - name: Vitamin D testing rate
@@ -192,7 +192,7 @@
   counts_table_url: output/vit_d_tests/event_counts.csv
   top_5_codes_table_url: output/vit_d_tests/top_5_code_table.csv
   deciles_table_url: output/vit_d_tests/deciles_table_counts_per_week_per_practice.csv
-  chart_units: Percentage of patients aged ≥ 18 tested
+  chart_units: Percentage of patients aged ≥ 18 (denominator) who had a vitamin D test within the stated month (numerator)
 
 - name: Vitamin D test results
   explanation: >
@@ -206,4 +206,4 @@
   counts_table_url: output/vit_d_ref_tests/event_counts.csv
   top_5_codes_table_url: output/vit_d_ref_tests/top_5_code_table.csv
   deciles_table_url: output/vit_d_ref_tests/deciles_table_counts_per_week_per_practice.csv
-  chart_units: Percentage of patients aged ≥ 18 tested with a result out-of-range
+  chart_units: Percentage of patients aged ≥ 18 with a vitamin D test within the stated month (denominator) who had a result lower than reference range (numerator)
