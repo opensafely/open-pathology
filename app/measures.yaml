@@ -104,7 +104,7 @@
   measure_design: >
     Numerator: Mean HbA1c result in patients aged ≥ 18 with type 2 diabetes within the stated month.
     Denominator: N/A - this is a summary statisitic reported for the cohort.
-    Rationale for design choices: We reported the mean HbA1c value (with outliers above X / below Y excluded), since this gives a meaningful indication of glycaemic control overall within the type-2 diabetic population. We excluded patients under 18 to avoid conflating adult and paediatric pathology results, which we expect would show different patterns.
+    Rationale for design choices: We reported the mean HbA1c value since this gives a meaningful indication of overall glycaemic control  within the type-2 diabetic population. We excluded patients under 18 to avoid conflating adult and paediatric pathology results, which we expect would show different patterns.
   caveats: >
     We use codes which represent results reported to GPs so tests requested but not yet reported are not included.
     Only tests results returned to GPs are included, which will usually exclude tests requested while a person is in hospital and other settings like a private clinic.
