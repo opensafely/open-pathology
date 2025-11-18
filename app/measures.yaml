@@ -3,6 +3,10 @@
     An ALT blood test is one of a group of liver function tests (LFTs) which are used to detect problems with the function of the liver.
     Patients taking methotrexate are recommended to have their LFTs checked at least every 3 months.
     Following these recommendations helps identify any signs of liver toxicity in these patients, which reduces the risk of adverse drug events.
+  measure_design: >
+    Numerator: Patients aged ≥ 18 years prescribed methotrexate, who had LFTs within the prior 3 months. 
+    Denominator: Patients aged ≥ 18 years prescribed methotrexate.
+    Rationale for design choices: The 3-month look-back period aligns with national guidance on LFT monitoring for patients on methotrexate. We excluded patients under 18 to avoid conflating adult and paediatric pathology testing, which can often show different patterns and follow different protocols.
   caveats: >
     In a small number of places, an ALT test may NOT be included within a liver function test.
     We use codes which represent results reported to GPs so tests requested but not yet reported are not included.
@@ -18,6 +22,10 @@
     An ALT blood test is one of a group of liver function tests (LFTs) which are used to detect problems with the function of the liver.
     Patients taking methotrexate are recommended to have their LFTs checked at least every 3 months.
     Following these recommendations helps identify any signs of liver toxicity in these patients, which reduces the risk of adverse drug events.
+  measure_design: >
+    Numerator: Patients aged ≥ 18 years prescribed methotrexate with LFTs within the stated month, who had an out-of-range result. 
+    Denominator: Patients aged ≥ 18 years prescribed methotrexate with LFTs within the stated month.
+    Rationale for design choices: The 1-month look-back period helps identify more instances where the latest result is out-of-range result, since if a longer look-back period was used then it is likely that many out-of-range results would have been superseded by a follow-up test showing an in-range result. We excluded patients under 18 to avoid conflating adult and paediatric pathology testing, which can often show different patterns and follow different protocols.
   caveats: >
     In a small number of places, an ALT test may NOT be included within a liver function test.
     We use codes which represent results reported to GPs so tests requested but not yet reported are not included.
@@ -33,6 +41,10 @@
     An ALT blood test is one of a group of liver function tests (LFTs) which are used to detect problems with the function of the liver.
     It is often used to monitor patients on medications which may affect the liver or which rely on the liver to break them down within the body.
     They are also tested for patients with known or suspected liver dysfunction.
+  measure_design: >
+    Numerator: Patients aged ≥ 18 years, who had LFTs within the stated month.
+    Denominator: Patients aged ≥ 18 years.
+    Rationale for design choices: The 1-month look-back period helps create a responsive measure that can clearly capture seasonal variation or any other factors that provoke changes in testing rate between months. We excluded patients under 18 to avoid conflating adult and paediatric pathology testing, which can often show different patterns and follow different protocols.
   caveats: >
     **In a small number of places, an ALT test may NOT be included within a liver function test.**
     We use codes which represent results reported to GPs so tests requested but not yet reported are not included.
@@ -51,6 +63,10 @@
     and also to identify patients with lipid disorders (e.g. familial hypercholesterolaemia).
     This helps ensure appropriate treatment,
     with the aim of reducing long term risks of complications such as stroke or myocardial infarction.
+  measure_design: >
+    Numerator: 
+    Denominator: 
+    Rationale for design choices: We excluded patients under 18 to avoid conflating adult and paediatric pathology testing, which can often show different patterns and follow different protocols.
   caveats: >
     We use codes which represent results reported to GPs so tests requested but not yet reported are not included.
     Only tests results returned to GPs are included,
@@ -67,6 +83,10 @@
     HbA1c is a long term indicator of diabetes control.
     NICE guidelines recommend that individuals with diabetes have their HbA1c measured at least twice a year.
     Poor diabetic control can place individuals living with diabetes at an increased risk of the complications of diabetes.
+  measure_design: >
+    Numerator: 
+    Denominator: 
+    Rationale for design choices: We excluded patients under 18 to avoid conflating adult and paediatric pathology testing, which can often show different patterns and follow different protocols.
   caveats: >
     We use codes which represent results reported to GPs so tests requested but not yet reported are not included.
     Only tests results returned to GPs are included, which will usually exclude tests requested while a person is in hospital and other settings like a private clinic.
@@ -81,6 +101,10 @@
     HbA1c is a long term indicator of diabetes control.
     NICE guidelines recommend that individuals with diabetes have their HbA1c measured at least twice a year.
     Poor diabetic control can place individuals living with diabetes at an increased risk of the complications of diabetes.
+  measure_design: >
+    Numerator: 
+    Denominator: 
+    Rationale for design choices: We excluded patients under 18 to avoid conflating adult and paediatric pathology testing, which can often show different patterns and follow different protocols.
   caveats: >
     We use codes which represent results reported to GPs so tests requested but not yet reported are not included.
     Only tests results returned to GPs are included, which will usually exclude tests requested while a person is in hospital and other settings like a private clinic.
@@ -95,6 +119,10 @@
     HbA1c is a long term indicator of diabetes control.
     NICE guidelines recommend that individuals with diabetes have their HbA1c measured at least twice a year.
     Poor diabetic control can place individuals living with diabetes at an increased risk of the complications of diabetes.
+  measure_design: >
+    Numerator: 
+    Denominator: 
+    Rationale for design choices: We excluded patients under 18 to avoid conflating adult and paediatric pathology testing, which can often show different patterns and follow different protocols.
   caveats: >
     We use codes which represent results reported to GPs so tests requested but not yet reported are not included.
     Only test results returned to GPs are included,
@@ -110,6 +138,10 @@
     Prostate-specific antigen (PSA) is a protein produced by the prostate gland which can be monitored to help detect prostate cancer.
     NICE recommends offering PSA testing to men who have unexplained symptoms that could be attributable to prostate cancer.
     Following these recommendations helps ensure early detection of clinically significant prostate cancer while avoiding unnecessary harm from overdiagnosis and overtreatment.
+  measure_design: >
+    Numerator: 
+    Denominator: 
+    Rationale for design choices: We excluded patients under 18 to avoid conflating adult and paediatric pathology testing, which can often show different patterns and follow different protocols.
   caveats: >
     We use codes which represent results reported to GPs so tests requested but not yet reported are not included.
     Only tests results returned to GPs are included, which will usually exclude tests requested while a person is in hospital and other settings like a private clinic.
@@ -124,6 +156,10 @@
     Prostate-specific antigen (PSA) is a protein produced by the prostate gland which can be monitored to help detect prostate cancer.
     NICE recommends offering PSA testing to men who have unexplained symptoms that could be attributable to prostate cancer.
     Following these recommendations helps ensure early detection of clinically significant prostate cancer while avoiding unnecessary harm from overdiagnosis and overtreatment.
+  measure_design: >
+    Numerator: 
+    Denominator: 
+    Rationale for design choices: We excluded patients under 18 to avoid conflating adult and paediatric pathology testing, which can often show different patterns and follow different protocols.
   caveats: >
     We use codes which represent results reported to GPs so tests requested but not yet reported are not included.
     Only tests results returned to GPs are included, which will usually exclude tests requested while a person is in hospital and other settings like a private clinic.
@@ -137,6 +173,10 @@
   explanation: >
     RBC is completed as part of a group of tests referred to as a full blood count (FBC),
     used to detect a variety of disorders of the blood, such as anaemia and infection.
+  measure_design: >
+    Numerator: 
+    Denominator: 
+    Rationale for design choices: We excluded patients under 18 to avoid conflating adult and paediatric pathology testing, which can often show different patterns and follow different protocols.
   caveats: >
     We use codes which represent results reported to GPs so tests requested but not yet reported are not included.
     Only tests results returned to GPs are included,
@@ -153,6 +193,10 @@
     Sodium is completed as part of a group of tests referred to as a renal profile,
     used to detect a variety of disorders of the kidneys.
     A renal profile is also often used to monitor patients on medications which may affect the kidneys or which rely on the kidneys to remove them from the body.
+  measure_design: >
+    Numerator: 
+    Denominator: 
+    Rationale for design choices: We excluded patients under 18 to avoid conflating adult and paediatric pathology testing, which can often show different patterns and follow different protocols.
   caveats: >
     We use codes which represent results reported to GPs so tests requested but not yet reported are not included.
     Only tests results returned to GPs are included,
@@ -169,6 +213,10 @@
     A commonly-used assessment used to identify patients with hypertension or to ensure optimal treatment for those with known hypertension.
     This helps ensure appropriate treatment, with the aim of reducing long term risks of complications from hypertension such as stroke,
     myocardial infarction and kidney disease.
+  measure_design: >
+    Numerator: 
+    Denominator: 
+    Rationale for design choices: We excluded patients under 18 to avoid conflating adult and paediatric pathology testing, which can often show different patterns and follow different protocols.
   caveats: >
     We use codes which represent results reported to GPs so tests requested but not yet reported are not included.
     Only test results returned to GPs are included,
@@ -185,6 +233,10 @@
     Vitamin D is essential for bone health, immune function and more.
     NICE recommends testing vitamin D levels in certain situations such as where there are symptoms suggestive of deficiency, or where suspected bone disease exists.
     Good management of vitamin D levels reduces the risk of complications from deficiency, such as osteoporosis, fractures, or impaired immune function.
+  measure_design: >
+    Numerator: 
+    Denominator: 
+    Rationale for design choices: We excluded patients under 18 to avoid conflating adult and paediatric pathology testing, which can often show different patterns and follow different protocols.
   caveats: >
     We use codes which represent results reported to GPs so tests requested but not yet reported are not included.
     Only tests results returned to GPs are included, which will usually exclude tests requested while a person is in hospital and other settings like a private clinic.
@@ -199,6 +251,10 @@
     Vitamin D is essential for bone health, immune function and more.
     NICE recommends testing vitamin D levels in certain situations such as where there are symptoms suggestive of deficiency, or where suspected bone disease exists.
     Good management of vitamin D levels reduces the risk of complications from deficiency, such as osteoporosis, fractures, or impaired immune function.
+  measure_design: >
+    Numerator: 
+    Denominator: 
+    Rationale for design choices: We excluded patients under 18 to avoid conflating adult and paediatric pathology testing, which can often show different patterns and follow different protocols.
   caveats: >
     We use codes which represent results reported to GPs so tests requested but not yet reported are not included.
     Only tests results returned to GPs are included, which will usually exclude tests requested while a person is in hospital and other settings like a private clinic.
