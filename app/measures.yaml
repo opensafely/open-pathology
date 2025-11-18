@@ -6,7 +6,7 @@
   measure_design: >
     Numerator: Patients aged ≥ 18 years prescribed methotrexate, who had LFTs within the prior 3 months. 
     Denominator: Patients aged ≥ 18 years prescribed methotrexate.
-    Rationale for design choices: The 3-month look-back period aligns with national guidance on LFT monitoring for patients on methotrexate. We excluded patients under 18 to avoid conflating adult and paediatric pathology testing, which can often show different patterns and follow different protocols.
+    Rationale for design choices: The 3-month look-back period enables the measure to give insight on adherence to guidance, since it aligns with national guidance on LFT monitoring for patients on methotrexate. We excluded patients under 18 to avoid conflating adult and paediatric pathology testing, which can often show different patterns and follow different protocols.
   caveats: >
     In a small number of places, an ALT test may NOT be included within a liver function test.
     We use codes which represent results reported to GPs so tests requested but not yet reported are not included.
@@ -64,9 +64,9 @@
     This helps ensure appropriate treatment,
     with the aim of reducing long term risks of complications such as stroke or myocardial infarction.
   measure_design: >
-    Numerator: 
-    Denominator: 
-    Rationale for design choices: We excluded patients under 18 to avoid conflating adult and paediatric pathology testing, which can often show different patterns and follow different protocols.
+    Numerator: Patients aged ≥ 18 years, who had a cholesterol test within the stated month.
+    Denominator: Patients aged ≥ 18 years.
+    Rationale for design choices: The 1-month look-back period helps create a responsive measure that can clearly capture seasonal variation or any other factors that provoke changes in testing rate between months. We excluded patients under 18 to avoid conflating adult and paediatric pathology testing, which can often show different patterns and follow different protocols.
   caveats: >
     We use codes which represent results reported to GPs so tests requested but not yet reported are not included.
     Only tests results returned to GPs are included,
@@ -84,9 +84,9 @@
     NICE guidelines recommend that individuals with diabetes have their HbA1c measured at least twice a year.
     Poor diabetic control can place individuals living with diabetes at an increased risk of the complications of diabetes.
   measure_design: >
-    Numerator: 
-    Denominator: 
-    Rationale for design choices: We excluded patients under 18 to avoid conflating adult and paediatric pathology testing, which can often show different patterns and follow different protocols.
+    Numerator: Patients aged ≥ 18 years with type 2 diabetes, who had an HbA1c test within the prior 6 months.
+    Denominator: Patients aged ≥ 18 years with type 2 diabetes.
+    Rationale for design choices: The 6-month look-back period enables the measure to give insight on adherence to guidance, since it aligns with the minimum HbA1c monitoring frequency recommended in NICE guidance for patients with diabetes. We excluded patients under 18 to avoid conflating adult and paediatric pathology testing, which can often show different patterns and follow different protocols.
   caveats: >
     We use codes which represent results reported to GPs so tests requested but not yet reported are not included.
     Only tests results returned to GPs are included, which will usually exclude tests requested while a person is in hospital and other settings like a private clinic.
@@ -102,9 +102,9 @@
     NICE guidelines recommend that individuals with diabetes have their HbA1c measured at least twice a year.
     Poor diabetic control can place individuals living with diabetes at an increased risk of the complications of diabetes.
   measure_design: >
-    Numerator: 
-    Denominator: 
-    Rationale for design choices: We excluded patients under 18 to avoid conflating adult and paediatric pathology testing, which can often show different patterns and follow different protocols.
+    Numerator: Mean HbA1c result in patients aged ≥ 18 with type 2 diabetes within the stated month.
+    Denominator: N/A - this is a summary statisitic reported for the cohort.
+    Rationale for design choices: We reported the mean HbA1c value (with outliers above X / below Y excluded), since this gives a meaningful indication of glycaemic control overall within the type-2 diabetic population. We excluded patients under 18 to avoid conflating adult and paediatric pathology results, which we expect would show different patterns.
   caveats: >
     We use codes which represent results reported to GPs so tests requested but not yet reported are not included.
     Only tests results returned to GPs are included, which will usually exclude tests requested while a person is in hospital and other settings like a private clinic.
@@ -120,9 +120,9 @@
     NICE guidelines recommend that individuals with diabetes have their HbA1c measured at least twice a year.
     Poor diabetic control can place individuals living with diabetes at an increased risk of the complications of diabetes.
   measure_design: >
-    Numerator: 
-    Denominator: 
-    Rationale for design choices: We excluded patients under 18 to avoid conflating adult and paediatric pathology testing, which can often show different patterns and follow different protocols.
+    Numerator: Patients aged ≥ 18 years, who had an HbA1c test within the stated month.
+    Denominator: Patients aged ≥ 18 years.
+    Rationale for design choices: The 1-month look-back period helps create a responsive measure that can clearly capture seasonal variation or any other factors that provoke changes in testing rate between months. We excluded patients under 18 to avoid conflating adult and paediatric pathology testing, which can often show different patterns and follow different protocols.
   caveats: >
     We use codes which represent results reported to GPs so tests requested but not yet reported are not included.
     Only test results returned to GPs are included,
@@ -139,9 +139,9 @@
     NICE recommends offering PSA testing to men who have unexplained symptoms that could be attributable to prostate cancer.
     Following these recommendations helps ensure early detection of clinically significant prostate cancer while avoiding unnecessary harm from overdiagnosis and overtreatment.
   measure_design: >
-    Numerator: 
-    Denominator: 
-    Rationale for design choices: We excluded patients under 18 to avoid conflating adult and paediatric pathology testing, which can often show different patterns and follow different protocols.
+    Numerator: Men aged ≥ 18 years, who had a PSA test within the stated month.
+    Denominator: Men aged ≥ 18 years.
+    Rationale for design choices: The 1-month look-back period helps create a responsive measure that can clearly capture seasonal variation or any other factors that provoke changes in testing rate between months. We excluded patients under 18 to avoid conflating adult and paediatric pathology testing, which can often show different patterns and follow different protocols.
   caveats: >
     We use codes which represent results reported to GPs so tests requested but not yet reported are not included.
     Only tests results returned to GPs are included, which will usually exclude tests requested while a person is in hospital and other settings like a private clinic.
@@ -157,9 +157,9 @@
     NICE recommends offering PSA testing to men who have unexplained symptoms that could be attributable to prostate cancer.
     Following these recommendations helps ensure early detection of clinically significant prostate cancer while avoiding unnecessary harm from overdiagnosis and overtreatment.
   measure_design: >
-    Numerator: 
-    Denominator: 
-    Rationale for design choices: We excluded patients under 18 to avoid conflating adult and paediatric pathology testing, which can often show different patterns and follow different protocols.
+    Numerator: Men aged ≥ 18 years with a PSA test within the stated month, who had an out-of-range result.
+    Denominator: Men aged ≥ 18 years with a PSA test within the stated month.
+    Rationale for design choices: The 1-month look-back period helps create a responsive measure that can clearly capture seasonal variation or any other factors that provoke changes in the proportion out-of-range between months. We excluded patients under 18 to avoid conflating adult and paediatric pathology testing, which can often show different patterns and follow different protocols.
   caveats: >
     We use codes which represent results reported to GPs so tests requested but not yet reported are not included.
     Only tests results returned to GPs are included, which will usually exclude tests requested while a person is in hospital and other settings like a private clinic.
@@ -174,9 +174,9 @@
     RBC is completed as part of a group of tests referred to as a full blood count (FBC),
     used to detect a variety of disorders of the blood, such as anaemia and infection.
   measure_design: >
-    Numerator: 
-    Denominator: 
-    Rationale for design choices: We excluded patients under 18 to avoid conflating adult and paediatric pathology testing, which can often show different patterns and follow different protocols.
+    Numerator: Patients aged ≥ 18 years, who had an RBC test within the stated month.
+    Denominator: Patients aged ≥ 18 years.
+    Rationale for design choices: The 1-month look-back period helps create a responsive measure that can clearly capture seasonal variation or any other factors that provoke changes in testing rate between months. We excluded patients under 18 to avoid conflating adult and paediatric pathology testing, which can often show different patterns and follow different protocols.
   caveats: >
     We use codes which represent results reported to GPs so tests requested but not yet reported are not included.
     Only tests results returned to GPs are included,
@@ -194,9 +194,9 @@
     used to detect a variety of disorders of the kidneys.
     A renal profile is also often used to monitor patients on medications which may affect the kidneys or which rely on the kidneys to remove them from the body.
   measure_design: >
-    Numerator: 
-    Denominator: 
-    Rationale for design choices: We excluded patients under 18 to avoid conflating adult and paediatric pathology testing, which can often show different patterns and follow different protocols.
+    Numerator: Patients aged ≥ 18 years, who had a sodium test within the stated month.
+    Denominator: Patients aged ≥ 18 years.
+    Rationale for design choices: The 1-month look-back period helps create a responsive measure that can clearly capture seasonal variation or any other factors that provoke changes in testing rate between months. We excluded patients under 18 to avoid conflating adult and paediatric pathology testing, which can often show different patterns and follow different protocols.
   caveats: >
     We use codes which represent results reported to GPs so tests requested but not yet reported are not included.
     Only tests results returned to GPs are included,
@@ -215,8 +215,8 @@
     myocardial infarction and kidney disease.
   measure_design: >
     Numerator: 
-    Denominator: 
-    Rationale for design choices: We excluded patients under 18 to avoid conflating adult and paediatric pathology testing, which can often show different patterns and follow different protocols.
+    Denominator: Patients aged ≥ 18 years.
+    Rationale for design choices: The 1-month look-back period helps create a responsive measure that can clearly capture seasonal variation or any other factors that provoke changes in testing rate between months. We excluded patients under 18 to avoid conflating adult and paediatric pathology testing, which can often show different patterns and follow different protocols.
   caveats: >
     We use codes which represent results reported to GPs so tests requested but not yet reported are not included.
     Only test results returned to GPs are included,
@@ -234,9 +234,9 @@
     NICE recommends testing vitamin D levels in certain situations such as where there are symptoms suggestive of deficiency, or where suspected bone disease exists.
     Good management of vitamin D levels reduces the risk of complications from deficiency, such as osteoporosis, fractures, or impaired immune function.
   measure_design: >
-    Numerator: 
-    Denominator: 
-    Rationale for design choices: We excluded patients under 18 to avoid conflating adult and paediatric pathology testing, which can often show different patterns and follow different protocols.
+    Numerator: Patients aged ≥ 18 years, who had a vitamin D test within the stated month.
+    Denominator: Patients aged ≥ 18 years.
+    Rationale for design choices: The 1-month look-back period helps create a responsive measure that can clearly capture seasonal variation or any other factors that provoke changes in testing rate between months. We excluded patients under 18 to avoid conflating adult and paediatric pathology testing, which can often show different patterns and follow different protocols.
   caveats: >
     We use codes which represent results reported to GPs so tests requested but not yet reported are not included.
     Only tests results returned to GPs are included, which will usually exclude tests requested while a person is in hospital and other settings like a private clinic.
@@ -252,9 +252,9 @@
     NICE recommends testing vitamin D levels in certain situations such as where there are symptoms suggestive of deficiency, or where suspected bone disease exists.
     Good management of vitamin D levels reduces the risk of complications from deficiency, such as osteoporosis, fractures, or impaired immune function.
   measure_design: >
-    Numerator: 
-    Denominator: 
-    Rationale for design choices: We excluded patients under 18 to avoid conflating adult and paediatric pathology testing, which can often show different patterns and follow different protocols.
+    Numerator: Patients aged ≥ 18 years with a vitamin D test within the stated month, who had a result lower than reference range.
+    Denominator: Patients aged ≥ 18 years with a vitamin D test within the stated month.
+    Rationale for design choices: The 1-month look-back period helps create a responsive measure that can clearly capture seasonal variation or any other factors that provoke changes in the proportion out-of-range between months. We excluded patients under 18 to avoid conflating adult and paediatric pathology testing, which can often show different patterns and follow different protocols.
   caveats: >
     We use codes which represent results reported to GPs so tests requested but not yet reported are not included.
     Only tests results returned to GPs are included, which will usually exclude tests requested while a person is in hospital and other settings like a private clinic.
