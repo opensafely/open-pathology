@@ -49,7 +49,7 @@
   deciles_table_url: https://jobs.opensafely.org/opensafely-feedback/openpathology-main/published/01JV51PQ4YBA56Y0BYKNMWTKZJ/
   top_5_codes_table_url: https://jobs.opensafely.org/opensafely-feedback/openpathology-main/published/01JV51PQ5443KC2JKYR07TPTM2/
   chart_units: Percentage of patients aged ≥ 18 (denominator) who had LFTs within the stated month (numerator)
-  measures_tables_url: output/alt_tests/demographic_table_counts_per_week.csv
+  measures_tables_url: https://jobs.opensafely.org/opensafely-feedback/openpathology-main/published/01K18T7ZR0F5MEE08VSJTYJ5HQ/
 
 - name: Cholesterol testing rate
   explanation: >
@@ -68,7 +68,7 @@
   deciles_table_url: https://jobs.opensafely.org/opensafely-feedback/openpathology-main/published/01JV51PQ4PAD684P485V9DP2CG/
   top_5_codes_table_url: https://jobs.opensafely.org/opensafely-feedback/openpathology-main/published/01JV51PQ4WHDY4GHZ18A57SZ8Z/
   chart_units: Percentage of patients aged ≥ 18 (denominator) who had a cholesterol test within the stated month (numerator)
-  measures_tables_url: output/chol_tests/demographic_table_counts_per_week.csv
+  measures_tables_url: https://jobs.opensafely.org/opensafely-feedback/openpathology-main/published/01K18T7ZR4NEBE6JBC0R0QD4HP/
 
 - name: HbA1c testing rate in patients with Type 2 diabetes
   explanation: >
@@ -166,7 +166,7 @@
   deciles_table_url: https://jobs.opensafely.org/opensafely-feedback/openpathology-main/published/01JV51PQ46AWH82Q4SJMDEX1P0/
   top_5_codes_table_url: https://jobs.opensafely.org/opensafely-feedback/openpathology-main/published/01JV51PQ4CG01ZJA0D3QGMRH56/
   chart_units: Percentage of patients aged ≥ 18 (denominator) who had an RBC test within the stated month (numerator)
-  measures_tables_url: output/rbc_tests/demographic_table_counts_per_week.csv
+  measures_tables_url: https://jobs.opensafely.org/opensafely-feedback/openpathology-main/published/01K18T7ZR9FH25TRPJJGAFJ10S/
 
 - name: Renal Function - Sodium testing rate
   explanation: >
@@ -184,7 +184,7 @@
   deciles_table_url: https://jobs.opensafely.org/opensafely-feedback/openpathology-main/published/01JV51PQ3XKCD9HVNS5ZAV5GG0/
   top_5_codes_table_url: https://jobs.opensafely.org/opensafely-feedback/openpathology-main/published/01JV51PQ43N5BN3VHKFS2ER1Y4/
   chart_units: Percentage of patients aged ≥ 18 (denominator) who had a sodium test within the stated month (numerator)
-  measures_tables_url: output/sodium_tests/demographic_table_counts_per_week.csv
+  measures_tables_url: https://jobs.opensafely.org/opensafely-feedback/openpathology-main/published/01K18T7ZRBZAF6ERZGAJDD0K8H/
 
 - name: Blood Pressure monitoring rate
   explanation: >
@@ -202,7 +202,7 @@
   deciles_table_url: https://jobs.opensafely.org/opensafely-feedback/openpathology-main/published/01JV51PQ3KGBDGXZKRS3VY6FPF/
   top_5_codes_table_url: https://jobs.opensafely.org/opensafely-feedback/openpathology-main/published/01JV51PQ3TG5ES5HRAYBX32PF5/
   chart_units: Percentage of patients aged ≥ 18 (denominator) who had a BP test within the stated month (numerator)
-  measures_tables_url: output/systol_tests/demographic_table_counts_per_week.csv
+  measures_tables_url: https://jobs.opensafely.org/opensafely-feedback/openpathology-main/published/01K18T7ZRET49B1F3DEF3441XN/
 
 - name: Vitamin D testing rate
   explanation: >
