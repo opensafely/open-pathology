@@ -18,6 +18,7 @@ MEDIAN = "Median"
 class Measure:
     name: str
     explanation: str
+    design: str
     caveats: str
     codelist_url: str
     total_events: int
@@ -136,6 +137,7 @@ class OSJobsRepository:
         return Measure(
             name,
             record["explanation"],
+            record["design"],
             record["caveats"],
             record["codelist_url"],
             counts["total_events"],

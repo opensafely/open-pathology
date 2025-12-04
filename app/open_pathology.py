@@ -26,6 +26,9 @@ def main():
     with streamlit.expander("What is it and why does it matter?"):
         streamlit.markdown(measure.explanation)
 
+    with streamlit.expander("Design"):
+        streamlit.markdown(measure.design)
+
     with streamlit.expander("Caveats"):
         streamlit.markdown(measure.caveats)
 
