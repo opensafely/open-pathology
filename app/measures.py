@@ -13,7 +13,6 @@ PERCENTILE = "Percentile"
 DECILE = "Decile"
 MEDIAN = "Median"
 
-
 @dataclasses.dataclass
 class Measure:
     name: str
@@ -52,44 +51,83 @@ class Measure:
     def deciles_chart(self):
         # selections
         legend_selection = altair.selection_point(bind="legend", fields=["label"])
-
         # encodings
         stroke_dash = altair.StrokeDash(
             "label",
             title=None,
             scale=altair.Scale(
                 domain=[DECILE, MEDIAN],
-                range=[[1, 1], [5, 5], [0, 0]],
+                range=[[2, 2], [5, 5], [0, 0]],
             ),
             legend=altair.Legend(orient="bottom"),
         )
         stroke_width = (
-            altair.when(altair.datum.type == MEDIAN)
-            .then(altair.value(1))
-            .otherwise(altair.value(0.5))
+            altair.when(altair.datum.label == MEDIAN)
+            .then(altair.value(2))
+            .otherwise(altair.value(0.75))
         )
         opacity = (
             altair.when(legend_selection)
             .then(altair.value(1))
             .otherwise(altair.value(0.2))
         )
-
         # chart
-        chart = (
+        line_chart = (
             altair.Chart(self.deciles_table, title=self.chart_units)
             .mark_line()
             .encode(
-                altair.X("date", axis=altair.Axis(format="%b %y"), title=None),
-                altair.Y("value", title=None),
+                altair.X(
+                    "yearmonth(date):T",
+                    axis=altair.Axis(
+                        format="%b %y",
+                        title=None,
+                        labelColor="#222",
+                        labelFontSize=14,
+                        labelAngle=45,
+                    ),
+                ),
+                altair.Y(
+                    "value",
+                    axis=altair.Axis(title=None, labelColor="#222", labelFontSize=14),
+                    scale=altair.Scale(zero=False),
+                ),
                 detail="percentile",
                 strokeDash=stroke_dash,
                 strokeWidth=stroke_width,
+                color=altair.Color(
+                    "label",
+                    scale=altair.Scale(
+                        domain=[DECILE, MEDIAN],
+                        range=["#DE8F05", "#0173B2"],
+                    ),
+                    legend=altair.Legend(orient="bottom"),
+                ),
                 opacity=opacity,
             )
             .add_params(legend_selection)
         )
+    
+        # Text labels at rightmost points for median
+        text_labels = (
+            altair.Chart(self.deciles_table)
+            .mark_text(align="left", dx=5, fontSize=12, color="#0173B2")
+            .encode(
+                altair.X("yearmonth(date):T"),
+                altair.Y("value:Q", scale=altair.Scale(zero=False)),  # ADD HERE TOO
+                text=altair.value("median"),
+            )
+            .transform_filter(altair.datum.label == MEDIAN)
+            .transform_window(
+                rank="rank()",
+                sort=[altair.SortField("date", order="descending")],
+                groupby=["percentile"],
+            )
+            .transform_filter(altair.datum.rank == 1)
+        )
+    
+        chart = (line_chart + text_labels).resolve_scale(y='shared')  # ENSURE SHARED SCALE
         return chart
-
+        
     def measure_chart(self, measure_name):
         chart = (
             altair.Chart(self.measures_tables[measure_name])
@@ -128,7 +166,7 @@ class OSJobsRepository:
         # them as functions rather than as methods. Doing so makes them easier to mock.
         counts = _get_counts(record["counts_table_url"])
         top_5_codes_table = _get_top_5_codes_table(record["top_5_codes_table_url"])
-        deciles_table = _get_deciles_table(record["deciles_table_url"])
+        deciles_table = _get_deciles_table(record["deciles_table_url"], record.get("chart_type",""))
         if "measures_tables_url" in record:
             measures_tables = dict(_get_measures_tables(record["measures_tables_url"]))
         else:
@@ -148,8 +186,8 @@ class OSJobsRepository:
         )
 
     def list(self):
-        """List the names of all the measures in the repository."""
-        return self._records.keys()
+        """List the names of all the measures in the repository, in alphabetical order."""
+        return sorted(self._records.keys(), key=str.lower)
 
 
 def _get_counts(counts_table_url):
@@ -168,9 +206,17 @@ def _get_top_5_codes_table(top_5_codes_table_url):
     return top_5_codes_table
 
 
-def _get_deciles_table(deciles_table_url):
-    log.info(f"Getting deciles table from {deciles_table_url}")
+def _get_deciles_table(deciles_table_url, chart_type=None):
+    chart_type = chart_type or ""
+    log.info("ENTER _get_deciles_table", chart_type=chart_type, url=deciles_table_url, file=__file__)
     deciles_table = pandas.read_csv(deciles_table_url, parse_dates=["date"])
+
+    log.info(
+        "BEFORE scaling",
+        sample=deciles_table["value"].head(5).tolist(),
+        dtype=str(deciles_table["value"].dtype),
+    )
+    
     deciles_table.loc[:, "label"] = PERCENTILE
     is_decile = (
         (deciles_table["percentile"] != 0)
@@ -181,12 +227,24 @@ def _get_deciles_table(deciles_table_url):
     deciles_table.loc[deciles_table["percentile"] == 50, "label"] = MEDIAN
 
     # Obviously, this is sub-optimal.
-    if "hba1c_diab_mean_tests" not in deciles_table_url:
+    if chart_type != "mean":
         deciles_table["value"] = deciles_table["value"] / 10
+
+    log.info(
+        "AFTER scaling",
+        sample=deciles_table["value"].head(5).tolist(),
+        dtype=str(deciles_table["value"].dtype),
+    )
 
     # As is this.
     deciles_table = deciles_table[deciles_table["label"] != PERCENTILE]
 
+    log.info(
+        "RETURNING deciles_table",
+        rows=len(deciles_table),
+        min=float(deciles_table["value"].min()),
+        max=float(deciles_table["value"].max()),
+    )
     return deciles_table
 
 
@@ -216,5 +274,9 @@ def _get_measures_tables(measures_tables_url):
                     5: "Chinese or Other Ethnic Groups",
                 }
             )
+        
+        #filter out "unknown" from IMD measure
+        if measure_header == "IMD":
+            measure_table = measure_table[measure_table["IMD"] != "unknown"]
 
         yield measure_header, measure_table

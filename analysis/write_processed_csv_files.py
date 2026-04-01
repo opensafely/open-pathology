@@ -29,6 +29,7 @@ def get_demographic_table(df_measure_output):
     df_demograph = df_measure_output[
         df_measure_output["measure"].isin(demograph_strata)
     ]
+
     df_demograph = df_demograph[
         [
             "measure",
