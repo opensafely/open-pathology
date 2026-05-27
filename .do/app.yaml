@@ -1,0 +1,50 @@
+# This is a DigitalOcean App Platform application specification, or app spec.
+# For more information about app specs, see:
+# https://docs.digitalocean.com/products/app-platform/how-to/update-app-spec/
+# https://docs.digitalocean.com/products/app-platform/reference/app-spec/
+name: open-pathology
+region: lon1
+alerts:
+  - rule: DEPLOYMENT_FAILED
+features:
+  - buildpack-stack=ubuntu-22
+envs:
+  - key: REPOSITORY_ROOT_URI
+    value: ${REPOSITORY_ROOT_URI}
+    scope: RUN_TIME
+    type: GENERAL
+domains:
+  - domain: beta.openpathology.net
+    type: PRIMARY
+services:
+  - name: streamlit
+    environment_slug: python
+    github:
+      branch: main
+      # The Continuous Deployment GitHub Actions workflow handles deployment.
+      deploy_on_push: false
+      repo: opensafely/open-pathology
+    # run time
+    run_command: streamlit run app/open_pathology.py
+    http_port: 8080
+    envs:
+      - key: STREAMLIT_SERVER_PORT
+        value: "8080"
+        scope: RUN_TIME
+        type: GENERAL
+    health_check:
+      # See https://github.com/streamlit/streamlit/blob/1.50.0/lib/streamlit/web/server/server.py#L144-L146
+      http_path: /_stcore/script-health-check
+      timeout_seconds: 10
+    # build time
+    source_dir: /
+    # instance
+    instance_size_slug: basic-xxs
+    instance_count: 1
+ingress:
+  rules:
+    - component:
+        name: streamlit
+      match:
+        path:
+          prefix: /
