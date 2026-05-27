@@ -10,7 +10,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  ci:
+  test_runner:
     uses: ./.github/workflows/test_runner.yaml
 
   deploy:
