@@ -10,7 +10,9 @@ def get_repository():
 def main():
     repository = get_repository()
 
-    streamlit.set_page_config(page_title="OpenPathology", layout="wide")
+    streamlit.set_page_config(
+        page_title="OpenPathology", page_icon=":material/prescriptions:", layout="wide"
+    )
 
     streamlit.markdown(
         """
