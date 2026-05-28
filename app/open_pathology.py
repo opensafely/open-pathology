@@ -14,15 +14,14 @@ def main():
         page_title="OpenPathology", page_icon=":material/prescriptions:", layout="wide"
     )
 
-    streamlit.markdown(
+    streamlit.html(
         """
         <style>
             .block-container {
                 max-width: 80%;
             }
         </style>
-        """,
-        unsafe_allow_html=True,
+        """
     )
 
     streamlit.title("OpenPathology")
