@@ -13,6 +13,7 @@ PERCENTILE = "Percentile"
 DECILE = "Decile"
 MEDIAN = "Median"
 
+
 @dataclasses.dataclass
 class Measure:
     name: str
@@ -106,7 +107,7 @@ class Measure:
             )
             .add_params(legend_selection)
         )
-    
+
         # Text labels at rightmost points for median
         text_labels = (
             altair.Chart(self.deciles_table)
@@ -124,10 +125,12 @@ class Measure:
             )
             .transform_filter(altair.datum.rank == 1)
         )
-    
-        chart = (line_chart + text_labels).resolve_scale(y='shared')  # ENSURE SHARED SCALE
+
+        chart = (line_chart + text_labels).resolve_scale(
+            y="shared"
+        )  # ENSURE SHARED SCALE
         return chart
-        
+
     def measure_chart(self, measure_name):
         chart = (
             altair.Chart(self.measures_tables[measure_name])
@@ -166,7 +169,9 @@ class OSJobsRepository:
         # them as functions rather than as methods. Doing so makes them easier to mock.
         counts = _get_counts(record["counts_table_url"])
         top_5_codes_table = _get_top_5_codes_table(record["top_5_codes_table_url"])
-        deciles_table = _get_deciles_table(record["deciles_table_url"], record.get("chart_type",""))
+        deciles_table = _get_deciles_table(
+            record["deciles_table_url"], record.get("chart_type", "")
+        )
         if "measures_tables_url" in record:
             measures_tables = dict(_get_measures_tables(record["measures_tables_url"]))
         else:
@@ -208,7 +213,12 @@ def _get_top_5_codes_table(top_5_codes_table_url):
 
 def _get_deciles_table(deciles_table_url, chart_type=None):
     chart_type = chart_type or ""
-    log.info("ENTER _get_deciles_table", chart_type=chart_type, url=deciles_table_url, file=__file__)
+    log.info(
+        "ENTER _get_deciles_table",
+        chart_type=chart_type,
+        url=deciles_table_url,
+        file=__file__,
+    )
     deciles_table = pandas.read_csv(deciles_table_url, parse_dates=["date"])
 
     log.info(
@@ -216,7 +226,7 @@ def _get_deciles_table(deciles_table_url, chart_type=None):
         sample=deciles_table["value"].head(5).tolist(),
         dtype=str(deciles_table["value"].dtype),
     )
-    
+
     deciles_table.loc[:, "label"] = PERCENTILE
     is_decile = (
         (deciles_table["percentile"] != 0)
@@ -274,8 +284,8 @@ def _get_measures_tables(measures_tables_url):
                     5: "Chinese or Other Ethnic Groups",
                 }
             )
-        
-        #filter out "unknown" from IMD measure
+
+        # filter out "unknown" from IMD measure
         if measure_header == "IMD":
             measure_table = measure_table[measure_table["IMD"] != "unknown"]
 

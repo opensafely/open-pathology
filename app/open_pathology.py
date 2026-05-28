@@ -1,6 +1,6 @@
 import measures
 import streamlit
-import pandas as pd
+
 
 streamlit.set_page_config(layout="wide")
 
@@ -14,6 +14,7 @@ streamlit.markdown(
     """,
     unsafe_allow_html=True,
 )
+
 
 @streamlit.cache_resource
 def get_repository():
@@ -64,7 +65,6 @@ def main():
     streamlit.dataframe(measure.top_5_codes_table)
 
     streamlit.markdown(f"Total events: {measure.total_events:,} events")
-
 
 
 if __name__ == "__main__":
