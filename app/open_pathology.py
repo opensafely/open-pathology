@@ -2,20 +2,6 @@ import measures
 import streamlit
 
 
-streamlit.set_page_config(layout="wide")
-
-streamlit.markdown(
-    """
-    <style>
-        .block-container {
-            max-width: 80%;
-        }
-    </style>
-    """,
-    unsafe_allow_html=True,
-)
-
-
 @streamlit.cache_resource
 def get_repository():
     return measures.OSJobsRepository()
@@ -23,6 +9,19 @@ def get_repository():
 
 def main():
     repository = get_repository()
+
+    streamlit.set_page_config(layout="wide")
+
+    streamlit.markdown(
+        """
+        <style>
+            .block-container {
+                max-width: 80%;
+            }
+        </style>
+        """,
+        unsafe_allow_html=True,
+    )
 
     streamlit.title("OpenPathology")
 
