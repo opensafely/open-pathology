@@ -14,13 +14,16 @@ def main():
         page_title="OpenPathology", page_icon=":material/prescriptions:", layout="wide"
     )
 
-    streamlit.html("""
+    streamlit.html(
+        """
         <script async src="https://plausible.io/js/pa-_l1m42vU9r8g5GHYvdAqx.js"></script>
         <script>
             window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
             plausible.init()
         </script>
-    """)
+        """,
+        unsafe_allow_javascript=True,
+    )
 
     streamlit.html(
         """
