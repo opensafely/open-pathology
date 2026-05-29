@@ -1,19 +1,6 @@
 import measures
 import streamlit
-import pandas as pd
 
-streamlit.set_page_config(layout="wide")
-
-streamlit.markdown(
-    """
-    <style>
-        .block-container {
-            max-width: 80%;
-        }
-    </style>
-    """,
-    unsafe_allow_html=True,
-)
 
 @streamlit.cache_resource
 def get_repository():
@@ -22,6 +9,20 @@ def get_repository():
 
 def main():
     repository = get_repository()
+
+    streamlit.set_page_config(
+        page_title="OpenPathology", page_icon=":material/prescriptions:", layout="wide"
+    )
+
+    streamlit.html(
+        """
+        <style>
+            .block-container {
+                max-width: 80%;
+            }
+        </style>
+        """
+    )
 
     streamlit.title("OpenPathology")
 
@@ -64,7 +65,6 @@ def main():
     streamlit.dataframe(measure.top_5_codes_table)
 
     streamlit.markdown(f"Total events: {measure.total_events:,} events")
-
 
 
 if __name__ == "__main__":
