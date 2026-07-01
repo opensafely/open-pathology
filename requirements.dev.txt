@@ -6,7 +6,7 @@
 #
 cfgv==3.5.0
     # via pre-commit
-coverage==7.14.1
+coverage==7.14.3
     # via -r requirements.dev.in
 distlib==0.4.3
     # via virtualenv
