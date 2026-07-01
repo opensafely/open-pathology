@@ -34,7 +34,7 @@ pre-commit==4.6.0
     # via -r requirements.dev.in
 pygments==2.20.0
     # via pytest
-pytest==9.1.0
+pytest==9.1.1
     # via -r requirements.dev.in
 python-discovery==1.4.2
     # via virtualenv
