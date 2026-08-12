@@ -26,7 +26,7 @@ click==8.4.2
     #   uvicorn
 gitdb==4.0.12
     # via gitpython
-gitpython==3.1.54
+gitpython==3.1.58
     # via streamlit
 h11==0.16.0
     # via uvicorn
@@ -109,6 +109,8 @@ typing-extensions==4.16.0
 urllib3==2.7.0
     # via requests
 uvicorn==0.51.0
+    # via streamlit
+watchdog==6.0.0
     # via streamlit
 websockets==16.1.1
     # via streamlit
