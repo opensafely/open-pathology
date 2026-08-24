@@ -26,7 +26,7 @@ actions:
         measures: output/alt_tests/measures_light.arrow
   generate_processed_data_alt_tests:
     run: >
-      python:latest 
+      python:v2
         analysis/write_processed_csv_files.py
         --output-dir output/alt_tests
         --test alt
@@ -40,7 +40,7 @@ actions:
         event_counts_table: output/alt_tests/event_counts.csv
   generate_processed_data_alt_tests_light:
     run: >
-      python:latest 
+      python:v2
         analysis/write_processed_csv_files.py
         --output-dir output/alt_tests
         --test alt
@@ -88,7 +88,7 @@ actions:
         measures: output/chol_tests/measures_light.arrow
   generate_processed_data_chol_tests:
     run: >
-      python:latest 
+      python:v2
         analysis/write_processed_csv_files.py
         --output-dir output/chol_tests
         --test chol
@@ -102,7 +102,7 @@ actions:
         event_counts_table: output/chol_tests/event_counts.csv
   generate_processed_data_chol_tests_light:
     run: >
-      python:latest 
+      python:v2
         analysis/write_processed_csv_files.py
         --output-dir output/chol_tests
         --test chol
@@ -150,7 +150,7 @@ actions:
         measures: output/hba1c_numeric_tests/measures_light.arrow
   generate_processed_data_hba1c_numeric_tests:
     run: >
-      python:latest 
+      python:v2
         analysis/write_processed_csv_files.py
         --output-dir output/hba1c_numeric_tests
         --test hba1c_numeric
@@ -164,7 +164,7 @@ actions:
         event_counts_table: output/hba1c_numeric_tests/event_counts.csv
   generate_processed_data_hba1c_numeric_tests_light:
     run: >
-      python:latest 
+      python:v2
         analysis/write_processed_csv_files.py
         --output-dir output/hba1c_numeric_tests
         --test hba1c_numeric
@@ -212,7 +212,7 @@ actions:
         measures: output/rbc_tests/measures_light.arrow
   generate_processed_data_rbc_tests:
     run: >
-      python:latest 
+      python:v2
         analysis/write_processed_csv_files.py
         --output-dir output/rbc_tests
         --test rbc
@@ -226,7 +226,7 @@ actions:
         event_counts_table: output/rbc_tests/event_counts.csv
   generate_processed_data_rbc_tests_light:
     run: >
-      python:latest 
+      python:v2
         analysis/write_processed_csv_files.py
         --output-dir output/rbc_tests
         --test rbc
@@ -274,7 +274,7 @@ actions:
         measures: output/sodium_tests/measures_light.arrow
   generate_processed_data_sodium_tests:
     run: >
-      python:latest 
+      python:v2
         analysis/write_processed_csv_files.py
         --output-dir output/sodium_tests
         --test sodium
@@ -288,7 +288,7 @@ actions:
         event_counts_table: output/sodium_tests/event_counts.csv
   generate_processed_data_sodium_tests_light:
     run: >
-      python:latest 
+      python:v2
         analysis/write_processed_csv_files.py
         --output-dir output/sodium_tests
         --test sodium
@@ -336,7 +336,7 @@ actions:
         measures: output/systol_tests/measures_light.arrow
   generate_processed_data_systol_tests:
     run: >
-      python:latest 
+      python:v2
         analysis/write_processed_csv_files.py
         --output-dir output/systol_tests
         --test systol
@@ -350,7 +350,7 @@ actions:
         event_counts_table: output/systol_tests/event_counts.csv
   generate_processed_data_systol_tests_light:
     run: >
-      python:latest 
+      python:v2
         analysis/write_processed_csv_files.py
         --output-dir output/systol_tests
         --test systol
@@ -398,7 +398,7 @@ actions:
         measures: output/vit_d_tests/measures_light.arrow
   generate_processed_data_vit_d_tests:
     run: >
-      python:latest 
+      python:v2
         analysis/write_processed_csv_files.py
         --output-dir output/vit_d_tests
         --test vit_d
@@ -412,7 +412,7 @@ actions:
         event_counts_table: output/vit_d_tests/event_counts.csv
   generate_processed_data_vit_d_tests_light:
     run: >
-      python:latest 
+      python:v2
         analysis/write_processed_csv_files.py
         --output-dir output/vit_d_tests
         --test vit_d
@@ -460,7 +460,7 @@ actions:
         measures: output/vit_d_ref_tests/measures_light.arrow
   generate_processed_data_vit_d_ref_tests:
     run: >
-      python:latest 
+      python:v2
         analysis/write_processed_csv_files.py
         --output-dir output/vit_d_ref_tests
         --test vit_d_ref
@@ -474,7 +474,7 @@ actions:
         event_counts_table: output/vit_d_ref_tests/event_counts.csv
   generate_processed_data_vit_d_ref_tests_light:
     run: >
-      python:latest 
+      python:v2
         analysis/write_processed_csv_files.py
         --output-dir output/vit_d_ref_tests
         --test vit_d_ref
@@ -522,7 +522,7 @@ actions:
         measures: output/psa_tests/measures_light.arrow
   generate_processed_data_psa_tests:
     run: >
-      python:latest 
+      python:v2
         analysis/write_processed_csv_files.py
         --output-dir output/psa_tests
         --test psa
@@ -536,7 +536,7 @@ actions:
         event_counts_table: output/psa_tests/event_counts.csv
   generate_processed_data_psa_tests_light:
     run: >
-      python:latest 
+      python:v2
         analysis/write_processed_csv_files.py
         --output-dir output/psa_tests
         --test psa
@@ -584,7 +584,7 @@ actions:
         measures: output/psa_ref_tests/measures_light.arrow
   generate_processed_data_psa_ref_tests:
     run: >
-      python:latest 
+      python:v2
         analysis/write_processed_csv_files.py
         --output-dir output/psa_ref_tests
         --test psa_ref
@@ -598,7 +598,7 @@ actions:
         event_counts_table: output/psa_ref_tests/event_counts.csv
   generate_processed_data_psa_ref_tests_light:
     run: >
-      python:latest 
+      python:v2
         analysis/write_processed_csv_files.py
         --output-dir output/psa_ref_tests
         --test psa_ref
@@ -646,7 +646,7 @@ actions:
         measures: output/hba1c_diab_tests/measures_light.arrow
   generate_processed_data_hba1c_diab_tests:
     run: >
-      python:latest 
+      python:v2
         analysis/write_processed_csv_files.py
         --output-dir output/hba1c_diab_tests
         --test hba1c_diab
@@ -660,7 +660,7 @@ actions:
         event_counts_table: output/hba1c_diab_tests/event_counts.csv
   generate_processed_data_hba1c_diab_tests_light:
     run: >
-      python:latest 
+      python:v2
         analysis/write_processed_csv_files.py
         --output-dir output/hba1c_diab_tests
         --test hba1c_diab
@@ -708,7 +708,7 @@ actions:
         measures: output/hba1c_diab_mean_tests/measures_light.arrow
   generate_processed_data_hba1c_diab_mean_tests:
     run: >
-      python:latest 
+      python:v2
         analysis/write_processed_csv_files.py
         --output-dir output/hba1c_diab_mean_tests
         --test hba1c_diab_mean
@@ -722,7 +722,7 @@ actions:
         event_counts_table: output/hba1c_diab_mean_tests/event_counts.csv
   generate_processed_data_hba1c_diab_mean_tests_light:
     run: >
-      python:latest 
+      python:v2
         analysis/write_processed_csv_files.py
         --output-dir output/hba1c_diab_mean_tests
         --test hba1c_diab_mean
@@ -770,7 +770,7 @@ actions:
         measures: output/alt_mtx_tests/measures_light.arrow
   generate_processed_data_alt_mtx_tests:
     run: >
-      python:latest 
+      python:v2
         analysis/write_processed_csv_files.py
         --output-dir output/alt_mtx_tests
         --test alt_mtx
@@ -784,7 +784,7 @@ actions:
         event_counts_table: output/alt_mtx_tests/event_counts.csv
   generate_processed_data_alt_mtx_tests_light:
     run: >
-      python:latest 
+      python:v2
         analysis/write_processed_csv_files.py
         --output-dir output/alt_mtx_tests
         --test alt_mtx
@@ -832,7 +832,7 @@ actions:
         measures: output/alt_mtx_ref_tests/measures_light.arrow
   generate_processed_data_alt_mtx_ref_tests:
     run: >
-      python:latest 
+      python:v2
         analysis/write_processed_csv_files.py
         --output-dir output/alt_mtx_ref_tests
         --test alt_mtx_ref
@@ -846,7 +846,7 @@ actions:
         event_counts_table: output/alt_mtx_ref_tests/event_counts.csv
   generate_processed_data_alt_mtx_ref_tests_light:
     run: >
-      python:latest 
+      python:v2
         analysis/write_processed_csv_files.py
         --output-dir output/alt_mtx_ref_tests
         --test alt_mtx_ref
@@ -873,7 +873,7 @@ actions:
 
   generate_plots:
     run: >
-      r:latest 
+      r:v2
         analysis/plots.r
     outputs:
       moderately_sensitive:
