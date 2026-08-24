@@ -48,7 +48,7 @@ yaml_template = """
         measures: output/{test}_tests/measures_light.arrow
   generate_processed_data_{test}_tests:
     run: >
-      python:latest
+      python:v2
         analysis/write_processed_csv_files.py
         --output-dir output/{test}_tests
         --test {test}
@@ -62,7 +62,7 @@ yaml_template = """
         event_counts_table: output/{test}_tests/event_counts.csv
   generate_processed_data_{test}_tests_light:
     run: >
-      python:latest
+      python:v2
         analysis/write_processed_csv_files.py
         --output-dir output/{test}_tests
         --test {test}
@@ -101,7 +101,7 @@ for test in tests.keys():
 yaml_plots = """
   generate_plots:
     run: >
-      r:latest
+      r:v2
         analysis/plots.r
     outputs:
       moderately_sensitive:
