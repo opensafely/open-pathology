@@ -40,7 +40,7 @@ python-discovery==1.5.0
     # via virtualenv
 pyyaml==6.0.3
     # via pre-commit
-ruff==0.16.5
+ruff==0.16.9
     # via -r requirements.dev.in
 virtualenv==21.7.0
     # via pre-commit
