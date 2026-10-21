@@ -14,7 +14,7 @@ attrs==26.1.0
     # via
     #   jsonschema
     #   referencing
-certifi==2026.7.22
+certifi==2026.10.19
     # via requests
 charset-normalizer==3.4.9
     # via requests
@@ -99,8 +99,6 @@ typing-extensions==4.16.0
 urllib3==2.8.0
     # via requests
 uvicorn==0.51.0
-    # via streamlit
-watchdog==6.0.0
     # via streamlit
 websockets==16.1.1
     # via streamlit
