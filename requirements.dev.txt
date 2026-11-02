@@ -10,7 +10,7 @@ coverage==7.17.0
     # via -r requirements.dev.in
 distlib==0.4.3
     # via virtualenv
-filelock==3.32.0
+filelock==4.2.1
     # via
     #   python-discovery
     #   virtualenv
