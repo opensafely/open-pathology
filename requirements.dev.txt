@@ -22,8 +22,10 @@ nodeenv==1.10.0
     # via pre-commit
 opensafely-ehrql @ git+https://github.com/opensafely-core/ehrql.git@v1.27.0
     # via -r requirements.dev.in
-packaging==26.2
-    # via pytest
+packaging==26.3
+    # via
+    #   pytest
+    #   virtualenv
 platformdirs==4.11.0
     # via virtualenv
 pluggy==1.6.0
@@ -40,7 +42,7 @@ pyyaml==6.0.3
     # via pre-commit
 ruff==0.17.3
     # via -r requirements.dev.in
-virtualenv==21.7.12
+virtualenv==21.14.13
     # via pre-commit
 watchdog==6.0.0
     # via -r requirements.dev.in
