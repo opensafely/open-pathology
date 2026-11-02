@@ -32,7 +32,7 @@ pre-commit==4.7.0
     # via -r requirements.dev.in
 pygments==2.20.0
     # via pytest
-pytest==9.1.1
+pytest==9.2.0
     # via -r requirements.dev.in
 python-discovery==1.6.1
     # via virtualenv
